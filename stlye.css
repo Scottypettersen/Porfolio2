@@ -1,0 +1,225 @@
+/* style.css */
+
+:root {
+    --primary: #00b4d8; /* Teal */
+    --secondary: #f9844a; /* Orange */
+    --accent: #5865f2; /* Purple */
+    --background: #f2f2f2; /* Off-White */
+    --dark-overlay: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    background-image: url("background.jpg"); /* Use correct path to background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Lato', sans-serif; /* Set default font to Lato */
+    color: var(--background); 
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--dark-overlay); /* Apply the dark overlay */
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: var(--background);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--dark-overlay);
+    padding: 10px 0;
+    margin-bottom: 20px;
+    text-align: center; /* Center the navigation */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: var(--background);
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    color: var(--secondary);
+    background-color: var(--accent);
+}
+
+/* Hero Section */
+.hero-content {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+/* Page Wrapper (Flexbox Layout) */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex; /* Center main content */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-overlay);
+    color: var(--background);
+    padding: 20px;
+    text-align: center;
+}
+/* style.css */
+:root {
+    --primary: #00b4d8; /* Teal */
+    --secondary: #f9844a; /* Orange */
+    --accent: #5865f2; /* Purple */
+    --background: #f2f2f2; /* Off-White */
+    --dark-overlay: rgba(0, 0, 0, 0.7); /* Increased overlay opacity for better contrast */
+    --grunge-texture: url("grunge-texture.jpg"); /* Optional grunge texture for background */
+}
+
+body {
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: var(--body-font);
+    color: var(--background); 
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--dark-overlay); /* Apply dark overlay to the container */
+    text-align: center;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: var(--background);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Stronger text shadow */
+    font-family: 'Bebas Neue', sans-serif; /* Using Bebas Neue font for headers */
+}
+
+h1 {
+    font-size: 4em; /* Increase header font size */
+    margin-bottom: 20px; 
+}
+
+h1 a { 
+    color: var(--background);
+    text-decoration: none;
+}
+
+p, li {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-family: 'Lato', sans-serif; /* Using Lato font for body text */
+}
+
+/* Navigation */
+nav {
+    background-color: var(--dark-overlay); /* Add background to nav for contrast */
+    padding: 10px 0; /* Add padding to the nav */
+    margin-bottom: 20px; /* Add margin below nav */
+    text-align: center; /* Center the nav bar */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav a {
+    color: var(--background); /* Off-white link color */
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease; /* Smooth transition effect */
+    padding: 8px 12px; /* Add some padding for better readability */
+    border-radius: 5px; /* Add slight rounded corners */
+}
+
+nav a:hover {
+    color: var(--secondary); /* Orange on hover */
+    background-color: var(--accent); /* Purple background on hover */
+}
+
+/* Hero Section */
+.hero-content {
+    padding: 120px 0; /* Increase padding for a more dramatic look */
+    text-align: center; /* Center the hero text */; 
+}
+
+.hero-content p {
+    font-size: 1.5em; /* Larger font size for the subheading */
+    margin-bottom: 30px;
+}
+
+/* Page Wrapper for Flexbox Layout */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh; 
+    flex-direction: column; 
+}
+
+main {
+    flex: 1;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-overlay);
+    color: var(--background);
+    padding: 20px;
+    text-align: center;
+}
+d
