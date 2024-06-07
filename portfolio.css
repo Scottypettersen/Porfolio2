@@ -185,6 +185,7 @@ main {
 /* Projects Heading */
 h2 {
   margin-bottom: 40px; /* Add space below the heading */
+  font-size: xx-large;
 }
 
 /* Project Grid (Flexbox Layout) */
