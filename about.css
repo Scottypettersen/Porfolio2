@@ -1,0 +1,147 @@
+/* style.css */
+
+:root {
+    --primary: #00b4d8; /* Teal */
+    --secondary: #f9844a; /* Orange */
+    --accent: #5865f2; /* Purple */
+    --background: #f2f2f2; /* Off-White */
+    --dark-overlay: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    background-image: url("about.jpg"); /* Use correct path to background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Lato', sans-serif; /* Set default font to Lato */
+    color: var(--background); 
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--dark-overlay); /* Apply the dark overlay */
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: var(--background);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+h1 {
+    font-size: 4em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+header {
+    text-align: center; /* Centers header content (including the h1) */
+    padding: 20px 0;    
+    width: 100%; /* Make the header take up the full width of its container */
+}
+
+nav {
+    background-color: var(--dark-overlay);
+    padding: 2px 0;
+    margin-bottom: 20px;
+    display: inline-block; /* Allow the nav to shrink-wrap to its content */
+    width: min-content;
+    border-radius: 10px; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); 
+}
+
+nav ul {
+    list-style: none;
+    padding: 2px;
+    margin: 0;
+    display: flex; /* Use flexbox to center the list items */
+    justify-content: center; 
+    gap: 100px
+}
+nav a {
+    color: var(--background); /* Off-white link color */
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease; /* Smooth transition effect */
+    padding: 8px 12px; /* Add some padding for better readability */
+    border-radius: 5px; /* Add slight rounded corners */
+}
+
+/* Hover Effect */
+nav a:hover {
+    color: var(--secondary);
+    background-color: var(--accent);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-2px);
+}
+
+/* Active/Clicked Effect */
+nav a:active {
+    background-color: var(--secondary);
+}
+
+/* Ripple Effect (Optional) */
+nav a:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 200%;
+    height: 200%;
+    background-color: var(--background);
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: all 0.2s ease;
+}
+
+nav a:active:before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+nav ul li { /* Specifically target list items in the navigation */
+    background-color: var(--accent); /* Set background to purple (var(--accent)) */
+    padding: 10px 20px; /* Adjust padding for better visibility */
+    border-radius: 5px;  /* Keep the rounded corners */
+}
+
+/* Hero Section */
+.hero-content {
+    padding: 120px 0;
+    text-align: center;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+/* Page Wrapper (Flexbox Layout) */
+.page-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex; /* Center main content */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-overlay);
+    color: var(--background);
+    padding: 20px;
+    text-align: center;
+}
