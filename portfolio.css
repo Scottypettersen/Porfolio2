@@ -19,13 +19,7 @@ body {
     padding: 0;
 }
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: var(--dark-overlay); /* Apply the dark overlay */
-    text-align: center;
-    border-radius: 10px;
+
 }
 
 /* Typography */
@@ -63,16 +57,19 @@ nav ul {
     margin: 0;
     display: flex; /* Use flexbox to center the list items */
     justify-content: center; 
+    text-align: center;
     gap: 100px
 }
-nav a {
-    color: var(--background); /* Off-white link color */
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s ease; /* Smooth transition effect */
-    padding: 8px 12px; /* Add some padding for better readability */
-    border-radius: 5px; /* Add slight rounded corners */
+nav {
+    background-color: var(--dark-overlay);
+    padding: 10px 20px;   /* Add padding all around */
+    margin-bottom: 20px; 
+    display: flex;       /* Use flexbox for layout */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center;   /* Center items vertically */
+    width: 100%;          /* Make nav full width of its container */
+    border-radius: 10px;  
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Hover Effect */
@@ -110,7 +107,8 @@ nav a:active:before {
 nav ul li { /* Specifically target list items in the navigation */
     background-color: var(--accent); /* Set background to purple (var(--accent)) */
     padding: 10px 20px; /* Adjust padding for better visibility */
-    border-radius: 5px;  /* Keep the rounded corners */
+    border-radius: 5px;  /* Keep the rounded corners */ 
+    justify-content: center;
 }
 
 /* Hero Section */
@@ -138,14 +136,8 @@ main {
     justify-content: center;
 }
 /* Portfolio-Specific Styles */
-#portfolio {
-    background-image: url("portfolio.jpg"); /* Replace with your image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: var(--background);
-    padding: 120px 0; /* Match padding from index.html */
-    text-align: center; /* Center content */
+
+   
 }
 
 /* Your existing styles (root variables, body styles, typography, etc.) */
@@ -162,16 +154,6 @@ main {
     flex: 1; /* Allow main content to take up available space */
 }
 
-/* Portfolio Section */
-#portfolio {
-    background-image: url("portfolio.jpg"); /* Replace with your image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: var(--background);
-    padding: 120px 0; /* Match padding from index.html */
-    text-align: center; /* Center content */
-}
 
 .container {
   max-width: 960px; /* Adjust as needed */
@@ -188,42 +170,90 @@ h2 {
   font-size: xx-large;
 }
 
-/* Project Grid (Flexbox Layout) */
+
+/* Portfolio Section */
+#portfolio {
+    /* ... your existing #portfolio styles ... */
+}
+
 .portfolio-grid {
     display: flex;
-    justify-content: center; /* Horizontally center the row of boxes */
+    justify-content: center; 
     gap: 30px;
-    flex-wrap: nowrap; /* Prevent wrapping to a new line */
+    flex-wrap: wrap; /* Allow boxes to wrap to the next line if needed */
 }
 
 /* Project Box Styles */
 .project-box {
-  width: 250px; /* Adjust width as needed */
-  height: 200px; /* Adjust height as needed */
-  background-color: var(--primary);
-  border-radius: 10px; 
-  overflow: hidden;
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effect */
+    width: 250px;
+    height: 200px;
+    background-color: var(--primary);
+    border-radius: 10px; 
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 200px; /* Distribute extra space, minimum width 200px */ 
+    align-self: flex-start; /* Align to the top of the line */
+    position: relative; /* Enable positioning for the overlay */
 }
-
 .project-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
 }
 
+/* Image Styles */
+.project-box img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; 
+}
+
+/* Text Overlay Styles */
 .project-box a {
-  text-decoration: none;
-  color: var(--background);
-  display: flex;
-  flex-direction: column; 
-  justify-content: center; 
-  height: 100%; 
+    text-decoration: none;
+    color: var(--background);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2em;
+    position: relative; 
+    z-index: 1; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.project-box h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+.project-box p {
+  font-size: 0.9em;
+  margin-top: 5px; 
 }
 
+/* Last Project Box Specific Styling */
+.project-box:nth-child(5) { /* Targets only the 5th project box */
+  background-color: transparent;
+  padding: 0;
+  width: 100%; /* Make the last box full width */
+  height: auto;  /* Allow the box to take the height of the image */
+}
 
+.project-box:nth-child(5) img { 
+  width: 100%; 
+  height: 236px; /* Use your image's original height */
+  object-fit: cover; 
+}
+
+.project-box:last-of-type a {
+  justify-content: center; 
+}
 /* Footer Styles */
 footer {
     background-color: var(--dark-overlay);
@@ -233,11 +263,3 @@ footer {
 }
 
 
-
-/* Footer */
-footer {
-    background-color: var(--dark-overlay);
-    color: var(--background);
-    padding: 20px;
-    text-align: center;
-}
