@@ -3,7 +3,7 @@
 :root {
     --primary: #00b4d8; /* Teal */
     --secondary: #f9844a; /* Orange */
-    --accent: #5865f2; /* Purple */
+    --accent: #363585; 
     --background: #f2f2f2; /* Off-White */
     --dark-overlay: rgba(0, 0, 0, 0.7);
 }
@@ -45,6 +45,8 @@ header {
     text-align: center; /* Centers header content (including the h1) */
     padding: 20px 0;    
     width: 100%; /* Make the header take up the full width of its container */
+
+
 }
 
 nav {
@@ -137,7 +139,9 @@ main {
     align-items: center;
     justify-content: center;
 }
-
+h1 a { 
+    color: white; 
+    text-decoration: none;
 /* Footer */
 footer {
     background-color: var(--dark-overlay);

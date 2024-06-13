@@ -40,6 +40,13 @@ h1 {
     margin-bottom: 20px;
     text-align: center;
 }
+h1 a { 
+    color: white;  /* Correct */
+    text-decoration: none;
+}
+
+
+
 
 header {
     text-align: center; /* Centers header content (including the h1) */
