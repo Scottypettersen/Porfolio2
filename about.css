@@ -56,12 +56,14 @@ header {
 
 nav {
     background-color: var(--dark-overlay);
-    padding: 2px 0;
-    margin-bottom: 20px;
-    display: inline-block; /* Allow the nav to shrink-wrap to its content */
-    width: min-content;
-    border-radius: 10px; 
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); 
+    padding: 10px 20px;   /* Add padding all around */
+    margin-bottom: 20px; 
+    display: flex;       /* Use flexbox for layout */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center;   /* Center items vertically */
+    width: 100%;          /* Make nav full width of its container */
+    border-radius: 10px;  
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
 nav ul {
