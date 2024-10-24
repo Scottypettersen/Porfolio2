@@ -238,7 +238,8 @@ footer {
 @media (max-width: 768px) {
   body {
     /* Scale the entire body */
-    transform: scale(0.8);
+    transform: scale(0.7);
+    /* Further reduced scaling */
     margin-top: 20px;
   }
 
@@ -256,12 +257,25 @@ footer {
     /* Reduce gap */
   }
 
-  .project-box {
-    /* Adjust project box styles if needed */
-  }
-
   h2 {
     font-size: x-large;
     /* Reduce heading size */
+  }
+
+  nav ul {
+    flex-direction: column;
+    /* Stack nav items vertically */
+    gap: 10px;
+    /* Reduce gap between items */
+  }
+
+  nav ul li {
+    padding: 8px 15px;
+    /* Reduce padding around nav items */
+  }
+
+  nav a {
+    font-size: 1rem;
+    /* Reduce font size of nav links */
   }
 }
