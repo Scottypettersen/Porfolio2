@@ -217,12 +217,14 @@
     }
   
     nav ul li {
-      padding: 8px 15px;
-      /* Reduce padding around nav items */
+      padding: 25px 30px;
+      /* Significantly increased padding */
+      font-size: 1.8rem;
+      /* Increased font size of the nav items */
     }
   
     nav a {
-      font-size: 1rem;
-      /* Reduce font size of nav links */
+      font-size: 1.5rem;
+      /* Increased font size */
     }
   }
