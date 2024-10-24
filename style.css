@@ -212,19 +212,19 @@
     nav ul {
       flex-direction: column;
       /* Stack nav items vertically */
-      gap: 10px;
-      /* Reduce gap between items */
+      gap: 20px;
+      /* Double the original gap (100px -> 200px) */
     }
   
     nav ul li {
-      padding: 25px 30px;
-      /* Significantly increased padding */
-      font-size: 1.8rem;
-      /* Increased font size of the nav items */
+      padding: 30px 60px;
+      /* Double the original padding (10px 20px -> 20px 40px) */
+      font-size: 3.6rem;
+      /* Double the original font size (1.8rem -> 3.6rem) */
     }
   
     nav a {
-      font-size: 1.5rem;
-      /* Increased font size */
+      font-size: 3rem;
+      /* Double the original font size (1.5rem -> 3rem) */
     }
   }
