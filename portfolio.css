@@ -258,4 +258,12 @@ footer {
     font-size: x-large;
     /* Reduce heading size */
   }
+
+  @media (max-width: 768px) { 
+    .container {
+      /* ... other styles ... */
+      max-width: 95%; 
+      transform: scale(0.8); /* Shrink the container */
+      margin-top: 20px; /* Add some top margin for better spacing */
+    }
 }
