@@ -1,230 +1,99 @@
-/* style.css */
-
 :root {
-    --primary: #00b4d8;
-    /* Teal */
-    --secondary: #f9844a;
-    /* Orange */
-    --accent: #363585;
-    --background: #f2f2f2;
-    /* Off-White */
-    --dark-overlay: rgba(0, 0, 0, 0.7);
-  }
-  
-  body {
-    background-image: url("background.jpg");
-    /* Use correct path to background */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    font-family: 'Lato', sans-serif;
-    /* Set default font to Lato */
-    color: var(--background);
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: var(--dark-overlay);
-    /* Apply the dark overlay */
-    text-align: center;
-    border-radius: 10px;
-  }
-  
-  /* Typography */
-  h1,
-  h2,
-  h3 {
-    color: var(--background);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    font-family: 'Bebas Neue', sans-serif;
-  }
-  
+  --primary: #00b4d8;
+  --secondary: #f9844a;
+  --accent: #5865f2;
+  --background: #f2f2f2;
+  --dark-overlay: rgba(0, 0, 0, 0.7);
+}
+
+body {
+  background-image: url("portfolio.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Lato', sans-serif;
+  color: var(--background);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.home-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.home-nav li {
+  width: 200px;
+}
+
+.home-nav a {
+  display: block;
+  padding: 1.5rem;
+  background-color: var(--accent);
+  color: var(--background);
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.home-nav a:hover {
+  background-color: var(--secondary);
+  transform: translateY(-5px);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  background-color: var(--dark-overlay);
+}
+
+@media (max-width: 768px) {
   h1 {
-    font-size: 4em;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  header {
-    text-align: center;
-    /* Centers header content (including the h1) */
-    padding: 20px 0;
-    width: 100%;
-    /* Make the header take up the full width of its container */
-  }
-  
-  nav {
-    background-color: var(--dark-overlay);
-    padding: 10px 20px;
-    /* Add padding all around */
-    margin-bottom: 20px;
-    display: flex;
-    /* Use flexbox for layout */
-    justify-content: center;
-    /* Center the items horizontally */
-    align-items: center;
-    /* Center items vertically */
-    width: 100%;
-    /* Make nav full width of its container */
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  nav ul {
-    list-style: none;
-    padding: 2px;
-    margin: 0;
-    display: flex;
-    /* Use flexbox to center the list items */
-    justify-content: center;
-    gap: 100px
-  }
-  
-  nav a {
-    color: var(--background);
-    /* Off-white link color */
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    /* Smooth transition effect */
-    padding: 8px 12px;
-    /* Add some padding for better readability */
-    border-radius: 5px;
-    /* Add slight rounded corners */
-  }
-  
-  /* Hover Effect */
-  nav a:hover {
-    color: var(--secondary);
-    background-color: var(--accent);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-  }
-  
-  /* Active/Clicked Effect */
-  nav a:active {
-    background-color: var(--secondary);
-  }
-  
-  /* Ripple Effect (Optional) */
-  nav a:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    width: 200%;
-    height: 200%;
-    background-color: var(--background);
-    border-radius: 50%;
-    opacity: 0.5;
-    transition: all 0.2s ease;
-  }
-  
-  nav a:active:before {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  
-  nav ul li {
-    /* Specifically target list items in the navigation */
-    background-color: var(--accent);
-    /* Set background to purple (var(--accent)) */
-    padding: 10px 20px;
-    /* Adjust padding for better visibility */
-    border-radius: 5px;
-    /* Keep the rounded corners */
-  }
-  
-  /* Hero Section */
-  .hero-content {
-    padding: 120px 0;
-    text-align: center;
-  }
-  
-  .hero-content p {
-    font-size: 1.5em;
-    margin-bottom: 30px;
-  }
-  
-  /* Page Wrapper (Flexbox Layout) */
-  .page-wrapper {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
-  
-  main {
-    flex: 1;
-    display: flex;
-    /* Center main content */
-    align-items: center;
-    justify-content: center;
-  }
-  
-  h1 a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  
-  /* Footer */
-  footer {
-    background-color: var(--dark-overlay);
-    color: var(--background);
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* Media Query for Mobile Optimization */
-  @media (max-width: 768px) {
-    body {
-      /* Scale the entire body */
-      transform: scale(0.6);
-      /* Further reduced scaling */
-      margin-top: 20px;
-    }
-  
-    .hero-image img {
-      width: 100%;
-      height: auto;
-    }
-  
-    .hero-content {
-      padding: 20px;
-      /* Reduce padding */
-    }
-  
-    .hero-content h1 {
-      font-size: 2em;
-      /* Reduce heading size */
-    }
-  
-    .hero-content p {
-      font-size: 1.2em;
-      /* Reduce paragraph size */
-    }
-  
-    nav ul {
-      flex-direction: column;
-      /* Stack nav items vertically */
-      gap: 20px;
-      /* Double the original gap (100px -> 200px) */
-    }
-  
-    nav ul li {
-      padding: 30px 60px;
-      /* Double the original padding (10px 20px -> 20px 40px) */
-      font-size: 3.6rem;
-      /* Double the original font size (1.8rem -> 3.6rem) */
-    }
-  
-    nav a {
       font-size: 3rem;
-      /* Double the original font size (1.5rem -> 3rem) */
-    }
   }
+
+  .home-nav ul {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .home-nav li {
+      width: 100%;
+      max-width: 300px;
+  }
+
+  .home-nav a {
+      font-size: 1.5rem;
+      padding: 1rem;
+  }
+}
