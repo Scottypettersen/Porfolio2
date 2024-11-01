@@ -41,50 +41,36 @@ header {
   backdrop-filter: none;
 }
 
-nav {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(5px);
-}
-
+/* Navigation Styles */
 nav ul {
   list-style: none;
-  padding: 2px;
+  padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
-  text-align: center;
-  gap: 100px;
+  gap: 2rem;
 }
 
-nav ul li {
-  background-color: var(--accent);
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+nav li {
+  width: 200px; /* Adjust the width as needed */
 }
 
 nav a {
+  display: block;
+  padding: 1.5rem;
+  background-color: var(--accent);
   color: var(--background);
   text-decoration: none;
-  font-weight: 500;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem; /* Adjust the font size as needed */
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 nav a:hover {
-  color: var(--secondary);
-}
-
-nav ul li:hover {
-  background-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  background-color: var(--secondary);
+  transform: translateY(-5px);
 }
 
 /* Page Layout */
@@ -184,12 +170,12 @@ h2 {
   transform: scale(1.05);
 }
 
-.project-box a { /* Style the <a> tag within .project-box */
+.project-box a {
   display: flex;
-  flex-direction: column; /* Stack image and h3 vertically */
-  align-items: center; /* Center the content horizontally */
-  text-decoration: none; /* Remove underline from the link */
-  color: inherit; /* Inherit color from parent (which should be var(--background)) */
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit; 
 }
 
 .project-box h3 {
@@ -236,7 +222,7 @@ footer {
     gap: 10px;
   }
 
-  nav ul li {
+  nav li {
     padding: 8px 15px;
   }
 
