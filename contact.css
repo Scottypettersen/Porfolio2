@@ -1,17 +1,17 @@
-/* contact.css */
-
+/* Root Variables */
 :root {
-  --primary: #0096c7;  /* Darker teal */
-  --secondary: #d90429; /* Deeper orange/red */ 
-  --accent: #4831d4;  /* Deeper purple */
-  --background: #222;  /* Dark background */
+  --primary: #0096c7;
+  --secondary: #d90429;
+  --accent: #4831d4;
+  --background: #222;
   --dark-overlay: rgba(0, 0, 0, 0.8);
 }
 
+/* Base Styles */
 body {
-  font-family: 'Roboto', sans-serif; 
-  background-color: #1f1f1f; 
-  color: #eee; 
+  font-family: 'Roboto', sans-serif;
+  background-color: #1f1f1f;
+  color: #eee;
 }
 
 .page-wrapper {
@@ -23,18 +23,26 @@ body {
   padding: 2rem;
 }
 
-/* Header Styles (keeping your original styles) */
+/* Header and Navigation Styles */
 header {
   text-align: center;
   width: 100%;
 }
 
 h1 {
-  font-family: 'Bebas Neue', sans-serif; /* Keeping original font */
-  font-size: 5rem; /* Keeping original size */
-  margin-bottom: 3rem; /* Keeping original margin */
-  color: var(--accent);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Keeping original text-shadow */
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+h1 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-nav {
+  margin-bottom: 2rem;
 }
 
 .home-nav ul {
@@ -47,88 +55,167 @@ h1 {
 }
 
 .home-nav li {
-  width: 200px; /* Keeping original width */
+  width: 200px;
 }
 
 .home-nav a {
   display: block;
-  padding: 1.5rem; /* Keeping original padding */
-  background-color: var(--primary);
-  color: white; /* Keeping original color */
+  padding: 1.5rem;
+  background-color: var(--accent);
+  color: white;
   text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif; /* Keeping original font */
-  font-size: 2rem; /* Keeping original size */
-  border-radius: 10px; /* Keeping original border-radius */
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  border-radius: 10px;
   transition: all 0.3s ease;
   text-align: center;
 }
 
 .home-nav a:hover {
   background-color: var(--secondary);
-  transform: translateY(-5px); /* Keeping original hover effect */
+  transform: translateY(-5px);
 }
 
-/* Main Content - Contact Section */
+/* Main Content Styles */
 main {
-  width: 100%;
-  max-width: 700px;
-  margin: 3rem auto;
-  padding: 2.5rem;
-  background-color: #2a2a2a; /* Darker background */
-  border-radius: 10px; 
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-#contact h2 {
-  font-size: 2.8rem;
-  color: var(--accent);
-  margin-bottom: 1.5rem;
-  font-weight: bold;
-  text-align: center;
+.contact-box {
+  display: flex;
+  background-color: var(--dark-overlay);
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 2rem auto;
 }
 
-.about-text {
-  text-align: center;
+/* Info Section Styles */
+.info-section {
+  flex: 1;
+  padding: 3rem;
+  background-color: var(--dark-overlay);
 }
 
-.about-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+.info-section h2 {
+  color: #fff;
+  font-size: 2.5rem;
   margin-bottom: 2rem;
-  color: #eee;
+  font-family: 'Bebas Neue', sans-serif;
 }
 
-/* Contact Button */
-.contact-button {
-  display: inline-block;
-  padding: 1rem 2rem;
-  background-color: var(--primary);
-  color: #eee;
-  text-decoration: none;
-  font-size: 1.3rem;
+.info-item {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+/* Form Section Styles - Updated */
+.form-section {
+  flex: 1;
+  padding: 3rem;
+  background-color: var(--dark-overlay);
+}
+
+.form-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-item {
+  margin-bottom: 1.5rem;
+}
+
+.form-item label {
+  display: block;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.form-item input,
+.form-item select,
+.form-item textarea {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  background-color: white;
   border: none;
-  border-radius: 6px; 
-  transition: all 0.3s ease;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  color: black;
+}
+
+.form-item textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
 }
 
-.contact-button:hover {
-  background-color: var(--secondary);
-  transform: translateY(-2px);
+.contact-form button:hover {
+  background-color: #e0e0e0;
 }
 
-
-/* Footer Styles (keeping your original styles) */
+/* Footer Styles */
 footer {
   text-align: center;
   padding: 1rem;
   width: 100%;
   background-color: var(--dark-overlay);
-  color: white);
+  color: white;
 }
 
-/* Media Queries for Responsiveness */
+/* Responsive Design */
 @media (max-width: 768px) {
-  /* ... (Your existing media query styles) ... */
+  .contact-box {
+    flex-direction: column;
+  }
+
+  .info-section,
+  .form-section {
+    padding: 2rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  .home-nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .home-nav li {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .form-item label {
+    font-size: 1.2rem;
+  }
 }
