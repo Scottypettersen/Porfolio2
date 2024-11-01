@@ -25,6 +25,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
+  border: 80px solid black; /* Added a black border */
 }
 
 header {
