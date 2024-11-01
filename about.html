@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <title>Andrew Kazanis - About</title>
-    <link rel="stylesheet" href="about.css"> <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="about.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="page-wrapper">
         <header>
@@ -20,30 +19,39 @@
                 </ul>
             </nav>
         </header>
-
         <main>
             <section id="about">
                 <div class="container">
                     <h2>About Me</h2>
                     <div class="about-text">
-                        <p>
-I'm drew, I'm a design major at Eastern Washington University. 
-<br><br>
-Bartender, Firefighter, Guitarist. Photographer. 
-<br><br><br><br>
-
-With the power of AI and attending Colin's classes,                          <br><br>
-                            I was able to make these websites! 
-                            <br><br>
-Take a look and appreciate how they are only half-shitty!                        </p>
+                        <p>I'm drew, I'm a design major at Eastern Washington University.</p>
+                        
+                        <p>Bartender, Firefighter, Guitarist. Photographer.</p>
+                        
+                        <p>With the power of AI and attending Colin's classes,</p>
+                        <p>I was able to make these websites!</p>
+                        
+                        <p>Take a look and appreciate how they are only half-shitty!</p>
                     </div>
                 </div>
             </section>
         </main>
-
         <footer>
             <p>&copy; 2024 Andrew Kazanis</p>
         </footer>
     </div>
+
+    <script>
+        // Scroll to bottom when page loads
+        window.onload = function() {
+            // Add a small delay to ensure all content is loaded
+            setTimeout(() => {
+                window.scrollTo({
+                    top: document.documentElement.scrollHeight,
+                    behavior: 'smooth'
+                });
+            }, 100);
+        }
+    </script>
 </body>
 </html>
