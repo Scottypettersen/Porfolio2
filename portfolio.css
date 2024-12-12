@@ -97,7 +97,7 @@ main {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.2);
@@ -107,7 +107,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
   width: 90%;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -116,7 +116,7 @@ main {
 .portfolio-grid {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1px;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -125,7 +125,7 @@ main {
 .button-row {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -135,13 +135,13 @@ main {
 
 .top-row .project-box {
   flex: 1 0 auto;
-  min-width: 0;
+  min-width: 0; 
 }
 
 .bottom-row {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1px;
   width: 100%;
 }
 
