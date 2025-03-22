@@ -1,4 +1,3 @@
-/* Root Variables */
 :root {
   --primary: #0096c7;
   --secondary: #d90429;
@@ -7,11 +6,12 @@
   --dark-overlay: rgba(0, 0, 0, 0.8);
 }
 
-/* Base Styles */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #1f1f1f;
   color: #eee;
+  margin: 0;
+  padding: 0;
 }
 
 .page-wrapper {
@@ -23,7 +23,7 @@ body {
   padding: 2rem;
 }
 
-/* Header and Navigation Styles */
+/* HEADER */
 header {
   text-align: center;
   width: 100%;
@@ -41,6 +41,7 @@ h1 a {
   color: inherit;
 }
 
+/* NAVIGATION */
 .home-nav {
   margin-bottom: 2rem;
 }
@@ -76,11 +77,12 @@ h1 a {
   transform: translateY(-5px);
 }
 
-/* Main Content Styles */
+/* MAIN SECTION */
 main {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .contact-box {
@@ -89,9 +91,10 @@ main {
   border-radius: 15px;
   overflow: hidden;
   margin: 2rem auto;
+  flex-wrap: wrap;
 }
 
-/* Info Section Styles */
+/* INFO SECTION */
 .info-section {
   flex: 1;
   padding: 3rem;
@@ -112,7 +115,17 @@ main {
   border-radius: 8px;
 }
 
-/* Form Section Styles - Updated */
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  color: #ccc;
+}
+
+/* FORM SECTION */
 .form-section {
   flex: 1;
   padding: 3rem;
@@ -156,7 +169,7 @@ main {
 }
 
 .form-item textarea {
-  min-height: 100px;
+  min-height: 120px;
   resize: vertical;
 }
 
@@ -166,7 +179,7 @@ main {
   border: none;
   border-radius: 5px;
   padding: 0.8rem 2rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
   align-self: flex-start;
@@ -176,7 +189,7 @@ main {
   background-color: #e0e0e0;
 }
 
-/* Footer Styles */
+/* FOOTER */
 footer {
   text-align: center;
   padding: 1rem;
@@ -185,37 +198,66 @@ footer {
   color: white;
 }
 
-/* Responsive Design */
+/* ========== MOBILE OPTIMIZATION ========== */
 @media (max-width: 768px) {
-  .contact-box {
-    flex-direction: column;
-  }
-
-  .info-section,
-  .form-section {
-    padding: 2rem;
-  }
-
-  main {
+  .page-wrapper {
     padding: 1rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
   }
 
   .home-nav ul {
     flex-direction: column;
     align-items: center;
-  }
-  
-  .home-nav li {
-    width: 100%;
-    max-width: 200px;
+    gap: 1rem;
   }
 
-  h1 {
-    font-size: 3.5rem;
-    margin-bottom: 2rem;
+  .home-nav li {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .home-nav a {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .contact-box {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .info-section,
+  .form-section {
+    padding: 2rem 1.5rem;
+  }
+
+  .info-section h2,
+  .form-section h2 {
+    font-size: 2rem;
+    text-align: center;
   }
 
   .form-item label {
     font-size: 1.2rem;
+  }
+
+  .form-item input,
+  .form-item select,
+  .form-item textarea {
+    font-size: 1rem;
+  }
+
+  .contact-form button {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  footer {
+    font-size: 0.9rem;
   }
 }
