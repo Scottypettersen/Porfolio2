@@ -6,7 +6,7 @@
     --dark-overlay: rgba(0, 0, 0, 0.7);
   }
   
-  /* ====== GLOBAL ====== */
+  /* ===== GLOBAL ===== */
   body {
     background-image: url("about me.jpg");
     background-size: cover;
@@ -25,7 +25,7 @@
     flex-direction: column;
   }
   
-  /* ====== HEADER ====== */
+  /* ===== HEADER ===== */
   header {
     text-align: center;
     padding: 20px 0;
@@ -46,7 +46,7 @@
     text-decoration: none;
   }
   
-  /* ====== NAVIGATION ====== */
+  /* ===== NAVIGATION ===== */
   nav {
     background-color: var(--dark-overlay);
     padding: 10px 20px;
@@ -98,7 +98,7 @@
     transform: translateY(-2px);
   }
   
-  /* ====== MAIN CONTENT ====== */
+  /* ===== MAIN ===== */
   main {
     flex: 1;
     display: flex;
@@ -115,16 +115,15 @@
   }
   
   .container {
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 0 0 2rem;
-    padding: 2.5rem;
+    padding: 3rem;
     background-color: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(8px);
     text-align: left;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
-    top: 0;
     animation: fadeIn 0.5s ease-out forwards;
   }
   
@@ -137,47 +136,35 @@
     font-family: 'Bebas Neue', sans-serif;
   }
   
+  /* ===== ABOUT TEXT ===== */
   .about-text {
-    font-size: 1.25rem;
-    line-height: 1.6;
+    font-size: 1.4rem;
+    line-height: 1.7;
     letter-spacing: -0.01em;
   }
   
   .about-text p {
-    margin: 0 0 2rem 0;
+    margin-bottom: 2rem;
   }
   
   .about-text p:nth-child(1) {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 300;
-    margin-bottom: 3rem;
   }
   
   .about-text p:nth-child(2) {
     font-size: 1.75rem;
     font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: 4rem;
     color: var(--primary);
   }
   
-  .about-text p:nth-child(3) {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-  
-  .about-text p:nth-child(4) {
-    font-size: 1.25rem;
-    margin-bottom: 3rem;
-  }
-  
   .about-text p:last-child {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: var(--secondary);
   }
   
-  /* ====== FOOTER ====== */
+  /* ===== FOOTER ===== */
   footer {
     background-color: var(--dark-overlay);
     color: var(--background);
@@ -186,22 +173,23 @@
     margin-top: auto;
   }
   
-  /* ====== ANIMATIONS ====== */
+  /* ===== ANIMATIONS ===== */
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: translateX(-20px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: translateY(0);
     }
   }
   
-  /* ====== MOBILE RESPONSIVENESS ====== */
+  /* ===== MOBILE IMPROVEMENTS ===== */
   @media (max-width: 768px) {
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
     }
   
     nav ul {
@@ -214,7 +202,7 @@
     }
   
     nav a {
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
   
     main {
@@ -225,7 +213,7 @@
   
     .container {
       margin: 1rem;
-      max-width: 90%;
+      max-width: 100%;
       padding: 2rem;
     }
   
@@ -235,17 +223,33 @@
     }
   
     .about-text {
-      font-size: 1rem;
+      font-size: 1.15rem;
+      line-height: 1.75;
+    }
+  
+    .about-text p {
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
   
     .about-text p:nth-child(1),
     .about-text p:nth-child(2),
-    .about-text p:nth-child(3),
-    .about-text p:nth-child(4),
     .about-text p:last-child {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      text-align: center;
+      font-size: 1.3rem;
+    }
+  
+    .about-text p:nth-child(2) {
+      color: var(--primary);
+      font-weight: 500;
+    }
+  
+    .about-text p:last-child {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+  
+    footer {
+      font-size: 0.9rem;
     }
   }
   
