@@ -78,7 +78,34 @@ header img {
 .home-nav a:hover {
   background-color: var(--secondary);
   transform: translateY(-5px);
+}#quote {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+  padding: 1rem;
 }
+
+#quote blockquote {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--background);
+  opacity: 0.9;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+#quote span {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+}
+
 
 /* ====== TYPOGRAPHY ====== */
 h1 {
