@@ -41,7 +41,6 @@ header img {
   height: auto;
 }
 
-/* Home Nav Container */
 .home-nav {
   width: 100%;
   margin-bottom: 2rem;
@@ -78,11 +77,15 @@ header img {
 .home-nav a:hover {
   background-color: var(--secondary);
   transform: translateY(-5px);
-}#quote {
+}
+
+#quote {
   text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 5rem;
-  padding: 1rem;
+  margin: 3rem 0;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
 }
 
 #quote blockquote {
@@ -90,7 +93,7 @@ header img {
   font-size: 2.8rem;
   font-weight: 400;
   color: var(--background);
-  opacity: 0.9;
+  opacity: 0.95;
   max-width: 900px;
   margin: 0 auto;
   line-height: 1.4;
@@ -101,13 +104,12 @@ header img {
 #quote span {
   display: block;
   margin-top: 1rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-family: 'Lato', sans-serif;
   font-weight: 300;
+  opacity: 0.8;
 }
 
-
-/* ====== TYPOGRAPHY ====== */
 h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 4rem;
@@ -115,7 +117,6 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* ====== FOOTER ====== */
 footer {
   text-align: center;
   padding: 1rem;
@@ -123,7 +124,6 @@ footer {
   background-color: var(--dark-overlay);
 }
 
-/* ====== MOBILE ONLY ====== */
 @media (max-width: 768px) {
   body {
     padding: 0;
@@ -160,6 +160,10 @@ footer {
   .home-nav a {
     font-size: 1.5rem;
     padding: 1rem;
+  }
+
+  #quote blockquote {
+    font-size: 2rem;
   }
 
   footer {
