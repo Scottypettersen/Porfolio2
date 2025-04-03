@@ -1,4 +1,3 @@
-/* ========== VARIABLES & GLOBAL ========== */
 :root {
   --primary: #00b4d8;
   --secondary: #f9844a;
@@ -9,6 +8,7 @@
   --text-shadow: rgba(0, 0, 0, 0.5);
 }
 
+/* ============ GENERAL ============ */
 body {
   font-family: 'Lato', sans-serif;
   background-image: url("portfolio.jpg");
@@ -20,21 +20,9 @@ body {
   padding: 0;
 }
 
-/* ========== PAGE LAYOUT ========== */
-.page-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: space-between;
-  padding: 2rem;
-  border: 80px solid black;
-}
-
-/* ========== HEADER & NAV ========== */
+/* ============ HEADER ============ */
 header {
   text-align: center;
-  width: 100%;
   margin-bottom: 2rem;
 }
 
@@ -71,18 +59,19 @@ nav a:hover {
   transform: translateY(-5px);
 }
 
-/* ========== SECTION WRAPPER ========== */
+/* ============ CONTAINER ============ */
 .container {
   max-width: 1400px;
   width: 90%;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
+/* ============ HEADINGS ============ */
 h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.5rem;
@@ -91,16 +80,16 @@ h2 {
   text-shadow: 2px 2px 4px var(--text-shadow);
 }
 
-/* ========== RECTANGLE PROJECTS GRID ========== */
+/* ============ RECTANGLE GRID ============ */
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
   width: 100%;
   margin-bottom: 3rem;
 }
 
-.project-box {
+.project-box.rectangle {
   background-color: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
@@ -111,9 +100,40 @@ h2 {
   align-items: center;
   text-align: center;
   padding-bottom: 10px;
-  animation: fadeIn 0.6s ease forwards;
+  aspect-ratio: 4 / 3;
 }
 
+.project-box.rectangle img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ============ SQUARE GRID ============ */
+.square-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.project-box.square {
+  width: 200px;
+  aspect-ratio: 1 / 1;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/* ============ COMMON TO BOTH ============ */
 .project-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
@@ -133,15 +153,15 @@ h2 {
 
 .project-box h3 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.2rem;
-  color: var(--background);
+  font-size: 1.8rem;
   margin-top: 10px;
+  color: var(--background);
   text-shadow: 1px 1px 2px var(--text-shadow);
 }
 
 .project-box h4 {
   font-family: 'Lato', sans-serif;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 300;
   color: var(--background);
   opacity: 0.85;
@@ -149,50 +169,7 @@ h2 {
   padding: 0 0.5rem;
 }
 
-.project-box a {
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Rectangle Specific */
-.project-box.rectangle {
-  grid-column: span 4;
-}
-
-.project-box.rectangle img {
-  width: 100%;
-  height: auto;
-  max-height: 500px;
-}
-
-/* ========== SQUARE PROJECTS GRID ========== */
-.square-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.square-grid .project-box.square {
-  width: 200px;
-  aspect-ratio: 1 / 1;
-}
-
-/* Square Project Box */
-.project-box.square {
-  aspect-ratio: 1 / 1;
-}
-
-/* ========== FOOTER ========== */
+/* ============ FOOTER ============ */
 footer {
   text-align: center;
   padding: 1rem;
@@ -201,51 +178,32 @@ footer {
   font-family: 'Lato', sans-serif;
 }
 
-/* ========== MOBILE ========== */
+/* ============ MOBILE ============ */
 @media (max-width: 900px) {
   .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-box.rectangle {
-    grid-column: span 1;
+      grid-template-columns: 1fr;
   }
 
   nav a {
-    font-size: 1.4rem;
-    padding: 1rem;
+      font-size: 1.4rem;
+      padding: 1rem;
   }
 
   header img {
-    max-width: 180px;
-  }
-
-  .page-wrapper {
-    padding: 1rem;
-    border-width: 40px;
+      max-width: 180px;
   }
 
   h2 {
-    font-size: 2rem;
-  }
-
-  .project-box h3 {
-    font-size: 1.5rem;
+      font-size: 2rem;
   }
 
   .square-grid {
-    flex-direction: column;
+      flex-direction: column;
   }
 }
 
-/* ========== ANIMATIONS ========== */
+/* ============ ANIMATIONS ============ */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from {opacity: 0; transform: translateY(10px);}
+  to {opacity: 1; transform: translateY(0);}
 }
