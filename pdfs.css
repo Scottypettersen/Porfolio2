@@ -213,5 +213,12 @@ footer {
 
     .pdf-links .btn {
         width: 100%;
+    }.pdf-thumb {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-bottom: 1rem;
+        object-fit: cover;
     }
+    
 }

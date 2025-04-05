@@ -25,55 +25,11 @@
 
         <main>
             <section class="pdfs-section">
-                <h2>PDF projects</h2>
+                <h2>PDF Projects</h2>
                 <p>View or download my selected project process books below:</p>
 
-                <div class="pdfs-grid">
-
-                    <!-- PDF CARD -->
-                    <div class="pdf-card">
-                        <embed src="LAWSON.pdf" type="application/pdf" width="100%" height="200px">
-                        <h3>LAWSON PROJECT</h3>
-                        <div class="pdf-links">
-                            <a href="Lawson.pdf" target="_blank" class="btn">View Full PDF</a>
-                            <a href="Lawson.pdf" download class="btn">Download</a>
-                        </div>
-                    </div>
-
-                    <div class="pdf-card">
-                        <embed src="VHYES.pdf#toolbar=0" type="application/pdf" width="100%" height="200px">
-                        <h3>VHYES PROJECT</h3>
-                        <div class="pdf-links">
-                            <a href="VHYES.pdf" target="_blank" class="btn">View Full PDF</a>
-                            <a href="VHYES.pdf" download class="btn">Download</a>
-                        </div>
-                    </div>
-
-                    <div class="pdf-card">
-                        <embed src="1984.pdf#toolbar=0" type="application/pdf" width="100%" height="200px">
-                        <h3>1984 PROJECT</h3>
-                        <div class="pdf-links">
-                            <a href="1984.pdf" target="_blank" class="btn">View Full PDF</a>
-                            <a href="1984.pdf" download class="btn">Download</a>
-                        </div>
-                    </div>
-               <!-- PDF CARD: LIVE LAUGH LOVE -->
-<div class="pdf-card">
-    <embed src="pdfs/LLL-poster.pdf#toolbar=0" type="application/pdf" width="100%" height="200px">
-    <h3>LIVE LAUGH LOVE POSTER</h3>
-    <p class="pdf-desc">
-        Typography study and Bauhaus-inspired satire using Herbert Bayer’s Universal Typeface. View the final project and the case study below.
-    </p>
-    <div class="pdf-links">
-        <a href="LLL.pdf" target="_blank" class="btn">View Poster</a>
-        <a href="LLL case study.pdf" target="_blank" class="btn">View Case Study</a>
-        <a href="LLL case study.pdf" download class="btn">Download Case Study</a>
-    </div>
-</div>
-
-                    
-                    </div>
-                </div>
+                <!-- Dynamic PDF cards will be injected here -->
+                <div class="pdfs-grid"></div>
             </section>
         </main>
 
@@ -81,6 +37,8 @@
             <p>&copy; 2024 Andrew Kazanis</p>
         </footer>
     </div>
+
+    <script src="pdf-loader.js"></script>
 </body>
 
 </html>
