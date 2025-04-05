@@ -10,15 +10,12 @@
 
 /* ===== GLOBAL ===== */
 body {
-    body {
-        background-image: url("portfolio.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+    background-image: url("portfolio.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-/* ===== WRAPPER ===== */
 .page-wrapper {
     display: flex;
     flex-direction: column;
@@ -123,6 +120,14 @@ nav a:hover {
     text-shadow: 1px 1px 2px var(--text-shadow);
 }
 
+.pdf-desc {
+    color: #ddd;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0.5rem 0 1.5rem 0;
+    padding: 0 1rem;
+}
+
 /* ===== PDF EMBED PREVIEW ===== */
 .pdf-card embed {
     width: 100%;
@@ -131,26 +136,44 @@ nav a:hover {
     margin-bottom: 1rem;
 }
 
-/* ===== BUTTONS ===== */
+/* ===== PDF BUTTONS ===== */
 .pdf-links {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0 1rem;
 }
 
 .pdf-links .btn {
     background-color: var(--accent);
     color: var(--background);
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
     transition: all 0.3s ease;
+    font-size: 1rem;
+    flex: 1 1 auto;
+    text-align: center;
+    min-width: 140px;
 }
 
 .pdf-links .btn:hover {
     background-color: var(--secondary);
     transform: translateY(-2px);
+}
+
+.pdf-links .btn:nth-child(1) {
+    background-color: var(--primary);
+}
+
+.pdf-links .btn:nth-child(2) {
+    background-color: var(--accent);
+}
+
+.pdf-links .btn:nth-child(3) {
+    background-color: var(--secondary);
 }
 
 /* ===== FOOTER ===== */
@@ -179,5 +202,16 @@ footer {
 
     nav a {
         font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .pdf-links {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pdf-links .btn {
+        width: 100%;
     }
 }
