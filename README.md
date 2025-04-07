@@ -1,15 +1,41 @@
-# I moved to another repository to get rid of a bug I was chasing. 
-This is my personal portfolio project for Web Design 1. <br><br>
+# Andrew Kazanis – Portfolio Website
 
-With the help of colin's classes and AI (google gemini advanced) I was able to make a usable website displaying some of my work from Web design 1 from Eastern Washington University. 
-Included is a website for an idea I had, 'Carback.org', a website I made for Nirvana's "All Apologies", and a project for the 1995 movie 'Heat'. 
-<br><br>
-I used my own photos for my backgrounds and I used a photo of nirvana and the movie poster for the 1995 movie 'heat'; as well as a rip of 'All Apologies', from VEVO on youtube. As well as a section of the wikipedia article for the 1995 movie 'Heat'.
-<br><br>
+This is my personal portfolio site created for Web Design I at Eastern Washington University. It showcases a selection of my design work and projects built during the course.
 
-As well as a link to my photography portfolio. 
-<br><br>
+With the help of Colin’s class and tools like AI, I was able to bring this site to life and create a space to share my creative work. This project includes real, published websites, as well as personal design experiments and client-based work.
 
+## 🔗 Live Projects
 
-I also have a contact page that forwards the user to my email address. 
-I scored the domain, 'DrewKazanis.com', which I intend to hold and use in my professional career so I'm sure it will be significantly improved on but I am proud of what I was able to accomplish in these 10 weeks. Truly a start to my carrer of choice! (Design) 
+- [CarBack.org](https://carback.org) — A concept site for car safety and communication.
+- [All Apologies](https://allapologies.netlify.app) — Tribute project for Nirvana's "All Apologies".
+- [Drunken Microwave](https://drunkenmicrowave.netlify.app) — Absurdist experimental site design.
+- [Moses Lake Food Bank Redesign](https://moseslakefoodbank.netlify.app) — UX-focused redesign project.
+- [App Tracking UI](https://apptrackingv1.netlify.app) — UI/UX design for a fictional package tracking app.
+- [Photography Portfolio](https://akazanis.myportfolio.com) — My original photography portfolio.
+- [Brand Identity](https://drewkazanis.netlify.app) — A personal branding and style system.
+- [GitHub Profile](https://github.com/Scottypettersen) — Where I post code and collaborate.
+
+## ✨ Features
+
+- Fully responsive, mobile-first design
+- Hand-coded HTML & CSS with modular stylesheets
+- Interactive portfolio layout with animated hover states
+- Contact form and email integration
+- Clean, accessible typography using Bebas Neue and Lato
+- Custom background imagery and graphics
+
+## 📸 Assets & Credits
+
+- All background images are original photos I’ve taken.
+- Visual references include Nirvana and the 1995 film *Heat*.
+- A portion of the Wikipedia entry for *Heat* was referenced for educational use.
+- Design and code influenced by personal style, coursework, and creative experimentation.
+
+## 🧠 Reflection
+
+This site represents the starting point of my design career. I’m proud of what I was able to create in just 10 weeks, and I plan to continue refining and expanding this project as my skills grow. 
+
+The domain [DrewKazanis.com](https://drewkazanis.com) is mine, and this site will evolve into a more complete portfolio as I continue in the design field.
+
+---
+
