@@ -1,8 +1,8 @@
 # Andrew Kazanis – Portfolio Website
 
-This is my personal portfolio site created for Web Design I at Eastern Washington University. It showcases a selection of my design work and projects built during the course.
+This is my personal portfolio site. It showcases a selection of my design work and projects.
 
-With the help of Colin’s class and tools like AI, I was able to bring this site to life and create a space to share my creative work. This project includes real, published websites, as well as personal design experiments and client-based work.
+This project includes real, published websites, as well as personal design experiments and client-based work.
 
 ## 🔗 Live Projects
 
@@ -33,7 +33,7 @@ With the help of Colin’s class and tools like AI, I was able to bring this sit
 
 ## 🧠 Reflection
 
-This site represents the starting point of my design career. I’m proud of what I was able to create in just 10 weeks, and I plan to continue refining and expanding this project as my skills grow. 
+This site represents the starting point of my design career. I’m proud of what I was able to create. 
 
 The domain [DrewKazanis.com](https://drewkazanis.com) is mine, and this site will evolve into a more complete portfolio as I continue in the design field.
 
