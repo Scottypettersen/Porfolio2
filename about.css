@@ -88,7 +88,7 @@
     transition: color 0.3s ease;
     padding: 8px 12px;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
   
   nav a:hover {
@@ -240,12 +240,12 @@
   
     .about-text p:nth-child(2) {
       color: var(--primary);
-      font-weight: 500;
+      font-weight: 1000;
     }
   
     .about-text p:last-child {
       color: var(--secondary);
-      font-weight: 600;
+      font-weight: 1000;
     }
   
     footer {

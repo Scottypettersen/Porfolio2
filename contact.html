@@ -1,75 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew Kazanis - Contact</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="contact.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Andrew Kazanis – Contact</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="contact.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <div class="page-wrapper">
-        <header>
-            <h1><a href="index.html">Andrew Kazanis</a></h1>
-            <div class="home-nav">
-                <ul>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="index.html">Home</a></li>
-                </ul>
+  <div class="page-wrapper">
+    <header>
+      <h1><a href="index.html">Andrew Kazanis</a></h1>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="contact-box">
+        <!-- Contact Info Section -->
+        <div class="info-section">
+          <h2>Let's Connect</h2>
+
+          <div class="info-item">
+            <span class="label">Professional Email</span>
+            <a class="value" href="mailto:DrewKazanis@gmail.com">DrewKazanis@gmail.com</a>
+          </div>
+
+          <div class="info-item">
+            <span class="label">Preferred Contact Method</span>
+            <span class="value">Please use the contact form or email for initial contact.</span>
+          </div>
+        </div>
+
+        <!-- Contact Form Section -->
+        <div class="form-section">
+          <h2>Send a Message</h2>
+
+          <form class="contact-form" action="#" method="POST">
+            <div class="form-item">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required />
             </div>
-        </header>
 
-        <main>
-            <div class="contact-box">
-                <!-- Contact Info Section -->
-                <div class="info-section">
-                    <h2>Let's Connect</h2>
-                    <div class="info-item">
-                        <span class="label">Professional Email</span>
-                        <a href="mailto:DrewKazanis@gmail.com" class="value">DrewKazanis@gmail.com</a>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Preferred Contact Method</span>
-                        <span class="value">Please use the contact form or email for initial contact.</span>
-                    </div>
-                </div>
-
-                <!-- Contact Form Section -->
-                <div class="form-section">
-                    <h2>Send a Message</h2>
-                    <form class="contact-form">
-                        <div class="form-item">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-item">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-item">
-                            <label for="subject">Subject</label>
-                            <select id="subject" required>
-                                <option value="">Select a subject</option>
-                                <option value="project">Project Inquiry</option>
-                                <option value="collaboration">Collaboration Opportunity</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-item">
-                            <label for="message">Message</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        <button type="submit">Send Message</button>
-                    </form>
-                </div>
+            <div class="form-item">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
             </div>
-        </main>
 
-        <footer>
-            <p>&copy; 2024 Andrew Kazanis</p>
-        </footer>
-    </div>
+            <div class="form-item">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject" required>
+                <option value="">Select a subject</option>
+                <option value="project">Project Inquiry</option>
+                <option value="collaboration">Collaboration Opportunity</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-item">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+    </footer>
+  </div>
 </body>
 </html>
