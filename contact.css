@@ -20,7 +20,7 @@
   flex: 1;
   min-width: 280px;
   font-family: 'Lato', sans-serif;
-  color: var(--background);
+  color: var(white);
 }
 
 .info-section h2 {
@@ -56,7 +56,7 @@
   flex: 2;
   min-width: 300px;
   font-family: 'Lato', sans-serif;
-  color: var(--background);
+  color: white(--background);
 }
 
 .form-section h2 {
@@ -101,7 +101,7 @@
 
 .form-item input::placeholder,
 .form-item textarea::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(173, 57, 57, 0.6);
 }
 
 .form-item input:focus,
