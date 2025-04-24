@@ -13,8 +13,8 @@ const pdfData = [
     desc: "Award-winning invitation design for a Transporal event",
     poster: "LAWSON.pdf",
     caseStudy: {
-      view: "LAWSON CASE STUDY.pdf",
-      download: "LAWSON CASE STUDY.pdf"
+      view: "LAWTON CS 2.pdf",
+      download: "LAWTON CS 2.pdf"
     }
   },
   {
