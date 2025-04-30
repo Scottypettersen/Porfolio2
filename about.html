@@ -83,15 +83,16 @@
     </div>
 
     <script>
-        // Scroll to bottom when page loads
+        // Scroll down a bit when the page loads
         window.onload = function() {
-            setTimeout(() => {
-                window.scrollTo({
-                    top: document.documentElement.scrollHeight,
-                    behavior: 'smooth'
-                });
-            }, 100);
-        }
-    </script>
+          setTimeout(() => {
+            window.scrollBy({
+              top: 200,           // adjust this value to scroll more or less
+              behavior: 'smooth'
+            });
+          }, 100);
+        };
+      </script>
+      
 </body>
 </html>
