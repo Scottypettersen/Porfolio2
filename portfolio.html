@@ -2,169 +2,246 @@
 <html lang="en">
 
 <head>
-    <title>Andrew Kazanis - Portfolio</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="portfolio.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet">
-    <style>
-        /* ======== Square Grid ======== */
-        .square-grid {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
+  <title>Andrew Kazanis - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="portfolio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet">
+  <style>
+    /* ======== Square Grid ======== */
+    .square-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
 
-        .square-grid .project-box.square {
-            width: 200px;
-            aspect-ratio: 1 / 1;
-        }
+    .square-grid .project-box.square {
+      width: 200px;
+      aspect-ratio: 1 / 1;
+    }
 
-        .square-grid::before {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
-        }
-    </style>
+    .square-grid::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+
+    /* ====== PDF MODAL STYLES ====== */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 960px;
+      background-color: #111;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 80vh;
+      border: none;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      z-index: 1001;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <header>
-            <a href="index.html">
-                <img src="Kazanis red.png" alt="Andrew Kazanis Logo">
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
+  <div class="page-wrapper">
+    <header>
+      <a href="index.html">
+        <img src="Kazanis red.png" alt="Andrew Kazanis Logo">
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-        <main>
-            <section id="portfolio">
-                <div class="container">
-                    <h2>Portfolio</h2>
+    <main>
+      <section id="portfolio">
+        <div class="container">
+          <h2>Portfolio</h2>
 
-                <!-- ===== Rectangular Projects ===== -->
-<div class="portfolio-grid">
+          <!-- ===== Rectangular Projects ===== -->
+          <div class="portfolio-grid">
 
-    <div class="project-box rectangle">
-      <a href="https://akazanis.myportfolio.com/" target="_blank">
-        <img src="photo.jpg" alt="Photography Portfolio">
-        <h3>Photography</h3>
-        <h4>A curated collection of my photography work</h4>
-      </a>
-      <a href="https://akazanis.myportfolio.com/" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
-    <div class="project-box rectangle">
-      <a href="pdfs.html" target="_blank">
-        <img src="pdfs.png" alt="PDF Portfolio">
-        <h3>PDF Portfolio</h3>
-        <h4>A selection of print-ready PDF projects and case studies.</h4>
-      </a>
-      <a href="pdfs.html" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
-    <div class="project-box rectangle">
-      <a href="https://moseslakefoodbank.netlify.app/" target="_blank">
-        <img src="FOOD.png" alt="Moses Lake Food Bank Redesign">
-        <h3>Moses Lake Food Bank Redesign</h3>
-        <h4>A complete UX/UI redesign for a local non-profit focused on accessibility and usability.</h4>
-      </a>
-      <a href="CSML CS.pdf" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
-    <div class="project-box rectangle">
-      <a href="https://apptrackingv1.netlify.app" target="_blank">
-        <img src="APP TRACKING.png" alt="App Tracking">
-        <h3>App Tracking</h3>
-        <h4>A conceptual UX case study for a package tracking app designed for better delivery information and notifications.</h4>
-      </a>
-      <a href="Package CS.pdf" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
-    <div class="project-box rectangle">
-      <a href="https://drunkenmicrowave.netlify.app/" target="_blank">
-        <img src="drunken microwave .png" alt="Drunken Microwave">
-        <h3>Drunken Microwave</h3>
-        <h4>A fun look into microwave design.</h4>
-      </a>
-      <a href="Microwave CS.pdf" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
-    <div class="project-box rectangle">
-      <a href="https://madgreek.netlify.app/" target="_blank">
-        <img src="MGR.png" alt="Mad Greek Racing">
-        <h3>Mad Greek Racing</h3>
-        <h4>A website made for my father's racing team, Mad Greek Racing.</h4>
-      </a>
-      <a href="MGR CS.pdf" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
-    <div class="project-box rectangle">
-      <a href="https://carback.org" target="_blank">
-        <img src="carback.png" alt="Carback">
-        <h3>Carback</h3>
-        <h4>Your safe ride home after a night out.</h4>
-      </a>
-      <a href="Carback CS.pdf" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
-    <div class="project-box rectangle">
-      <a href="https://drewkazanis.netlify.app/" target="_blank">
-        <img src="Brand Identity.png" alt="Brand Identity">
-        <h3>Brand Identity</h3>
-        <h4>A personal brand system including logo, typography, and visual language for print and digital.</h4>
-      </a>
-      <a href="https://drewkazanis.netlify.app/" target="_blank" class="btn case-study-btn">View Case Study</a>
-    </div>
-  
+            <!-- Example PDF viewer button -->
+            <div class="project-box rectangle">
+              <a href="https://akazanis.myportfolio.com/" target="_blank">
+                <img src="photo.jpg" alt="Photography Portfolio">
+                <h3>Photography</h3>
+                <h4>A curated collection of my photography work</h4>
+              </a>
+              <a href="https://akazanis.myportfolio.com/" target="_blank" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+            <div class="project-box rectangle">
+              <a href="pdfs.png" target="_blank">
+                <img src="pdfs.png" alt="PDF Portfolio">
+                <h3>PDF Portfolio</h3>
+                <h4>A selection of print-ready PDF projects and case studies.</h4>
+              </a>
+              <a href="pdfs.html" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+            <div class="project-box rectangle">
+              <a href="https://moseslakefoodbank.netlify.app/" target="_blank">
+                <img src="FOOD.png" alt="Moses Lake Food Bank Redesign">
+                <h3>Moses Lake Food Bank Redesign</h3>
+                <h4>A complete UX/UI redesign for a local non-profit focused on accessibility and usability.</h4>
+              </a>
+              <a href="CSML CS.pdf" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+            <div class="project-box rectangle">
+              <a href="https://apptrackingv1.netlify.app" target="_blank">
+                <img src="APP TRACKING.png" alt="App Tracking">
+                <h3>App Tracking</h3>
+                <h4>A conceptual UX case study for a package tracking app designed for better delivery information and notifications.</h4>
+              </a>
+              <a href="Package CS.pdf" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+            <div class="project-box rectangle">
+              <a href="https://drunkenmicrowave.netlify.app/" target="_blank">
+                <img src="drunken microwave .png" alt="Drunken Microwave">
+                <h3>Drunken Microwave</h3>
+                <h4>A fun look into microwave design.</h4>
+              </a>
+              <a href="Microwave CS.pdf" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+            <div class="project-box rectangle">
+              <a href="https://madgreek.netlify.app/" target="_blank">
+                <img src="MGR.png" alt="Mad Greek Racing">
+                <h3>Mad Greek Racing</h3>
+                <h4>A website made for my father's racing team, Mad Greek Racing.</h4>
+              </a>
+              <a href="MGR CS.pdf" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+            <div class="project-box rectangle">
+              <a href="https://carback.org" target="_blank">
+                <img src="carback.png" alt="Carback">
+                <h3>Carback</h3>
+                <h4>Your safe ride home after a night out.</h4>
+              </a>
+              <a href="Carback CS.pdf" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+            <div class="project-box rectangle">
+              <a href="https://drewkazanis.netlify.app/" target="_blank">
+                <img src="Brand Identity.png" alt="Brand Identity">
+                <h3>Brand Identity</h3>
+                <h4>A personal brand system including logo, typography, and visual language for print and digital.</h4>
+              </a>
+              <a href="https://drewkazanis.netlify.app/" target="_blank" class="btn case-study-btn">View Case Study</a>
+            </div>
+
+          </div>
+
+          <!-- ===== Square Buttons (Bottom Gallery) ===== -->
+          <div class="square-grid">
+            <div class="project-box square">
+              <a href="https://allapologies.netlify.app" target="_blank">
+                <img src="allapoligies.jpg" alt="All Apologies">
+                <h3>All Apologies</h3>
+              </a>
+            </div>
+
+            <div class="project-box square">
+              <a href="https://typoonly.netlify.app/" target="_blank">
+                <img src="type only.jpg" alt="Type Only">
+                <h3>Type Only</h3>
+              </a>
+            </div>
+
+            <div class="project-box square">
+              <a href="https://github.com/Scottypettersen" target="_blank">
+                <img src="github.jpg" alt="GitHub Profile">
+                <h3>GitHub</h3>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+    </footer>
   </div>
-  
-                    </div> <!-- End of rectangle grid -->
 
-                    <!-- ===== Square Buttons (Bottom Gallery) ===== -->
-                    <div class="square-grid">
-                        <div class="project-box square">
-                            <a href="https://allapologies.netlify.app" target="_blank">
-                                <img src="allapoligies.jpg" alt="All Apologies">
-                                <h3>All Apologies</h3>
-                            </a>
-                        </div>
-
-                        <div class="project-box square">
-                            <a href="https://typoonly.netlify.app/" target="_blank">
-                                <img src="type only.jpg" alt="Type Only">
-                                <h3>Type Only</h3>
-                            </a>
-                        </div>
-
-                        <div class="project-box square">
-                            <a href="https://github.com/Scottypettersen" target="_blank">
-                                <img src="github.jpg" alt="GitHub Profile">
-                                <h3>GitHub</h3>
-                            </a>
-                        </div>
-                    </div> <!-- End of square grid -->
-
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>&copy; 2024 Andrew Kazanis</p>
-        </footer>
+  <!-- ====== PDF Modal ====== -->
+  <div id="pdfModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <iframe id="pdfViewer" src="" frameborder="0"></iframe>
     </div>
+  </div>
+
+  <!-- ====== JavaScript to handle modal behavior ====== -->
+  <script>
+    document.querySelectorAll('.case-study-btn').forEach(button => {
+      button.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href.endsWith('.pdf')) {
+          e.preventDefault();
+          document.getElementById('pdfViewer').src = href;
+          document.getElementById('pdfModal').style.display = 'flex';
+        }
+      });
+    });
+
+    document.querySelector('.close-btn').addEventListener('click', () => {
+      document.getElementById('pdfModal').style.display = 'none';
+      document.getElementById('pdfViewer').src = '';
+    });
+
+    document.getElementById('pdfModal').addEventListener('click', function (e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('pdfViewer').src = '';
+      }
+    });
+  </script>
 </body>
 
 </html>
