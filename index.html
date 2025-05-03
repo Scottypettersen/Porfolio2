@@ -1,56 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Andrew Kazanis</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Andrew Kazanis</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <div class="page-wrapper">
-        <header>
-            <a href="index.html"> 
-                <img src="Kazanis red.png" alt="Andrew Kazanis Logo"> 
-            </a>
-            <nav class="home-nav">
-                <ul>
-                    <li><a href="portfolio.html">PROJECTS</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <section id="quote">
-                <blockquote>
-                    <span id="quote-text"></span>
-                    <br>
-                    <span id="quote-author"></span>
-                </blockquote>
-            </section>
-        </main>
-        
-        
-        <footer>
-            <p>&copy; 2024 Andrew Kazanis</p>
-        </footer>
-    </div><script> 
-        const quotes = [
-            { text: "Good design is honest.", author: "Dieter Rams" },
-            { text: "Design is the silent ambassador of your brand.", author: "Paul Rand" },
-            { text: "Design is thinking made visual.", author: "Saul Bass" },
-            { text: "A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.", author: "Antoine de Saint-Exupéry" },
-            { text: "Less, but better.", author: "Dieter Rams" },
-            { text: "Styles come and go. Good design is a language, not a style.", author: "Massimo Vignelli" },
-            { text: "Design is intelligence made visible.", author: "Alina Wheeler" }
-        ];
+  <div class="page-wrapper">
     
-        window.addEventListener('DOMContentLoaded', () => {
-            const random = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById('quote-text').textContent = `"${random.text}"`;
-            document.getElementById('quote-author').textContent = `- ${random.author}`;
-        });
-    </script>
+    <header>
+      <a href="index.html"> 
+        <img src="Kazanis red.png" alt="Andrew Kazanis Logo"> 
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="portfolio.html">PROJECTS</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="quote">
+        <blockquote>
+          <span id="quote-text"></span><br />
+          <span id="quote-author"></span>
+        </blockquote>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+        Make cool shit.
+      </p>
+    </footer>
+    
+  </div>
+
+  <script> 
+    const quotes = [
+      { text: "Good design is honest.", author: "Dieter Rams" },
+      { text: "Design is the silent ambassador of your brand.", author: "Paul Rand" },
+      { text: "Design is thinking made visual.", author: "Saul Bass" },
+      { text: "A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.", author: "Antoine de Saint-Exupéry" },
+      { text: "Less, but better.", author: "Dieter Rams" },
+      { text: "Styles come and go. Good design is a language, not a style.", author: "Massimo Vignelli" },
+      { text: "Design is intelligence made visible.", author: "Alina Wheeler" }
+    ];
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const random = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('quote-text').textContent = `"${random.text}"`;
+      document.getElementById('quote-author').textContent = `- ${random.author}`;
+    });
+  </script>
 </body>
 </html>
