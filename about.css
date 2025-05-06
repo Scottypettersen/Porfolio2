@@ -139,7 +139,7 @@ main {
 
 /* ===== ABOUT TEXT ===== */
 .about-text {
-  font-size: 1.4rem;
+  font-size: 1.75rem;
   line-height: 1.7;
   letter-spacing: -0.01em;
   text-align: left;
@@ -259,7 +259,7 @@ footer {
   .about-text p:nth-child(1),
   .about-text p:nth-child(2),
   .about-text p:last-child {
-      font-size: 1.3rem;
+      font-size: 2rem;
   }
 
   .about-text p:nth-child(2) {
