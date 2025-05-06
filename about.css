@@ -271,6 +271,32 @@ footer {
       color: var(--secondary);
       font-weight: 1000;
   }
+/* ===== RESPONSIVE LAYOUT & FLUID TYPE ===== */
+.container {
+  /* let it fill most of any viewport, but cap at 800px */
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;    /* center it */
+}
+
+/* fluid headline sizing */
+.container h2 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+}
+
+/* line-length cap, auto-center & fluid body copy */
+.about-text {
+  max-width: 65ch;                            /* ~65 characters per line */
+  margin: 0 auto 2rem;                        /* center + space below */
+  font-size: clamp(1rem, 1.2vw, 1.75rem);     /* scales between 1rem and 1.75rem */
+}
+
+/* justify on wider screens, (mobile override still applies) */
+@media (min-width: 769px) {
+  .about-text {
+    text-align: justify;
+  }
+}
 
   footer {
       font-size: 0.9rem;
