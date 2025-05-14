@@ -1,14 +1,14 @@
 /* ===== VARIABLES ===== */
 :root {
-  --color-text:      #fff;
-  --color-bg:        #000;
-  --color-overlay:   rgba(0, 0, 0, 0.6);
-  --color-primary:   #00b4d8;
-  --color-secondary: #f9844a;
-  --color-accent:    #5865f2;
-  --max-width:       800px;
-  --gutter:          1rem;
-  --radius:          8px;
+  --color-text:       #fff;
+  --color-bg:         #000;
+  --color-overlay:    rgba(0, 0, 0, 0.6);
+  --color-primary:    #00b4d8;
+  --color-secondary:  #f9844a;
+  --color-accent:     #5865f2;
+  --max-content-width:800px;
+  --gutter:           1rem;
+  --radius:           8px;
 }
 
 /* ===== RESET ===== */
@@ -49,7 +49,6 @@ header {
 header h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2.4rem, 5vw, 4rem);
-  color: var(--color-text);
 }
 
 header h1 a {
@@ -57,7 +56,7 @@ header h1 a {
   text-decoration: none;
 }
 
-/* ===== NAVIGATION ===== */
+/* ===== NAV ===== */
 nav {
   background: var(--color-overlay);
   backdrop-filter: blur(5px);
@@ -72,7 +71,6 @@ nav ul {
 }
 
 nav a {
-  display: inline-block;
   background: var(--color-accent);
   color: var(--color-text);
   padding: 0.5rem 1rem;
@@ -95,7 +93,7 @@ nav a:hover {
 
 .about-section .container {
   width: 90%;
-  max-width: var(--max-width);
+  max-width: var(--max-content-width);
   margin: 0 auto;
   background: var(--color-overlay);
   backdrop-filter: blur(8px);
@@ -103,27 +101,25 @@ nav a:hover {
   padding: 2.5rem;
 }
 
-/* About Heading */
 .about-section h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 1rem;
 }
 
-/* About Text */
+/* ===== BIO TEXT ===== */
 .about-text {
   max-width: 65ch;
   margin-bottom: 1.5rem;
   font-size: clamp(1rem, 1.1vw, 1.25rem);
   line-height: 1.75;
-  text-align: left; /* always left-aligned */
+  text-align: left;
 }
 
 .about-text p {
   margin-bottom: 1rem;
 }
 
-/* Drop-cap on first paragraph */
 .about-text p:first-of-type:first-letter {
   float: left;
   font-family: 'Bebas Neue', sans-serif;
@@ -133,7 +129,6 @@ nav a:hover {
   color: var(--color-primary);
 }
 
-/* MAKE COOL SHIT + Buttons */
 .make-cool-shit {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(1.6rem, 3vw, 2.5rem);
@@ -171,18 +166,19 @@ nav a:hover {
   padding: 3rem 0;
 }
 
+/* Responsive masonry-like grid */
 .photo-section .container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--gutter);
   width: 90%;
-  max-width: var(--max-width);
+  max-width: var(--max-content-width);
   margin: 0 auto;
   padding: 0 var(--gutter);
 }
 
 .about-figure {
-  text-align: center;
+  margin: 0;
 }
 
 .about-image {
@@ -202,7 +198,6 @@ footer {
   background: var(--color-overlay);
   text-align: center;
   padding: 1rem 0;
-  color: var(--color-text);
   margin-top: auto;
   font-size: 0.9rem;
 }
@@ -217,10 +212,6 @@ footer {
   .photo-section .container {
     padding: 2rem var(--gutter);
     width: 95%;
-  }
-  .about-text {
-    font-size: 1.1rem;
-    text-align: left; /* remain left-aligned */
   }
   .about-text p:first-of-type:first-letter {
     float: none;
