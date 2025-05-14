@@ -1,13 +1,17 @@
 /* ===== VARIABLES ===== */
 :root {
-  --primary:      #00b4d8;
-  --secondary:    #f9844a;
-  --accent:       #5865f2;
-  --background:   #f2f2f2;
-  --dark-overlay: rgba(0, 0, 0, 0.7);
+  --color-text:      #fff;
+  --color-bg:        #000;
+  --color-overlay:   rgba(0, 0, 0, 0.6);
+  --color-primary:   #00b4d8;
+  --color-secondary: #f9844a;
+  --color-accent:    #5865f2;
+  --max-width:       800px;
+  --gutter:          1rem;
+  --radius:          8px;
 }
 
-/* ===== RESET & BOX-SIZING ===== */
+/* ===== RESET ===== */
 *,
 *::before,
 *::after {
@@ -18,12 +22,13 @@
 
 /* ===== BASE ===== */
 body {
+  background-color: var(--color-bg);
   background-image: url("about me.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  color: var(--color-text);
   font-family: 'Lato', sans-serif;
-  color: var(--background);
   line-height: 1.6;
 }
 
@@ -35,182 +40,169 @@ body {
 
 /* ===== HEADER ===== */
 header {
-  background-color: var(--dark-overlay);
+  background: var(--color-overlay);
   backdrop-filter: blur(5px);
   text-align: center;
   padding: 1rem 0;
-  width: 100%;
 }
 
-h1 {
+header h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2.4rem, 5vw, 4rem);
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  color: var(--color-text);
 }
 
-h1 a {
-  color: #fff;
+header h1 a {
+  color: inherit;
   text-decoration: none;
 }
 
-/* ===== NAV ===== */
+/* ===== NAVIGATION ===== */
 nav {
-  margin: 1rem 0;
+  background: var(--color-overlay);
+  backdrop-filter: blur(5px);
+  padding: 0.5rem 0;
 }
+
 nav ul {
+  list-style: none;
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  list-style: none;
+  gap: 1.5rem;
 }
-nav li {
-  background: var(--accent);
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  transition: transform 0.2s;
-}
-nav li:hover {
-  transform: translateY(-3px);
-}
+
 nav a {
-  color: #fff;
-  text-transform: uppercase;
+  display: inline-block;
+  background: var(--color-accent);
+  color: var(--color-text);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
   font-weight: 700;
+  text-transform: uppercase;
   text-decoration: none;
-  font-size: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+nav a:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
 }
 
 /* ===== ABOUT SECTION ===== */
 .about-section {
-  padding: 4rem 1rem;
-}
-.container {
-  max-width: 800px;
-  margin: 0 auto 2rem 5vw;             /* shifted left gutter */
-  background-color: rgba(0,0,0,0.85);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 2rem 3rem;
-}
-.container h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  color: #fff;
-  letter-spacing: -0.02em;
-  margin-bottom: 1.5rem;
-  position: relative;
-  padding-bottom: 0.5rem;
-}
-.container h2::after {
-  content: '';
-  display: block;
-  width: 4rem;
-  height: 0.25rem;
-  background: var(--secondary);
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  padding: 4rem 0;
 }
 
-/* === Bio typography & layout === */
+.about-section .container {
+  width: 90%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background: var(--color-overlay);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+}
+
+/* About Heading */
+.about-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+/* About Text */
 .about-text {
-  font-size: clamp(1rem, 1.1vw, 1.75rem);
-  line-height: 1.75;
-  text-align: justify;
   max-width: 65ch;
-  margin: 0 auto 2rem;
-  column-gap: 2rem;
-}
-@media (min-width: 1024px) {
-  .about-text {
-    column-count: 2;
-  }
-}
-.about-text p {
   margin-bottom: 1.5rem;
-  break-inside: avoid;
+  font-size: clamp(1rem, 1.1vw, 1.25rem);
+  line-height: 1.75;
+  text-align: left; /* always left-aligned */
 }
+
+.about-text p {
+  margin-bottom: 1rem;
+}
+
+/* Drop-cap on first paragraph */
 .about-text p:first-of-type:first-letter {
   float: left;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 4rem;
+  font-size: clamp(3rem, 6vw, 4rem);
   line-height: 1;
-  margin-right: 0.5rem;
-  color: var(--primary);
-}
-.about-text p + p {
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 0.1rem 0.5rem 0 0;
+  color: var(--color-primary);
 }
 
-/* ===== MAKE COOL SHIT & buttons ===== */
+/* MAKE COOL SHIT + Buttons */
 .make-cool-shit {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(1.6rem, 3vw, 2.5rem);
-  color: var(--secondary);
+  color: var(--color-secondary);
   text-align: center;
-  letter-spacing: 2px;
   text-transform: uppercase;
-  margin: 3rem 0 2rem;
+  letter-spacing: 2px;
+  margin: 2rem 0 1rem;
 }
+
 .button-group {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  justify-content: center;
 }
+
 .resume-button {
   font-family: 'Bebas Neue', sans-serif;
-  background-color: #ff2e2e;
-  color: #fff;
+  background: #ff2e2e;
+  color: var(--color-text);
   padding: 0.75rem 1.5rem;
-  letter-spacing: 1px;
-  border-radius: 4px;
+  border-radius: var(--radius);
   text-decoration: none;
-  transition: background-color 0.2s;
+  transition: background 0.2s;
 }
+
 .resume-button:hover {
-  background-color: #d62626;
+  background: #d62626;
 }
 
 /* ===== PHOTO SECTION ===== */
 .photo-section {
-  width: 100%;
-  background-color: var(--dark-overlay);
+  background: var(--color-overlay);
   backdrop-filter: blur(8px);
   padding: 3rem 0;
 }
+
 .photo-section .container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 0 2rem;
-  max-width: 800px;
+  width: 90%;
+  max-width: var(--max-width);
   margin: 0 auto;
+  padding: 0 var(--gutter);
 }
+
 .about-figure {
-  margin: 0;
   text-align: center;
 }
+
 .about-image {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: var(--radius);
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: transform 0.3s;
 }
+
 .about-image:hover {
   transform: scale(1.03);
 }
 
 /* ===== FOOTER ===== */
 footer {
-  background-color: var(--dark-overlay);
-  color: #fff;
+  background: var(--color-overlay);
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0;
+  color: var(--color-text);
   margin-top: auto;
   font-size: 0.9rem;
 }
@@ -221,13 +213,18 @@ footer {
     flex-direction: column;
     gap: 0.75rem;
   }
-  .container {
-    padding: 1.5rem;
-    margin: 1rem auto;  /* reset gutter on mobile */
+  .about-section .container,
+  .photo-section .container {
+    padding: 2rem var(--gutter);
+    width: 95%;
   }
-}
-@media (max-width: 480px) {
-  .photo-section {
-    padding: 2rem 0;
+  .about-text {
+    font-size: 1.1rem;
+    text-align: left; /* remain left-aligned */
+  }
+  .about-text p:first-of-type:first-letter {
+    float: none;
+    display: block;
+    margin: 0 auto 1rem;
   }
 }
