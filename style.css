@@ -1,16 +1,39 @@
 /* ====== VARIABLES ====== */
 :root {
-  --primary:      #00b4d8;
-  --secondary:    #f9844a;
-  --accent:       #5865f2;
-  --background:   #f2f2f2;
-  --dark-overlay: rgba(0, 0, 0, 0.7);
-  --card-bg:      rgba(0, 0, 0, 0.5);
-  --text-shadow:  rgba(0, 0, 0, 0.5);
+  /* Color Palette */
+  --primary:            #00b4d8;
+  --secondary:          #f9844a;
+  --accent:             #5865f2;
+  --background:         #f2f2f2;
+  --dark-overlay:       rgba(0, 0, 0, 0.7);
+  --card-bg:            rgba(0, 0, 0, 0.5);
+  --text-shadow:        rgba(0, 0, 0, 0.5);
 
-  /* cross-fade layers */
-  --bg1: none;
-  --bg2: none;
+  /* Background cross-fade */
+  --bg1:                none;
+  --bg2:                none;
+  --fade-duration:      5s;
+  --fade-ease:          ease-in-out;
+  --fade-bright:        0.85;
+  --fade-sat:           0.8;
+
+  /* Typography */
+  --font-body:          'Lato', sans-serif;
+  --font-display:       'Bebas Neue', cursive;
+
+  /* Header & nav sizing */
+  --header-padding-v:   2rem;
+  --header-padding-h:   3rem;
+  --logo-max-width:     300px;
+  --nav-gap:            2.5rem;
+  --nav-font-size:      clamp(1.8rem, 3vw, 2.4rem);
+  --nav-pad-v:          1rem;
+  --nav-pad-h:          2rem;
+  --nav-radius:         10px;
+
+  /* Spacing */
+  --space-sm:           1rem;
+  --space-md:           2rem;
 }
 
 /* ====== RESET & BOX-SIZING ====== */
@@ -26,12 +49,11 @@
 body {
   position: relative;
   min-height: 100vh;
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-body);
   color: var(--background);
   overflow-x: hidden;
-  margin: 0;
-  padding: 0;
 }
+
 body::before,
 body::after {
   content: "";
@@ -40,11 +62,10 @@ body::after {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transition: opacity 5s ease-in-out;
-  will-change: opacity;
-  z-index: -1;
-  filter: brightness(0.85) saturate(0.8);
+  transition: opacity var(--fade-duration) var(--fade-ease);
+  filter: brightness(var(--fade-bright)) saturate(var(--fade-sat));
   pointer-events: none;
+  z-index: -1;
 }
 
 body::before {
@@ -75,37 +96,47 @@ body.fade::after {
 
 /* ====== HEADER ====== */
 header {
-  text-align: center;
-  margin: 2.5rem 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--header-padding-v) var(--header-padding-h);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  /* To pin header: uncomment below */
+  /* position: fixed; width:100%; top:0; z-index:100; */
 }
-header img {
-  max-width: 250px;
+
+header a img {
+  max-width: var(--logo-max-width);
   height: auto;
+  display: block;
 }
 
 /* ====== NAV ====== */
 .home-nav ul {
-  list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin: 1rem 0;
+  gap: var(--nav-gap);
+  margin: 0;
 }
+
+.home-nav li {
+  list-style: none;
+}
+
 .home-nav a {
-  display: block;
-  padding: 1rem 2rem;
-  background-color: var(--accent);
+  font-family: var(--font-display);
+  font-size: var(--nav-font-size);
+  padding: var(--nav-pad-v) var(--nav-pad-h);
+  background: var(--accent);
   color: var(--background);
   text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
-  border-radius: 10px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: var(--nav-radius);
+  transition: background 0.2s var(--fade-ease), transform 0.2s var(--fade-ease);
 }
+
 .home-nav a:hover {
-  background-color: var(--secondary);
-  transform: translateY(-5px);
+  background: var(--secondary);
+  transform: translateY(-3px);
 }
 
 /* ====== QUOTE ====== */
@@ -114,51 +145,84 @@ header img {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 1rem;
+  margin: var(--space-md) var(--space-sm);
 }
+
 #quote blockquote {
-  background: rgba(0,0,0,0.6);
-  padding: 2rem 3rem;
-  border-radius: 20px;
-  max-width: 800px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: var(--space-md);
+  border-radius: 16px;
+  max-width: clamp(300px, 80%, 800px);
   backdrop-filter: blur(8px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-  animation: fadeIn 1s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s var(--fade-ease);
 }
+
 #quote-text {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem;
-  line-height: 1.4;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
+  line-height: 1.3;
   color: var(--background);
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  margin-bottom: var(--space-sm);
+  text-shadow: 2px 2px 5px var(--text-shadow);
 }
+
 #quote-author {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
   opacity: 0.8;
+  font-style: italic;
 }
 
 /* ====== FOOTER ====== */
 footer {
   text-align: center;
-  padding: 1.5rem 0;
-  background-color: var(--dark-overlay);
+  padding: var(--space-sm) 0;
+  background: var(--dark-overlay);
+  font-size: clamp(0.85rem, 2vw, 1rem);
 }
 
 /* ====== ANIMATION ====== */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-  header { margin: 1.5rem 0 2rem; }
-  #quote blockquote { padding: 1.5rem 2rem; }
-  #quote-text { font-size: 2rem; }
+  /* Header stacks vertically */
+  header {
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: 1.5rem 1rem;
+  }
+
+  /* Nav becomes vertical list */
+  .home-nav ul {
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+
   .home-nav a {
-    font-size: 1.5rem;
-    padding: 0.8rem 1.2rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+  }
+
+  /* Quote adjustments */
+  #quote blockquote {
+    padding: 1.5rem;
+  }
+
+  #quote-text {
+    font-size: 2rem;
   }
 }

@@ -296,6 +296,24 @@ footer {
   .about-text {
     text-align: justify;
   }
+}/* center & size the new image */
+.about-figure {
+  margin: 2rem auto;
+  text-align: center;
+}
+.about-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* optional figcaption styling */
+.about-figure figcaption {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: var(--background);
+  opacity: 0.8;
 }
 
   footer {
