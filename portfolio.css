@@ -1,26 +1,27 @@
+/* portfolio.css */
+
+/* ====== VARIABLES ====== */
 :root {
-  --primary: #00b4d8;
-  --secondary: #f9844a;
-  --accent: #5865f2;
-  --background: #f2f2f2;
+  --primary:     #00b4d8;
+  --secondary:   #f9844a;
+  --accent:      #5865f2;
+  --background:  #f2f2f2;
   --dark-overlay: rgba(0, 0, 0, 0.7);
-  --card-bg: rgba(0, 0, 0, 0.5);
+  --card-bg:     rgba(0, 0, 0, 0.5);
   --text-shadow: rgba(0, 0, 0, 0.5);
 }
 
-/* ============ GENERAL ============ */
+/* ====== GLOBAL & BACKGROUND ====== */
 body {
   font-family: 'Lato', sans-serif;
-  background-image: url("portfolio.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* static cover background */
+  background: url("./backgrounds/portfolio5.jpeg") center/cover no-repeat;
   color: var(--background);
   margin: 0;
   padding: 0;
 }
 
-/* ============ HEADER ============ */
+/* ====== HEADER ====== */
 header {
   text-align: center;
   margin-bottom: 2rem;
@@ -34,7 +35,7 @@ header img {
 nav ul {
   list-style: none;
   padding: 0;
-  margin: 20px 0;
+  margin: 1.5rem 0;
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -50,7 +51,7 @@ nav a {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.8rem;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   text-align: center;
 }
 
@@ -59,10 +60,11 @@ nav a:hover {
   transform: translateY(-5px);
 }
 
-/* ============ CONTAINER ============ */
+/* ====== CENTER CONTAINER ====== */
 .container {
   max-width: 1400px;
   width: 90%;
+  margin: 0 auto;           /* ← centers the overlay */
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
@@ -71,7 +73,7 @@ nav a:hover {
   text-align: center;
 }
 
-/* ============ HEADINGS ============ */
+/* ====== HEADINGS ====== */
 h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2.5rem;
@@ -80,7 +82,7 @@ h2 {
   text-shadow: 2px 2px 4px var(--text-shadow);
 }
 
-/* ============ RECTANGLE GRID ============ */
+/* ====== PORTFOLIO GRID ====== */
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -89,16 +91,16 @@ h2 {
   margin-bottom: 3rem;
 }
 
+/* Rectangle cards */
 .project-box.rectangle {
   background-color: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 0;
   justify-content: space-between;
 }
 
@@ -106,22 +108,15 @@ h2 {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
-.project-box.rectangle h3,
-.project-box.rectangle h4,
-.project-box.rectangle .case-study-btn {
-  padding: 0 1rem;
 }
 
 .project-box.rectangle h3 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.8rem;
-  margin: 1rem 0 0.5rem 0;
+  margin: 1rem 0 0.5rem;
   color: var(--background);
   text-shadow: 1px 1px 2px var(--text-shadow);
+  padding: 0 1rem;
 }
 
 .project-box.rectangle h4 {
@@ -131,19 +126,19 @@ h2 {
   color: var(--background);
   opacity: 0.85;
   margin-bottom: 0.5rem;
+  padding: 0 1rem;
 }
 
-/* ============ BUTTON ============ */
+/* Case-study button */
 .case-study-btn {
-  display: block;
-  margin: 0.5rem auto 1rem auto;
+  margin: 0.5rem auto 1rem;
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
   width: 80%;
-  text-align: center;
   background-color: var(--accent);
   color: white;
+  border: none;
   border-radius: 8px;
   text-decoration: none;
   transition: background 0.3s ease, transform 0.2s ease;
@@ -154,17 +149,15 @@ h2 {
   transform: scale(1.05);
 }
 
-/* ============ EARLY WEB PROJECTS SECTION ============ */
+/* ====== EARLY WEB PROJECTS ====== */
 .early-web-projects {
   margin-top: 4rem;
   padding: 3rem 1rem 2rem;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0,0,0,0.3);
   border-radius: 12px;
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
 }
 
 .early-web-projects h3 {
@@ -188,15 +181,9 @@ h2 {
 .early-web-projects .subtext a {
   color: var(--primary);
   text-decoration: underline;
-  font-weight: 600;
-  transition: color 0.2s ease;
 }
 
-.early-web-projects .subtext a:hover {
-  color: var(--secondary);
-}
-
-/* ============ SQUARE GRID ============ */
+/* ====== SQUARE GRID ====== */
 .square-grid {
   display: flex;
   justify-content: center;
@@ -207,88 +194,49 @@ h2 {
 
 .project-box.square {
   width: 220px;
-  aspect-ratio: 1 / 1;
-  background-color: rgba(0, 0, 0, 0.5);
+  aspect-ratio: 1;
+  background-color: var(--card-bg);
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-bottom: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .project-box.square img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
 }
 
 .project-box.square h3 {
-  font-size: 1.1rem;
-  margin-top: 12px;
+  margin: 0.75rem 0;
   color: var(--background);
   font-family: 'Bebas Neue', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  font-size: 1.1rem;
 }
 
 .project-box.square:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
 }
 
-/* ============ FOOTER ============ */
+/* ====== FOOTER ====== */
 footer {
   text-align: center;
   padding: 1rem;
-  width: 100%;
   background-color: var(--dark-overlay);
-  font-family: 'Lato', sans-serif;
 }
 
-/* ============ MOBILE ============ */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 900px) {
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  nav a {
-    font-size: 1.4rem;
-    padding: 1rem;
-  }
-
-  header img {
-    max-width: 180px;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  .square-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .project-box.square {
-    width: 90%;
-  }
-}
-
-/* ============ ANIMATIONS ============ */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .portfolio-grid { grid-template-columns: 1fr; }
+  nav a { font-size:1.4rem; padding:1rem; }
+  header img { max-width:180px; }
+  h2 { font-size:2rem; }
+  .square-grid { flex-direction:column; }
+  .project-box.square { width:90%; }
 }

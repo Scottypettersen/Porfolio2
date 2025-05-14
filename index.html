@@ -4,17 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andrew Kazanis</title>
+
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap"
+    rel="stylesheet"
+  />
 </head>
-<body>
+
+<body class="home">
   <div class="page-wrapper">
-    
+    <!-- HEADER -->
     <header>
-      <a href="index.html"> 
-        <img src="Kazanis red.png" alt="Andrew Kazanis Logo"> 
+      <a href="index.html">
+        <img src="Kazanis red.png" alt="Andrew Kazanis Logo" />
       </a>
       <nav class="home-nav">
         <ul>
@@ -25,6 +33,7 @@
       </nav>
     </header>
 
+    <!-- MAIN / QUOTE -->
     <main>
       <section id="quote">
         <blockquote>
@@ -34,31 +43,17 @@
       </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
       <p>&copy; 2024 Andrew Kazanis</p>
-      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+      <p style="margin-top:0.5rem; font-style:italic; font-size:0.9rem; opacity:0.7;">
         Make cool shit.
       </p>
     </footer>
-    
   </div>
+  <!-- / .page-wrapper -->
 
-  <script> 
-    const quotes = [
-      { text: "Good design is honest.", author: "Dieter Rams" },
-      { text: "Design is the silent ambassador of your brand.", author: "Paul Rand" },
-      { text: "Design is thinking made visual.", author: "Saul Bass" },
-      { text: "A designer knows he has achieved perfection not when there is nothing left to add, but when there is nothing left to take away.", author: "Antoine de Saint-Exupéry" },
-      { text: "Less, but better.", author: "Dieter Rams" },
-      { text: "Styles come and go. Good design is a language, not a style.", author: "Massimo Vignelli" },
-      { text: "Design is intelligence made visible.", author: "Alina Wheeler" }
-    ];
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const random = quotes[Math.floor(Math.random() * quotes.length)];
-      document.getElementById('quote-text').textContent = `"${random.text}"`;
-      document.getElementById('quote-author').textContent = `- ${random.author}`;
-    });
-  </script>
+  <!-- Combined background & quote rotator -->
+  <script src="background.js"></script>
 </body>
 </html>
