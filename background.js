@@ -53,7 +53,7 @@
     setTimeout(() => {
       root.style.setProperty('--bg1', `url('${images[nextIdx]}')`);
       body.classList.remove('fade');
-    }, 5000);
+    }, 3500);
 
     // also update quote at the same moment we trigger fade
     updateQuote();
@@ -66,6 +66,6 @@
   setInterval(() => {
     idx = (idx + 1) % images.length;
     crossfadeTo(idx);
-  }, 8000);
+  }, 6000);
 
 })();

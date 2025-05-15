@@ -12,10 +12,10 @@
   /* Background cross-fade */
   --bg1:                none;
   --bg2:                none;
-  --fade-duration:      5s;
+  --fade-duration:      3s;
   --fade-ease:          ease-in-out;
-  --fade-bright:        0.85;
-  --fade-sat:           0.8;
+  --fade-bright:        0.9;
+  --fade-sat:           0.9;
 
   /* Typography */
   --font-body:          'Lato', sans-serif;
