@@ -2,13 +2,16 @@
 
 /* ====== VARIABLES ====== */
 :root {
-  --primary:     #00b4d8;
-  --secondary:   #f9844a;
-  --accent:      #5865f2;
-  --background:  #f2f2f2;
+  /* Brand Palette */
+  --primary:      #FF6B00;   /* Vibrant Orange */
+  --secondary:    #0047AB;   /* Deep Blue */
+  --accent:       #FF0000;   /* Accent Red */
+
+  /* Neutrals & overlays */
+  --background:   #f2f2f2;
   --dark-overlay: rgba(0, 0, 0, 0.7);
-  --card-bg:     rgba(0, 0, 0, 0.5);
-  --text-shadow: rgba(0, 0, 0, 0.5);
+  --card-bg:      rgba(0, 0, 0, 0.5);
+  --text-shadow:  rgba(0, 0, 0, 0.5);
 }
 
 /* ====== GLOBAL & BACKGROUND ====== */

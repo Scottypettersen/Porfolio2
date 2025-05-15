@@ -3,9 +3,9 @@
   --color-text:       #fff;
   --color-bg:         #000;
   --color-overlay:    rgba(0, 0, 0, 0.6);
-  --color-primary:    #00b4d8;
-  --color-secondary:  #f9844a;
-  --color-accent:     #5865f2;
+  --color-primary:    #FF6B00;   /* Vibrant Orange */
+  --color-secondary:  #0047AB;   /* Deep Blue    */
+  --color-accent:     #FF0000;   /* Accent Red   */
   --max-content-width:800px;
   --gutter:           1rem;
   --radius:           8px;
@@ -145,9 +145,10 @@ nav a:hover {
   justify-content: center;
 }
 
+/* Updated to use brand-orange and brand-red */
 .resume-button {
   font-family: 'Bebas Neue', sans-serif;
-  background: #ff2e2e;
+  background: var(--color-primary);
   color: var(--color-text);
   padding: 0.75rem 1.5rem;
   border-radius: var(--radius);
@@ -156,7 +157,7 @@ nav a:hover {
 }
 
 .resume-button:hover {
-  background: #d62626;
+  background: var(--color-accent);
 }
 
 /* ===== PHOTO SECTION ===== */
