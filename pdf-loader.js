@@ -32,8 +32,8 @@ const pdfData = [
     desc: "A print redesign project for VCD3 and the Kalispel Natural Resources Department.",
     poster: "rack card1.pdf",
     caseStudy: {
-      view: "KRND CS.pdf",
-      download: "KRND CS.pdf"
+      view: "KNRD CS.pdf",
+      download: "KNRD CS.pdf"
   }
   }
 ];
