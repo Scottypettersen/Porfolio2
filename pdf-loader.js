@@ -26,6 +26,15 @@ const pdfData = [
     title: "1984 PROJECT",
     desc: "A typographic study on 80s typography and classic design.",
     poster: "1984.pdf"
+  },
+  {
+    title: "KNRD PRINT DESIGN",
+    desc: "A print redesign project for VCD3 and the Kalispel Natural Resources Department.",
+    poster: "rack card1.pdf",
+    caseStudy: {
+      view: "KRND CS.pdf",
+      download: "KRND CS.pdf"
+  }
   }
 ];
 
