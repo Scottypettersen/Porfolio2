@@ -1,20 +1,20 @@
+/* ===== ABOUT.CSS (drop-in) ===== */
+
 /* ===== VARIABLES ===== */
 :root {
-  --color-text:       #fff;
-  --color-bg:         #000;
-  --color-overlay:    rgba(0, 0, 0, 0.6);
-  --color-primary:    #FF6B00;   /* Vibrant Orange */
-  --color-secondary:  #0047AB;   /* Deep Blue    */
-  --color-accent:     #FF0000;   /* Accent Red   */
-  --max-content-width:800px;
-  --gutter:           1rem;
-  --radius:           8px;
+  --color-text:        #fff;
+  --color-bg:          #000;
+  --color-overlay:     rgba(0, 0, 0, 0.6);
+  --color-primary:     #FF6B00;
+  --color-secondary:   #0047AB;
+  --color-accent:      #FF0000;
+  --max-content-width: 800px;
+  --gutter:            1rem;
+  --radius:            8px;
 }
 
 /* ===== RESET ===== */
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -31,7 +31,6 @@ body {
   font-family: 'Lato', sans-serif;
   line-height: 1.6;
 }
-
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -42,45 +41,37 @@ body {
 header {
   background: var(--color-overlay);
   backdrop-filter: blur(5px);
-  text-align: center;
-  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem var(--gutter);
 }
-
 header h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2.4rem, 5vw, 4rem);
 }
-
 header h1 a {
-  color: inherit;
+  color: var(--color-primary);
   text-decoration: none;
 }
 
 /* ===== NAV ===== */
-nav {
-  background: var(--color-overlay);
-  backdrop-filter: blur(5px);
-  padding: 0.5rem 0;
-}
-
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+  gap: var(--gutter);
 }
-
 nav a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  padding: 0.75rem 2rem;
   background: var(--color-accent);
   color: var(--color-text);
-  padding: 0.5rem 1rem;
   border-radius: var(--radius);
-  font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
   transition: background 0.2s, transform 0.2s;
 }
-
 nav a:hover {
   background: var(--color-secondary);
   transform: translateY(-2px);
@@ -88,39 +79,36 @@ nav a:hover {
 
 /* ===== ABOUT SECTION ===== */
 .about-section {
-  padding: 4rem 0;
+  padding-block: clamp(3rem, 6vw, 5rem);
 }
-
 .about-section .container {
-  width: 90%;
-  max-width: var(--max-content-width);
-  margin: 0 auto;
+  width: min(95%, var(--max-content-width));
+  margin-inline: auto;
+  padding: calc(var(--gutter) * 1.5);
   background: var(--color-overlay);
   backdrop-filter: blur(8px);
   border-radius: var(--radius);
-  padding: 2.5rem;
 }
-
 .about-section h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 1rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--gutter);
 }
 
 /* ===== BIO TEXT ===== */
 .about-text {
   max-width: 65ch;
-  margin-bottom: 1.5rem;
+  margin: 0 auto var(--gutter);
   font-size: clamp(1rem, 1.1vw, 1.25rem);
   line-height: 1.75;
   text-align: left;
 }
-
-.about-text p {
-  margin-bottom: 1rem;
+.about-text p + p {
+  margin-top: var(--gutter);
 }
-
-.about-text p:first-of-type:first-letter {
+.about-text p:first-of-type::first-letter {
   float: left;
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(3rem, 6vw, 4rem);
@@ -129,6 +117,7 @@ nav a:hover {
   color: var(--color-primary);
 }
 
+/* ===== MAKE COOL SHIT ===== */
 .make-cool-shit {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(1.6rem, 3vw, 2.5rem);
@@ -136,60 +125,52 @@ nav a:hover {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 2rem 0 1rem;
+  margin-block: calc(var(--gutter) * 2);
 }
 
+/* ===== BUTTON GROUP ===== */
 .button-group {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: var(--gutter);
   justify-content: center;
+  margin-block: var(--gutter);
 }
-
-/* Updated to use brand-orange and brand-red */
-.resume-button {
+.button-group a {
   font-family: 'Bebas Neue', sans-serif;
+  padding: 0.75rem 1.5rem;
   background: var(--color-primary);
   color: var(--color-text);
-  padding: 0.75rem 1.5rem;
   border-radius: var(--radius);
   text-decoration: none;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
-
-.resume-button:hover {
+.button-group a:hover {
   background: var(--color-accent);
+  transform: translateY(-2px);
 }
 
 /* ===== PHOTO SECTION ===== */
 .photo-section {
   background: var(--color-overlay);
   backdrop-filter: blur(8px);
-  padding: 3rem 0;
+  padding-block: clamp(3rem, 8vw, 6rem);
 }
-
-/* Responsive masonry-like grid */
 .photo-section .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--gutter);
-  width: 90%;
-  max-width: var(--max-content-width);
-  margin: 0 auto;
-  padding: 0 var(--gutter);
+  width: min(95%, var(--max-content-width));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
-
-.about-figure {
-  margin: 0;
-}
-
 .about-image {
   width: 100%;
   height: auto;
   border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s;
 }
-
 .about-image:hover {
   transform: scale(1.03);
 }
@@ -198,7 +179,7 @@ nav a:hover {
 footer {
   background: var(--color-overlay);
   text-align: center;
-  padding: 1rem 0;
+  padding: var(--gutter) 0;
   margin-top: auto;
   font-size: 0.9rem;
 }
@@ -207,16 +188,18 @@ footer {
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: calc(var(--gutter) / 2);
   }
   .about-section .container,
   .photo-section .container {
-    padding: 2rem var(--gutter);
+    padding-inline: var(--gutter);
     width: 95%;
   }
-  .about-text p:first-of-type:first-letter {
+}
+@media (max-width: 600px) {
+  .about-text p:first-of-type::first-letter {
     float: none;
     display: block;
-    margin: 0 auto 1rem;
+    margin: 0 auto var(--gutter);
   }
 }
