@@ -3,7 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Drew Kazanis – About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="echo-style.css" /> <!-- ✅ Echo UI CSS -->
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -30,45 +36,44 @@
         <div class="container">
           <h2>About Me</h2>
 
-    
-     <div class="about-text">
-  <p>
-    I’m Drew Kazanis, a server and builder at heart and a former wildland firefighter from rural Spokane, Washington. Fresh out of high school, I spent five seasons on the fireline, earning my FFT1 “Squad Boss” certification and logging over 400 days on some of the largest wildfires in U.S. history. Leading crews of up to a dozen men across our national forests while working toward my associate’s degree at Walla Walla Community College taught me discipline, leadership under pressure, and adaptability.
-  </p>
+          <div class="about-text">
+            <p>
+              I’m Drew Kazanis, a server and builder at heart and a former wildland firefighter from rural Spokane, Washington. Fresh out of high school, I spent five seasons on the fireline, earning my FFT1 “Squad Boss” certification and logging over 400 days on some of the largest wildfires in U.S. history. Leading crews of up to a dozen men across our national forests while working toward my associate’s degree at Walla Walla Community College taught me discipline, leadership under pressure, and adaptability.
+            </p>
 
-  <p>
-    Alongside firefighting, I discovered my passion for hospitality behind the bars and on the busy floors at No-Li Brewing, Plumb Cellars, Locust Cider, and more. Those thousands of hours sharpened my timing, clear communication, and human centered service in fast paced, customer focused environments; <p>I always aim to be the person I’d want serving me.
-  </p>
-  <p>
-    I found myself in EWU’s design program driven with a “let’s make things” attitude. Gaining all these new skills reinforced what I already knew: persistence and common sense are what shape every idea into something tangible.
-  </p>
-  Fueled by a range of creative and technical passions; photography, automotive, print & web design, and foremost: problem solving. Im at home at photoshop, with an impact gun in my hand, with a camera strapped to my back, or sitting at my desk on GitHub. 
+            <p>
+              Alongside firefighting, I discovered my passion for hospitality behind the bars and on the busy floors at No-Li Brewing, Plumb Cellars, Locust Cider, and more. Those thousands of hours sharpened my timing, clear communication, and human centered service in fast paced, customer focused environments;
+            </p>
 
-  <p class="make-cool-shit">MAKE COOL SHIT</p>
-</div>
+            <p>
+              I always aim to be the person I’d want serving me.
+            </p>
 
+            <p>
+              I found myself in EWU’s design program driven with a 
+              <span data-echo="fragment1">“let’s make things”</span> attitude. <!-- ✅ Echo fragment -->
+              Gaining all these new skills reinforced what I already knew: persistence and common sense are what shape every idea into something tangible.
+            </p>
 
-            <div class="button-group">
-              <a
-                href="NEW RESUME.pdf"
-                target="_blank"
-                class="resume-button"
-              >
-                View My Resume (PDF)
-              </a>
-              <a
-                href="Coverletter.pdf"
-                target="_blank"
-                class="resume-button"
-              >
-                Cover Letter (PDF)
-              </a>
-            </div>
+            <p>
+              Fueled by a range of creative and technical passions; photography, automotive, print & web design, and foremost: problem solving. I’m at home in Photoshop, with an impact gun in my hand, with a camera strapped to my back, or sitting at my desk on GitHub.
+            </p>
+
+            <p class="make-cool-shit">MAKE COOL SHIT</p>
+          </div>
+
+          <div class="button-group">
+            <a href="NEW RESUME.pdf" target="_blank" class="resume-button">
+              View My Resume (PDF)
+            </a>
+            <a href="Coverletter.pdf" target="_blank" class="resume-button">
+              Cover Letter (PDF)
+            </a>
           </div>
         </div>
       </section>
 
-      <!-- Photo section: full-width dark-blur container with stacked images -->
+      <!-- Photo section -->
       <section class="photo-section">
         <div class="container">
           <figure class="about-figure">
@@ -94,8 +99,11 @@
     </footer>
   </div>
 
+  <!-- ✅ Echo system integration -->
+  <script src="whispers.js" type="module"></script>
+
+  <!-- Optional: auto-scroll on load -->
   <script>
-    // Optional: scroll down a bit on load
     window.onload = function () {
       setTimeout(() => {
         window.scrollBy({
