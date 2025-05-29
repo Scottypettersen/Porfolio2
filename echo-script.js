@@ -3,14 +3,12 @@ console.log('%cECHO: Some memories are not meant to be indexed.', 'color:#FF6B00
 
 // === ECHO MEMORY CORE ===
 const echo = {
-  get: (key) => localStorage.getItem(`echo.${key}`),
+  get: key => localStorage.getItem(`echo.${key}`),
   set: (key, val = true) => localStorage.setItem(`echo.${key}`, val),
   hasAllFragments: () => ['fragment1', 'fragment2', 'fragment3'].every(k => echo.get(k)),
   enableMode: () => {
     echo.set('mode');
     document.body.classList.add('echo-mode');
-
-    // Show optional homepage portal if present
     const portal = document.getElementById('echo-portal');
     if (portal) portal.style.display = 'block';
   }
@@ -22,7 +20,7 @@ function whisper(msg) {
   w.className = 'echo-whisper';
   w.innerText = msg;
   document.body.appendChild(w);
-  setTimeout(() => w.remove(), 8000);
+  setTimeout(() => w.remove(), 10000); // Longer duration
 }
 
 function whisperOnFragment(key) {
@@ -34,7 +32,7 @@ function whisperOnFragment(key) {
   whisper(messages[key] || "ECHO: Keep looking...");
 }
 
-// === POPUP FOR FINAL REDIRECT ===
+// === FINAL POPUP TO UNLOCK GATE ===
 function showEchoPopup() {
   const popup = document.createElement('div');
   popup.id = 'echo-popup';
@@ -48,22 +46,30 @@ function showEchoPopup() {
   document.body.appendChild(popup);
 }
 
-// === TRACK FRAGMENT INTERACTIONS ===
+// === FRAGMENT TRACKING WITH DELAYED REDIRECT ===
 function initFragmentTracking() {
   document.querySelectorAll('[data-echo]').forEach(el => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', e => {
       const key = el.dataset.echo;
+      const href = el.getAttribute('href');
+
       if (!echo.get(key)) {
+        e.preventDefault(); // Pause normal action
         echo.set(key);
         el.classList.add('echo-found');
         whisperOnFragment(key);
         checkEchoStatus();
+
+        // Delay redirect if it's not a PDF
+        if (href && !href.endsWith('.pdf')) {
+          setTimeout(() => window.location.href = href, 1500);
+        }
       }
     });
   });
 }
 
-// === CHECK FOR MODE OR UNLOCK EVENT ===
+// === STATUS CHECK ===
 function checkEchoStatus() {
   if (echo.get('mode')) {
     document.body.classList.add('echo-mode');
@@ -114,7 +120,7 @@ function handleCommand(input) {
   }
 }
 
-// === TERMINAL TOGGLE SHORTCUT ===
+// === TERMINAL SHORTCUT ===
 document.addEventListener('keydown', e => {
   if (e.ctrlKey && e.key === '`') {
     const term = document.getElementById('echo-terminal');
@@ -123,12 +129,12 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// === IDLE WHISPER IF NOTHING TRIGGERS ===
+// === IDLE WHISPER ===
 setTimeout(() => {
   if (!echo.get('mode')) whisper('ECHO: Are you still there...?');
 }, 60000);
 
-// === DOM READY INIT ===
+// === INIT ===
 document.addEventListener('DOMContentLoaded', () => {
   initFragmentTracking();
   checkEchoStatus();

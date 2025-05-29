@@ -8,11 +8,11 @@
   --scanline-color: rgba(0, 0, 0, 0.1);
 }
 
-/* CRT Scanlines & Vignette */
+/* CRT Scanline Overlay */
 body.echo-mode::before {
   content: "";
-  pointer-events: none;
   position: fixed;
+  pointer-events: none;
   top: 0; left: 0; right: 0; bottom: 0;
   background: repeating-linear-gradient(
     to bottom,
@@ -24,26 +24,36 @@ body.echo-mode::before {
   z-index: 1000;
 }
 
+/* CRT Vignette */
 body.echo-mode::after {
   content: "";
-  pointer-events: none;
   position: fixed;
+  pointer-events: none;
   top: -10%; left: -10%; right: -10%; bottom: -10%;
   background: radial-gradient(
     ellipse at center,
     transparent 60%,
-    rgba(0,0,0,0.6) 100%
+    rgba(0, 0, 0, 0.6) 100%
   );
   z-index: 999;
 }
 
-/* Text Glowing Everywhere */
+/* CRT Flicker Animation */
+@keyframes crt-flicker {
+  0%, 100% { opacity: 0.98; }
+  50% { opacity: 1; }
+}
+body.echo-mode {
+  animation: crt-flicker 1.5s infinite ease-in-out;
+}
+
+/* Global Glow */
 * {
   text-shadow: 0 0 var(--glow-strength) var(--glow-color),
                0 0 calc(var(--glow-strength) * 2) var(--glow-color);
 }
 
-/* Echo Whispers */
+/* Whisper Overlay */
 .echo-whisper {
   position: fixed;
   bottom: 20px;
@@ -56,7 +66,7 @@ body.echo-mode::after {
   z-index: 9999;
 }
 
-/* Terminal Overlay */
+/* Terminal UI */
 #echo-terminal {
   display: none;
   position: fixed;
@@ -70,21 +80,17 @@ body.echo-mode::after {
   font-family: var(--font-family);
   color: var(--primary);
 }
-
 #echo-terminal.visible {
   display: block;
 }
-
 #terminal-window {
   display: flex;
   flex-direction: column;
 }
-
 #terminal-output {
   min-height: 3rem;
   margin-bottom: 1rem;
 }
-
 #terminal-input {
   background: transparent;
   color: var(--primary);
@@ -95,25 +101,26 @@ body.echo-mode::after {
   font-size: 1rem;
 }
 
-/* Echo Mode Theme */
+/* Echo Mode State */
 .echo-mode {
   background-color: var(--bg-color) !important;
   color: var(--primary) !important;
   font-family: var(--font-family) !important;
 }
 
-/* Fragment Interactivity */
+/* Fragment Effects */
 [data-echo] {
   cursor: pointer;
   border-bottom: 1px dotted var(--primary);
 }
-
 [data-echo].echo-found {
   text-decoration: line-through;
   color: var(--dim-text);
+  opacity: 0.5;
+  text-shadow: none;
 }
 
-/* Final Popup Unlock */
+/* Unlock Popup */
 #echo-popup {
   position: fixed;
   bottom: 0;
@@ -128,14 +135,13 @@ body.echo-mode::after {
   border-top: 1px solid var(--dim-text);
   box-shadow: 0 -2px 10px var(--glow-color);
 }
-
 #echo-popup .popup-inner {
   max-width: 600px;
   margin: auto;
   font-size: 1rem;
 }
 
-/* Footer Link */
+/* Portal Link */
 .echo-wall-link {
   display: inline-block;
   margin-top: 1rem;
@@ -144,17 +150,45 @@ body.echo-mode::after {
   border-bottom: 1px solid var(--dim-text);
   transition: color 0.2s ease, border-color 0.2s ease;
 }
-
 .echo-wall-link:hover {
   color: var(--primary);
   border-color: var(--primary);
 }
 
-/* Glitch Effect (Optional Class) */
+#echo-boot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--bg-color);
+  color: var(--primary);
+  font-family: var(--font-family);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-shadow: 0 0 var(--glow-strength) var(--glow-color);
+  transition: opacity 1s ease;
+}
+
+#echo-boot.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#boot-lines {
+  max-width: 720px;
+  width: 100%;
+  line-height: 1.4;
+  font-size: 1rem;
+  white-space: pre;
+}
+
+
+/* Optional Glitch Class */
 .glitch {
   animation: glitchAnim 1.5s infinite;
 }
-
 @keyframes glitchAnim {
   0% { transform: translate(0); }
   20% { transform: translate(-1px, 1px); }
@@ -164,7 +198,7 @@ body.echo-mode::after {
   100% { transform: translate(0); }
 }
 
-/* Blinking Cursor */
+/* Cursor Blink */
 .cursor {
   display: inline-block;
   width: 0.6ch;
@@ -172,7 +206,6 @@ body.echo-mode::after {
   background: var(--primary);
   animation: blink 1s steps(1) infinite;
 }
-
 @keyframes blink {
   0%, 50% { opacity: 1; }
   50.01%, 100% { opacity: 0; }
