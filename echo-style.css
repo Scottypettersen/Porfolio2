@@ -1,4 +1,5 @@
-:root {
+/* ====== ECHO MODE THEME VARS (ONLY APPLIES IN .echo-mode) ====== */
+body.echo-mode {
   --primary: #33ff33;
   --font-family: 'Courier New', Courier, monospace;
   --bg-color: #000;
@@ -6,14 +7,19 @@
   --glow-color: rgba(51, 255, 51, 0.4);
   --glow-strength: 2px;
   --scanline-color: rgba(0, 0, 0, 0.1);
+
+  background-color: var(--bg-color) !important;
+  color: var(--primary) !important;
+  font-family: var(--font-family) !important;
+  animation: crt-flicker 1.5s infinite ease-in-out;
 }
 
-/* CRT Scanline Overlay */
+/* ====== CRT SCANLINES & VIGNETTE ====== */
 body.echo-mode::before {
   content: "";
   position: fixed;
+  inset: 0;
   pointer-events: none;
-  top: 0; left: 0; right: 0; bottom: 0;
   background: repeating-linear-gradient(
     to bottom,
     transparent 0px,
@@ -24,49 +30,26 @@ body.echo-mode::before {
   z-index: 1000;
 }
 
-/* CRT Vignette */
 body.echo-mode::after {
   content: "";
   position: fixed;
-  pointer-events: none;
   top: -10%; left: -10%; right: -10%; bottom: -10%;
   background: radial-gradient(
     ellipse at center,
     transparent 60%,
     rgba(0, 0, 0, 0.6) 100%
   );
+  pointer-events: none;
   z-index: 999;
 }
 
-/* CRT Flicker Animation */
+/* ====== CRT FLICKER ANIMATION ====== */
 @keyframes crt-flicker {
   0%, 100% { opacity: 0.98; }
   50% { opacity: 1; }
 }
-body.echo-mode {
-  animation: crt-flicker 1.5s infinite ease-in-out;
-}
 
-/* Global Glow */
-* {
-  text-shadow: 0 0 var(--glow-strength) var(--glow-color),
-               0 0 calc(var(--glow-strength) * 2) var(--glow-color);
-}
-
-/* Whisper Overlay */
-.echo-whisper {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  font-style: italic;
-  font-size: 0.95rem;
-  font-family: var(--font-family);
-  color: var(--primary);
-  opacity: 0.85;
-  z-index: 9999;
-}
-
-/* Terminal UI */
+/* ====== TERMINAL ====== */
 #echo-terminal {
   display: none;
   position: fixed;
@@ -101,26 +84,48 @@ body.echo-mode {
   font-size: 1rem;
 }
 
-/* Echo Mode State */
-.echo-mode {
-  background-color: var(--bg-color) !important;
-  color: var(--primary) !important;
-  font-family: var(--font-family) !important;
+/* ====== BOOT SEQUENCE ====== */
+#echo-boot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: var(--bg-color);
+  color: var(--primary);
+  font-family: var(--font-family);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-shadow: 0 0 var(--glow-strength) var(--glow-color);
+  transition: opacity 1s ease;
+}
+#echo-boot.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+#boot-lines {
+  max-width: 720px;
+  width: 100%;
+  line-height: 1.4;
+  font-size: 1rem;
+  white-space: pre;
 }
 
-/* Fragment Effects */
-[data-echo] {
-  cursor: pointer;
-  border-bottom: 1px dotted var(--primary);
-}
-[data-echo].echo-found {
-  text-decoration: line-through;
-  color: var(--dim-text);
-  opacity: 0.5;
-  text-shadow: none;
+/* ====== WHISPER PROMPT ====== */
+.echo-whisper {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-style: italic;
+  font-size: 0.95rem;
+  font-family: var(--font-family);
+  color: var(--primary);
+  opacity: 0.85;
+  z-index: 9999;
 }
 
-/* Unlock Popup */
+/* ====== POPUP / PORTAL / WALL LINK ====== */
 #echo-popup {
   position: fixed;
   bottom: 0;
@@ -140,8 +145,6 @@ body.echo-mode {
   margin: auto;
   font-size: 1rem;
 }
-
-/* Portal Link */
 .echo-wall-link {
   display: inline-block;
   margin-top: 1rem;
@@ -155,37 +158,19 @@ body.echo-mode {
   border-color: var(--primary);
 }
 
-#echo-boot {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: var(--bg-color);
-  color: var(--primary);
-  font-family: var(--font-family);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  text-shadow: 0 0 var(--glow-strength) var(--glow-color);
-  transition: opacity 1s ease;
+/* ====== FRAGMENT MARKING ====== */
+[data-echo] {
+  cursor: pointer;
+  border-bottom: 1px dotted var(--primary);
+}
+[data-echo].echo-found {
+  text-decoration: line-through;
+  color: var(--dim-text);
+  opacity: 0.5;
+  text-shadow: none;
 }
 
-#echo-boot.fade-out {
-  opacity: 0;
-  pointer-events: none;
-}
-
-#boot-lines {
-  max-width: 720px;
-  width: 100%;
-  line-height: 1.4;
-  font-size: 1rem;
-  white-space: pre;
-}
-
-
-/* Optional Glitch Class */
+/* ====== GLITCH TEXT EFFECT (OPT-IN) ====== */
 .glitch {
   animation: glitchAnim 1.5s infinite;
 }
@@ -198,7 +183,7 @@ body.echo-mode {
   100% { transform: translate(0); }
 }
 
-/* Cursor Blink */
+/* ====== CURSOR BLINK ====== */
 .cursor {
   display: inline-block;
   width: 0.6ch;

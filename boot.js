@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     "Fragments missing: 3",
     "Running trace cleanup...",
     "Loading echo() interface...",
-    "Boot complete."
+    "Boot complete.",
+    "",
+    "[ SYSTEM IDLE. INPUT REQUIRED TO CONTINUE ]"
   ];
 
   const container = document.getElementById('boot-lines');
@@ -34,11 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function showContinueHint() {
     const hint = document.createElement('div');
-    hint.className = 'boot-subtle-hint';
-    hint.innerHTML = `...echo waiting<span class="cursor"></span>`;
+    hint.className = 'boot-subtle-hint glitch-flicker';
+    hint.innerHTML = `...echo waiting for input<span class="cursor flicker"></span><br><span class="boot-note">Press ENTER or tap to continue</span>`;
     container.appendChild(hint);
 
-    // Respond to keyboard or touch
     const proceed = () => {
       localStorage.setItem('echo.booted', true);
       document.removeEventListener('keydown', handleKey);

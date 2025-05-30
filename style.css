@@ -1,17 +1,17 @@
-/* ====== VARIABLES ====== */
+/* ====== CSS VARIABLES (DEFAULT MODE) ====== */
 :root {
-  /* Brand Color Palette */
-  --primary:            #FF6B00;   /* Vibrant Orange */
-  --secondary:          #0047AB;   /* Deep Blue */
-  --accent:             #FF0000;   /* Accent Red */
+  /* Brand Colors */
+  --primary:            #FF6B00;   /* Orange */
+  --secondary:          #0047AB;   /* Blue */
+  --accent:             #FF0000;   /* Red */
 
-  /* Neutrals & overlays */
+  /* Backgrounds & overlays */
   --background:         #f2f2f2;
   --dark-overlay:       rgba(0, 0, 0, 0.7);
   --card-bg:            rgba(0, 0, 0, 0.5);
   --text-shadow:        rgba(0, 0, 0, 0.5);
 
-  /* Background cross-fade */
+  /* Crossfade visuals */
   --bg1:                none;
   --bg2:                none;
   --fade-duration:      3s;
@@ -23,7 +23,7 @@
   --font-body:          'Lato', sans-serif;
   --font-display:       'Bebas Neue', cursive;
 
-  /* Header & nav sizing */
+  /* Layout & spacing */
   --header-padding-v:   2rem;
   --header-padding-h:   3rem;
   --logo-max-width:     300px;
@@ -32,13 +32,11 @@
   --nav-pad-v:          1rem;
   --nav-pad-h:          2rem;
   --nav-radius:         10px;
-
-  /* Spacing */
   --space-sm:           1rem;
   --space-md:           2rem;
 }
 
-/* ====== RESET & BOX-SIZING ====== */
+/* ====== RESET ====== */
 *,
 *::before,
 *::after {
@@ -47,7 +45,7 @@
   box-sizing: border-box;
 }
 
-/* ====== BODY & CROSS-FADE LAYERS ====== */
+/* ====== BODY & BACKGROUND FADER ====== */
 body {
   position: relative;
   min-height: 100vh;
@@ -74,19 +72,12 @@ body::before {
   background-image: var(--bg1);
   opacity: 1;
 }
-
 body::after {
   background-image: var(--bg2);
   opacity: 0;
 }
-
-body.fade::before {
-  opacity: 0;
-}
-
-body.fade::after {
-  opacity: 1;
-}
+body.fade::before { opacity: 0; }
+body.fade::after  { opacity: 1; }
 
 /* ====== PAGE WRAPPER ====== */
 .page-wrapper {
@@ -104,8 +95,6 @@ header {
   padding: var(--header-padding-v) var(--header-padding-h);
   background: var(--dark-overlay);
   backdrop-filter: blur(6px);
-  /* To pin header: uncomment below */
-  /* position: fixed; width:100%; top:0; z-index:100; */
 }
 
 header a img {
@@ -114,11 +103,10 @@ header a img {
   display: block;
 }
 
-/* ====== NAV ====== */
+/* ====== NAVIGATION ====== */
 .home-nav ul {
   display: flex;
   gap: var(--nav-gap);
-  margin: 0;
 }
 
 .home-nav li {
@@ -141,7 +129,7 @@ header a img {
   transform: translateY(-3px);
 }
 
-/* ====== QUOTE ====== */
+/* ====== QUOTE BLOCK ====== */
 #quote {
   flex: 1;
   display: flex;
@@ -183,14 +171,12 @@ footer {
   text-align: center;
   padding: var(--space-sm) 0;
   background: var(--secondary);
-  background-color: opacity:aqua;
   color: #fff;
 }
 
 footer p {
   margin: 0.25rem 0;
 }
-
 footer p:nth-child(2) {
   font-style: italic;
   font-size: 0.9rem;
@@ -200,26 +186,18 @@ footer p:nth-child(2) {
 
 /* ====== ANIMATION ====== */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
-  /* Header stacks vertically */
   header {
     flex-direction: column;
     gap: var(--space-sm);
     padding: 1.5rem 1rem;
   }
 
-  /* Nav becomes vertical list */
   .home-nav ul {
     flex-direction: column;
     gap: var(--space-sm);
@@ -233,7 +211,6 @@ footer p:nth-child(2) {
     padding: 0.8rem;
   }
 
-  /* Quote adjustments */
   #quote blockquote {
     padding: 1.5rem;
   }

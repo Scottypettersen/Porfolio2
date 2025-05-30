@@ -5,13 +5,17 @@ console.log('%cECHO: Some memories are not meant to be indexed.', 'color:#FF6B00
 const echo = {
   get: key => localStorage.getItem(`echo.${key}`),
   set: (key, val = true) => localStorage.setItem(`echo.${key}`, val),
-  hasAllFragments: () => ['fragment1', 'fragment2', 'fragment3'].every(k => echo.get(k)),
+  hasAllFragments: () =>
+    ['fragment1', 'fragment2', 'fragment3'].every(k => echo.get(k)),
+  isEnabled: () => echo.get('mode') === 'true',
+
   enableMode: () => {
-    echo.set('mode');
+    echo.set('mode', 'true');
     document.body.classList.add('echo-mode');
+
     const portal = document.getElementById('echo-portal');
     if (portal) portal.style.display = 'block';
-  }
+  },
 };
 
 // === WHISPER SYSTEM ===
@@ -20,16 +24,16 @@ function whisper(msg) {
   w.className = 'echo-whisper';
   w.innerText = msg;
   document.body.appendChild(w);
-  setTimeout(() => w.remove(), 10000); // Longer duration
+  setTimeout(() => w.remove(), 10000);
 }
 
 function whisperOnFragment(key) {
   const messages = {
-    fragment1: "ECHO: Something else hides among your work...",
-    fragment2: "ECHO: A forgotten name… perhaps on the homepage.",
-    fragment3: "ECHO: All pieces fall into place… but where do they lead?"
+    fragment1: 'ECHO: Something else hides among your work...',
+    fragment2: 'ECHO: A forgotten name… perhaps on the homepage.',
+    fragment3: 'ECHO: All pieces fall into place… but where do they lead?',
   };
-  whisper(messages[key] || "ECHO: Keep looking...");
+  whisper(messages[key] || 'ECHO: Keep looking...');
 }
 
 // === FINAL POPUP TO UNLOCK GATE ===
@@ -46,7 +50,7 @@ function showEchoPopup() {
   document.body.appendChild(popup);
 }
 
-// === FRAGMENT TRACKING WITH DELAYED REDIRECT ===
+// === FRAGMENT TRACKING ===
 function initFragmentTracking() {
   document.querySelectorAll('[data-echo]').forEach(el => {
     el.addEventListener('click', e => {
@@ -54,24 +58,23 @@ function initFragmentTracking() {
       const href = el.getAttribute('href');
 
       if (!echo.get(key)) {
-        e.preventDefault(); // Pause normal action
+        e.preventDefault();
         echo.set(key);
         el.classList.add('echo-found');
         whisperOnFragment(key);
         checkEchoStatus();
 
-        // Delay redirect if it's not a PDF
         if (href && !href.endsWith('.pdf')) {
-          setTimeout(() => window.location.href = href, 1500);
+          setTimeout(() => window.location.href = href, 1800);
         }
       }
     });
   });
 }
 
-// === STATUS CHECK ===
+// === ECHO MODE CHECK ===
 function checkEchoStatus() {
-  if (echo.get('mode')) {
+  if (echo.isEnabled()) {
     document.body.classList.add('echo-mode');
     const portal = document.getElementById('echo-portal');
     if (portal) portal.style.display = 'block';
@@ -131,7 +134,7 @@ document.addEventListener('keydown', e => {
 
 // === IDLE WHISPER ===
 setTimeout(() => {
-  if (!echo.get('mode')) whisper('ECHO: Are you still there...?');
+  if (!echo.isEnabled()) whisper('ECHO: Are you still there...?');
 }, 60000);
 
 // === INIT ===
