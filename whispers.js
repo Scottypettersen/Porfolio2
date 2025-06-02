@@ -1,8 +1,8 @@
-console.log("✅ whispers.js loaded successfully");
+console.log("✅ whispers.js loaded");
 
 // === ECHO MEMORY CORE ===
 const echo = {
-  get: (key) => localStorage.getItem(`echo.${key}`),
+  get: key => localStorage.getItem(`echo.${key}`),
   set: (key, val = true) => localStorage.setItem(`echo.${key}`, val),
   hasAllFragments: () => ['fragment1', 'fragment2', 'fragment3'].every(f => echo.get(f)),
   enableMode: () => {
@@ -11,38 +11,46 @@ const echo = {
   }
 };
 
-// === WHISPER ON FRAGMENT DISCOVERY ===
+// === WHISPER SYSTEM ===
+function whisper(message = "ECHO: ...") {
+  const w = document.createElement('div');
+  w.className = 'echo-whisper';
+  w.innerText = message;
+  document.body.appendChild(w);
+  setTimeout(() => w.remove(), 8000);
+}
+
 function whisperOnFragment(key) {
   const whispers = {
     fragment1: "ECHO: Something else hides among your work...",
     fragment2: "ECHO: A forgotten name… perhaps on the homepage.",
     fragment3: "ECHO: All pieces fall into place… but where do they lead?"
   };
-
-  const w = document.createElement('div');
-  w.className = 'echo-whisper';
-  w.innerText = whispers[key] || "ECHO: Keep looking...";
-  document.body.appendChild(w);
-  setTimeout(() => w.remove(), 8000);
+  whisper(whispers[key] || "ECHO: Keep looking...");
 }
 
-// === FRAGMENT COLLECTION + MODE CHECK ===
+// === TRACKING & UNLOCK LOGIC ===
 function initFragmentTracking() {
-  const nodes = document.querySelectorAll('[data-echo]');
-  nodes.forEach(el => {
+  document.querySelectorAll('[data-echo]').forEach(el => {
     el.addEventListener('click', () => {
       const key = el.dataset.echo;
-      if (!echo.get(key)) {
-        echo.set(key);
-        el.classList.add('echo-found');
+      if (!key || echo.get(key)) return;
+
+      echo.set(key);
+      el.classList.add('echo-found');
+
+      const customMessage = el.dataset.echoMessage;
+      if (customMessage) {
+        whisper(customMessage);
+      } else {
         whisperOnFragment(key);
-        checkEchoStatus();
       }
+
+      checkEchoStatus();
     });
   });
 }
 
-// === ECHO MODE ACTIVATION + WALL POPUP ===
 function checkEchoStatus() {
   if (echo.get('mode')) {
     document.body.classList.add('echo-mode');
@@ -50,13 +58,14 @@ function checkEchoStatus() {
   }
 
   if (echo.hasAllFragments()) {
-    echo.set('mode');
-    document.body.classList.add('echo-mode');
+    echo.enableMode();
     showEchoPopup();
   }
 }
 
 function showEchoPopup() {
+  if (document.getElementById('echo-popup')) return;
+
   const popup = document.createElement('div');
   popup.id = 'echo-popup';
   popup.innerHTML = `
@@ -71,6 +80,8 @@ function showEchoPopup() {
 
 // === TERMINAL SYSTEM ===
 function initTerminal() {
+  if (document.getElementById('echo-terminal')) return;
+
   const t = document.createElement('div');
   t.id = 'echo-terminal';
   t.innerHTML = `
@@ -116,15 +127,10 @@ document.addEventListener('keydown', e => {
 
 // === IDLE WHISPER ===
 setTimeout(() => {
-  if (!echo.get('mode')) {
-    const w = document.createElement('div');
-    w.className = 'echo-whisper';
-    w.innerText = 'ECHO: Are you still there...?';
-    document.body.appendChild(w);
-  }
+  if (!echo.get('mode')) whisper('ECHO: Are you still there...?');
 }, 60000);
 
-// === ON DOM READY ===
+// === INIT ON DOM READY ===
 document.addEventListener('DOMContentLoaded', () => {
   initFragmentTracking();
   checkEchoStatus();

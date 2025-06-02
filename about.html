@@ -7,7 +7,7 @@
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="about.css" />
-  <link rel="stylesheet" href="echo-style.css" /> <!-- ✅ Echo UI CSS -->
+  <link rel="stylesheet" href="echo-style.css" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,102 +31,49 @@
     </header>
 
     <main>
-      <!-- About section -->
       <section id="about" class="about-section">
         <div class="container">
           <h2>About Me</h2>
 
           <div class="about-flex">
-            <!-- Bio -->
             <div class="about-text">
-              <p>
-                I’m drew Kazanis, a server and a builder by nature; a wildland firefighter, photographer, a designer and I try to be a good friend.
-              </p>
+              <p>I’m Drew Kazanis, a server and a builder by nature; a wildland firefighter, photographer, a designer and I try to be a good friend.</p>
+              <p>Out of high school, I spent my summers, over 400 days, fighting wildfires on the largest fires in our nation's history, riding around on fire engines and trekking across miles of national forest. I earned a squad boss certification and was qualified to lead crews in wildfire engagements.</p>
+              <p>And honestly it was cool as shit.</p>
+              <p>During the off season I studied at WWCC, and earned my associates degree.</p>
+              <p>At the same time finding my passion for hospitality. I’ve found myself behind bars and on busy floors at some really cool places. Thousands of hours honed my “spidey senses”, my care for my fellow travelers, and meeting needs so well you have time for human connection. These thousands of hours have had a huge impact on who I am, who I’ve been, and where I’m going.</p>
+              <p>I always aim to be the person I’d want serving me.</p>
+              <p>Finding myself in EWU’s design program fueled by a lifelong love of conceptualizing, crafting, building and just making cool shit.</p>
+              <p>The kind of shit people look at and go “huh. cool”.</p>
+              <p>Gaining so many new skills that add tools to my growing toolbox of handy tools and gizmos. These tools and fundamental understandings of design give me the freedom I need to blossom as the weird creative, handy nerd that I am.</p>
+              <p>Photography, web and print design, product and concept design;</p>
+              <p>A love of manual transmissions, guitar, bullshitting about the next cool thing we should make, these are all parts of who I am.</p>
+              <p>Take a look at my work and see if you’re inspired or intrigued.</p>
 
-              <p>
-                Out of high school, I spent my summers, over 400 days, fighting wildfires on the largest fires in our natures history, riding around on fire engines and trekking across miles of national forest. I earned a squad boss certification and was qualified to lead crews in wildfire engagements.
+              <p class="make-cool-shit">
+                MAKE <span data-echo="fragment3" style="cursor: pointer; color: var(--color-secondary); text-decoration: underline;">COOL</span> SHIT
               </p>
-
-              <p>
-                And honestly it was cool as shit.
-              </p>
-
-              <p>
-                During the off season I studied at WWCC, and earned my associates degree.
-              </p>
-
-              <p>
-                At the same time finding my passion for hospitality. I’ve found myself behind bars and on busy floors at some really cool places. Thousands of hours honed my “spidey senses”, my care for my fellow travelers, and meeting needs so well you have time for human connection. These thousands of hours have had a huge impact on who I am, who I’ve been, and where I’m going.
-              </p>
-
-              <p>
-                I always aim to be the person I’d want serving me.
-              </p>
-
-              <p>
-                Finding myself in EWUs design program fueled by a lifelong love of conceptualizing, crafting, building and just making cool shit.
-              </p>
-
-              <p>
-                The kind of shit people look at it and go “huh. cool”.
-              </p>
-
-              <p>
-                Gaining so many new skills that add tools to my growing toolbox of handy tools and gizmos. These tools and fundamental understandings of design give me the freedom I need to blossom as the weird creative, handy nerd that I am.
-              </p>
-
-              <p>
-                Photography, web and print design, product and concept design;
-              </p>
-
-              <p>
-                A love of manual transmissions, guitar, bullshitting about the next cool thing we should make, these are all parts of who I am.
-              </p>
-
-              <p>
-                Take a look at my work and see if you’re inspired or intrigued.
-              </p>
-
-              <p class="make-cool-shit">MAKE COOL SHIT</p>
             </div>
 
-            <!-- Portrait Image -->
             <div class="about-photo">
-              <img
-                src="about me.jpg"
-                alt="Portrait of Drew Kazanis in a Carhartt beanie"
-                class="about-image"
-              />
+              <img src="about me.jpg" alt="Portrait of Drew Kazanis in a Carhartt beanie" class="about-image" />
             </div>
           </div>
 
           <div class="button-group">
-            <a href="NEW RESUME.pdf" target="_blank" class="resume-button">
-              View My Resume (PDF)
-            </a>
-            <a href="Coverletter.pdf" target="_blank" class="resume-button">
-              Cover Letter (PDF)
-            </a>
+            <a href="NEW RESUME.pdf" target="_blank" class="resume-button">View My Resume (PDF)</a>
+            <a href="Coverletter.pdf" target="_blank" class="resume-button">Cover Letter (PDF)</a>
           </div>
         </div>
       </section>
 
-      <!-- Gear photo gallery -->
       <section class="photo-section">
         <div class="container">
           <figure class="about-figure">
-            <img
-              src="Persona1.png"
-              alt="Drew’s gear laid out #1"
-              class="about-image"
-            />
+            <img src="Persona1.png" alt="Drew’s gear laid out #1" class="about-image" />
           </figure>
           <figure class="about-figure">
-            <img
-              src="Persona2.png"
-              alt="Drew’s gear laid out #2"
-              class="about-image"
-            />
+            <img src="Persona2.png" alt="Drew’s gear laid out #2" class="about-image" />
           </figure>
         </div>
       </section>
@@ -137,10 +84,9 @@
     </footer>
   </div>
 
-  <!-- ✅ Echo system integration -->
-  <script src="whispers.js" type="module"></script>
+  <!-- ✅ Echo system -->
+  <script src="whispers.js" defer></script>
 
-  <!-- Optional: auto-scroll on load -->
   <script>
     window.onload = function () {
       setTimeout(() => {

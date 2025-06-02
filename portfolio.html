@@ -30,16 +30,22 @@
         <div class="container">
           <h2>Portfolio</h2>
 
+          <!-- FEATURED BANNER -->
+          <div class="portfolio-banner">
+            <a href="portfolio.pdf" target="_blank">
+              <img src="banner-portfolio.png" alt="Download Portfolio PDF" />
+            </a>
+          </div>
+
           <!-- ===== PROJECT GRID ===== -->
           <div class="portfolio-grid">
-            <!-- Repeatable Project Card -->
             <div class="project-box rectangle">
               <a href="https://akazanis.myportfolio.com/" target="_blank">
                 <img src="photo.jpg" alt="Photography Portfolio">
                 <h3>Photography</h3>
                 <h4>A curated collection of my photography work</h4>
               </a>
-              <a href="https://akazanis.myportfolio.com/" target="_blank" class="btn case-study-btn">View Case Study</a>
+              <a href="https://akazanis.myportfolio.com/" target="_blank" class="btn">View Case Study</a>
             </div>
 
             <div class="project-box rectangle">
@@ -48,7 +54,7 @@
                 <h3>PDF Portfolio</h3>
                 <h4>A selection of print-ready PDF projects and case studies.</h4>
               </a>
-              <a href="pdfs.html" class="btn case-study-btn">View Case Study</a>
+              <a href="pdfs.html" target="_blank" class="btn">View Case Study</a>
             </div>
 
             <div class="project-box rectangle">
@@ -102,7 +108,7 @@
                 <h3>Brand Identity</h3>
                 <h4>A personal brand system for digital and print.</h4>
               </a>
-              <a href="https://drewkazanis.netlify.app/" target="_blank" class="btn case-study-btn">View Case Study</a>
+              <a href="https://drewkazanis.netlify.app/" target="_blank" class="btn">View Case Study</a>
             </div>
           </div>
 
@@ -114,14 +120,12 @@
                 <h3>All Apologies</h3>
               </a>
             </div>
-
             <div class="project-box square">
               <a href="https://typoonly.netlify.app/" target="_blank">
                 <img src="type only.jpg" alt="Type Only">
                 <h3>Type Only</h3>
               </a>
             </div>
-
             <div class="project-box square">
               <a href="https://github.com/Scottypettersen" target="_blank">
                 <img src="github.jpg" alt="GitHub Profile">
@@ -143,7 +147,7 @@
   <div id="pdfModal" class="modal">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
-      <iframe id="pdfViewer" src="" frameborder="0"></iframe>
+      <iframe id="pdfViewer" src=""></iframe>
     </div>
   </div>
 
@@ -153,10 +157,22 @@
     document.querySelectorAll('.case-study-btn').forEach(btn => {
       btn.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href.endsWith('.pdf')) {
+        if (href && href.endsWith('.pdf')) {
           e.preventDefault();
-          document.getElementById('pdfViewer').src = href;
-          document.getElementById('pdfModal').style.display = 'flex';
+          try {
+            const viewer = document.getElementById('pdfViewer');
+            viewer.src = href;
+            document.getElementById('pdfModal').style.display = 'flex';
+            setTimeout(() => {
+              if (!viewer.contentDocument && !viewer.contentWindow.length) {
+                window.open(href, '_blank');
+                document.getElementById('pdfModal').style.display = 'none';
+                viewer.src = '';
+              }
+            }, 2000);
+          } catch (err) {
+            window.open(href, '_blank');
+          }
         }
       });
     });
@@ -169,6 +185,13 @@
     document.getElementById('pdfModal').addEventListener('click', (e) => {
       if (e.target === e.currentTarget) {
         e.currentTarget.style.display = 'none';
+        document.getElementById('pdfViewer').src = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('pdfModal').style.display = 'none';
         document.getElementById('pdfViewer').src = '';
       }
     });
