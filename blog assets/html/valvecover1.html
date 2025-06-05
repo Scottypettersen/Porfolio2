@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valve Cover – Paint</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../blogcss/blog.css" />
+  <link rel="stylesheet" href="../../echo-style.css" />
+
+  <style>
+    :root {
+      --radius: 10px;
+      --shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.75rem;
+      color: var(--color-light);
+      text-align: center;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--color-light);
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+
+    .milanote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 1rem;
+    }
+
+    .milanote-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.25s ease;
+    }
+
+    .milanote-grid img:hover {
+      transform: scale(1.015);
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+      }
+
+      .milanote-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="home">
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header>
+      <a href="../../index.html">
+        <img src="../../Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="../../portfolio.html">PROJECTS</a></li>
+          <li><a href="../../about.html">ABOUT</a></li>
+          <li><a href="../../contact.html">CONTACT</a></li>
+          <li><a href="../../blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="board-wrapper">
+        <h2>VALVE COVER PAINT</h2>
+        <p class="intro-text">
+          Stripping, prepping, masking, and painting the aluminum M54 valve cover. This one took some love — but the result? OEM+ meets hot rod vibes.
+        </p>
+        <div class="milanote-grid">
+          <img src="../images/valvecoverpics/valveraw.jpeg" alt="Raw valve cover" />
+          <img src="../images/valvecoverpics/vc2.jpeg" alt="Masking gasket channels" />
+          <img src="../images/valvecoverpics/vc5.jpeg" alt="First coats down" />
+          <img src="../images/valvecoverpics/vc6.jpeg" alt="Mid-process drying shot" />
+          <img src="../images/valvecoverpics/vc7.jpeg" alt="Gloss and texture applied" />
+          <img src="../images/valvecoverpics/vc8.jpeg" alt="Closeup of lettering and surface" />
+          <img src="../images/valvecoverpics/vc9.jpeg" alt="Finished and drying" />
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+        <span data-echo="fragment2">MAKE COOL SHIT.</span>
+        <div id="echo-portal" style="display: none; text-align: center; margin-top: 1rem;">
+          <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+        </div>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../background.js"></script>
+  <script src="../../echo-script.js" type="module"></script>
+  <script src="../../boot.js" defer></script>
+  <script src="../../whispers.js" type="module"></script>
+</body>
+</html>
