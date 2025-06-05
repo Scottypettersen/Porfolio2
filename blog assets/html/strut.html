@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Strut Swap</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../blogcss/blog.css" />
+  <link rel="stylesheet" href="../../echo-style.css" />
+
+  <style>
+    :root {
+      --radius: 10px;
+      --shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.75rem;
+      color: var(--color-light);
+      text-align: center;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--color-light);
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+
+    .milanote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 1rem;
+    }
+
+    .milanote-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.25s ease;
+    }
+
+    .milanote-grid img:hover {
+      transform: scale(1.015);
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+      }
+
+      .milanote-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="home">
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header>
+      <a href="../../index.html">
+        <img src="../../Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="../../portfolio.html">PROJECTS</a></li>
+          <li><a href="../../about.html">ABOUT</a></li>
+          <li><a href="../../contact.html">CONTACT</a></li>
+          <li><a href="../../blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="board-wrapper">
+        <h2>FRONT STRUT SWAP</h2>
+        <p class="intro-text">
+          Swapped out the tired front struts with fresh Bilstein B4s and KYB mounts. Good help, better beer, and a car that finally sits and rides like it should.
+        </p>
+        <div class="milanote-grid">
+          <img src="../images/strut/strut1.jpg" alt="Bilstein strut parts unboxed" />
+          <img src="../images/strut/strut3.jpg" alt="Assembly in progress on bench" />
+          <img src="../images/strut/strut4.jpg" alt="Compressing springs for install" />
+          <img src="../images/strut/strut5.jpg" alt="Removing worn out struts from E46" />
+          <img src="../images/strut/strut6.jpg" alt="Installing new mounts and hardware" />
+          <img src="../images/strut/strut7.jpg" alt="Final torquing and prep" />
+          <img src="../images/strut/strut8.jpg" alt="Chilling by the work van after day 1" />
+          <img src="../images/strut/strut9.jpg" alt="Photo with the crew" />
+          <img src="../images/strut/strut10.jpg" alt="Shot of truck and car side-by-side" />
+          <img src="../images/strut/strut11.jpg" alt="E46 raised and resting on stands" />
+          <img src="../images/strut/strut13.jpg" alt="New struts installed and lowered" />
+          <img src="../images/strut/strut14.jpg" alt="Closeup of the finished strut and wheel fitment" />
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+        <span data-echo="fragment2">MAKE COOL SHIT.</span>
+        <div id="echo-portal" style="display: none; text-align: center; margin-top: 1rem;">
+          <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+        </div>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../background.js"></script>
+  <script src="../../echo-script.js" type="module"></script>
+  <script src="../../boot.js" defer></script>
+  <script src="../../whispers.js" type="module"></script>
+</body>
+</html>
