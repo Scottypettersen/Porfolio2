@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOYOTA — Before</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../blogcss/blog.css" />
+  <link rel="stylesheet" href="../../echo-style.css" />
+
+  <style>
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.75rem;
+      color: white;
+      margin-bottom: 0.75rem;
+    }
+
+    .intro-text {
+      max-width: 800px;
+      text-align: center;
+      margin: 0 auto 2rem;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: white;
+      padding: 0 1rem;
+    }
+
+    .milanote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .milanote-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      transition: transform 0.2s ease;
+    }
+
+    .milanote-grid img:hover {
+      transform: scale(1.015);
+    }
+  </style>
+</head>
+
+<body class="home">
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header>
+      <a href="../../index.html">
+        <img src="../../Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="../../portfolio.html">PROJECTS</a></li>
+          <li><a href="../../about.html">ABOUT</a></li>
+          <li><a href="../../contact.html">CONTACT</a></li>
+          <li><a href="../../blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <h2>TOYOTA – BEFORE</h2>
+      <p class="intro-text">A visual walkthrough of how this Toyota truck looked the day it came home. Dirt, dents, and decades of life.</p>
+      <div class="milanote-grid">
+        <img src="../images/toyota/TOYOTAB41.jpg" alt="Front 3/4 view" />
+        <img src="../images/toyota/TOYOTAB42.jpg" alt="Side profile" />
+        <img src="../images/toyota/TOYOTAB43.jpg" alt="Truck bed" />
+        <img src="../images/toyota/TOYOTAB44.jpg" alt="Interior from open door" />
+        <img src="../images/toyota/TOYOTAB45.jpg" alt="Driver footwell and seat" />
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+        <span data-echo="fragment3">Make cool shit.</span>
+        <div id="echo-portal" style="display: none; text-align: center; margin-top: 1rem;">
+          <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+        </div>
+      </p>
+    </footer>
+  </div>
+
+  <!-- JS -->
+  <script src="../../background.js"></script>
+  <script src="../../echo-script.js" type="module"></script>
+  <script src="../../boot.js" defer></script>
+  <script src="../../whispers.js" type="module"></script>
+</body>
+</html>
