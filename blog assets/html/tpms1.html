@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESP32 TPMS Journey</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../echo-style.css" />
+</head>
+
+<body class="home">
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header>
+      <a href="../../index.html">
+        <img src="../../Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="../../portfolio.html">PROJECTS</a></li>
+          <li><a href="../../about.html">ABOUT</a></li>
+          <li><a href="../../contact.html">CONTACT</a></li>
+          <li><a href="../../blog assets/blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="board-wrapper">
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5699.jpeg" alt="ESP32 Kit Laid Out" /><p>Began learning about Arduino and ESP32</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5703.jpeg" alt="ESP32 Module Closeup" /><p>Pins needed: GND, Pn 21, 23, 3v3</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5704.jpeg" alt="Module on Breadboard" /><p>Initial breadboard setup</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5705.jpeg" alt="OLED Next to Module" /><p>Planning OLED display integration</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5706.jpeg" alt="Breadboard Held in Hand" /><p>Testing fit and orientation</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5707.jpeg" alt="Connected to Mac" /><p>Connected to dev environment</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5709.jpeg" alt="Backside of OLED" /><p>Checked pinouts and I2C address</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5710.jpeg" alt="OLED Powered Up" /><p>Initial power-on test</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5715.jpeg" alt="Data Display Working" /><p>Displaying BLE data to screen</p></div>
+        <div class="card"><img src="../../blog assets/images/tpms1/IMG_5716.jpeg" alt="OLED Data Layout Final" /><p>Final layout: BLE MACs + PSI</p></div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+        <span data-echo="fragment3">Make cool shit.</span>
+        <div id="echo-portal" style="display: none; text-align: center; margin-top: 1rem;">
+          <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+        </div>
+      </p>
+    </footer>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="../../background.js"></script>
+  <script src="../../echo-script.js" type="module"></script>
+  <script src="../../boot.js" defer></script>
+  <script src="../../whispers.js" type="module"></script>
+</body>
+</html>

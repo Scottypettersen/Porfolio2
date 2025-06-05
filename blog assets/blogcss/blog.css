@@ -1,0 +1,198 @@
+/* ===============================
+   GLOBAL VARIABLES
+   =============================== */
+:root {
+  --color-primary:     #FF6B00;
+  --color-secondary:   #0047AB;
+  --color-accent:      #FF0000;
+
+  --color-bg:          #f2f2f2;
+  --color-dark:        #111;
+  --color-light:       #fff;
+
+  --overlay-dark:      rgba(0, 0, 0, 0.7);
+  --card-bg:           rgba(255, 255, 255, 0.95);
+  --shadow:            rgba(0, 0, 0, 0.2);
+
+  --font-body:         'Lato', sans-serif;
+  --font-display:      'Bebas Neue', cursive;
+
+  --space-xs:          0.5rem;
+  --space-sm:          1rem;
+  --space-md:          2rem;
+  --space-lg:          3rem;
+
+  --radius:            10px;
+  --max-width:         1200px;
+}
+
+/* ===============================
+   RESET
+   =============================== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   BODY & BACKGROUND
+   =============================== */
+body {
+  font-family: var(--font-body);
+  color: var(--color-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--color-bg);
+  background-image: url("/backgrounds/portfolio5.jpeg"); /* Corrected path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  line-height: 1.6;
+}
+
+/* ===============================
+   LAYOUT
+   =============================== */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===============================
+   HEADER
+   =============================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--overlay-dark);
+  backdrop-filter: blur(6px);
+}
+
+header img {
+  max-width: 280px;
+  height: auto;
+  display: block;
+}
+
+/* ===============================
+   NAVIGATION
+   =============================== */
+.home-nav ul {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.home-nav a {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius);
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.home-nav a:hover {
+  background-color: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   BLOG PREVIEW CARDS
+   =============================== */
+.board-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px var(--shadow);
+  max-width: 320px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+}
+
+.card p {
+  padding: var(--space-sm);
+  font-size: 1rem;
+  color: var(--color-dark);
+  line-height: 1.5;
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+footer {
+  background-color: var(--color-secondary);
+  color: var(--color-light);
+  text-align: center;
+  padding: var(--space-sm) 0;
+  margin-top: auto;
+}
+
+footer p {
+  margin: var(--space-xs) 0;
+  font-size: 0.9rem;
+}
+
+footer p:nth-child(2) {
+  color: var(--color-primary);
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ===============================
+   RESPONSIVE STYLES
+   =============================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    text-align: center;
+  }
+
+  .home-nav ul {
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+  }
+
+  .home-nav a {
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+    padding: var(--space-sm);
+  }
+
+  .board-wrapper {
+    padding: var(--space-md);
+    gap: var(--space-sm);
+  }
+}

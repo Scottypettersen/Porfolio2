@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MS43+ Bench Tool Concept</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../echo-style.css" />
+</head>
+<body class="home">
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header>
+      <a href="../../index.html">
+        <img src="../../Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="../../portfolio.html">PROJECTS</a></li>
+          <li><a href="../../about.html">ABOUT</a></li>
+          <li><a href="../../contact.html">CONTACT</a></li>
+          <li><a href="../../blog assets/blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section class="board-wrapper">
+        <div class="card">
+          <img src="../../blog assets/images/ms43post/IMG_5401-kxMJr.jpg" alt="MS43+ pinout map sketch" />
+          <p>Boot-mode circuit sketch for MS43+ with ground, ignition, OBD, and toggle layout.</p>
+        </div>
+        <div class="card">
+          <img src="../../blog assets/images/ms43post/IMG_5403-7gTtB.jpeg" alt="Wiring tools and solder station" />
+          <p>Workbench mid-build: soldering, wiring, breakout board planning in progress.</p>
+        </div>
+        <div class="card">
+          <img src="../../blog assets/images/ms43post/IMG_5407.jpeg" alt="Close-up of terminal strips and labels" />
+          <p>Terminal strip labeling: ground, ignition, boot, fuse, and K-line prep.</p>
+        </div>
+      </section>
+
+      <section class="board-wrapper">
+        <div class="card" style="max-width: 800px;">
+          <img src="../../blog assets/images/ms43post/intent-grid.png" alt="Project intent and design notes" />
+          <p>
+            <strong>Intent:</strong> Create a stable standalone flashing, coding, and recovery bench for MS43. Simulates 12V constant, ignition, shared ground, and diagnostic line.<br><br>
+            <strong>Design:</strong> Terminal blocks, front-facing switches, OBD2 port, and 3D printed panel walls.<br><br>
+            <strong>Key Systems:</strong> 12V constant + fuse, ignition toggle, shared ground, K-line signal, boot button, LED indicators.
+          </p>
+        </div>
+      </section>
+
+      <section class="board-wrapper">
+        <div class="card" style="max-width: 800px;">
+          <img src="../../blog assets/images/ms43post/market-gap.png" alt="ECU tool market research" />
+          <p>
+            Researching tool gaps in the ECU tuning space — identifying the need for a structured MS43-specific solution outside vehicle wiring. Commercial tools lack BMW-specific fidelity.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+        <span data-echo="fragment3">Make cool shit.</span>
+        <div id="echo-portal" style="display: none; text-align: center; margin-top: 1rem;">
+          <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+        </div>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../background.js"></script>
+  <script src="../../echo-script.js" type="module"></script>
+  <script src="../../boot.js" defer></script>
+  <script src="../../whispers.js" type="module"></script>
+</body>
+</html>
