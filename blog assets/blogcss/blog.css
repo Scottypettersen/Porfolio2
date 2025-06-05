@@ -121,7 +121,7 @@ header img {
   border-radius: var(--radius);
   box-shadow: 0 4px 12px var(--shadow);
   max-width: 320px;
-  width: 100%;
+  width: 100%; 
   overflow: hidden;
   display: flex;
   flex-direction: column;

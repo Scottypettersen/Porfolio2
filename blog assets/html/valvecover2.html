@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valve Cover – Install</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+
+  <!-- External Styles -->
+  <link rel="stylesheet" href="../blogcss/blog.css" />
+  <link rel="stylesheet" href="../../echo-style.css" />
+
+  <!-- Page Styles -->
+  <style>
+    :root {
+      --radius: 10px;
+      --shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.75rem;
+      color: var(--color-light);
+      text-align: center;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      text-align: center;
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--color-light);
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+
+    .milanote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 1rem;
+    }
+
+    .milanote-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: 0 4px 12px var(--shadow);
+      transition: transform 0.25s ease;
+    }
+
+    .milanote-grid img:hover {
+      transform: scale(1.015);
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+      }
+
+      .intro-text {
+        font-size: 1rem;
+      }
+
+      .milanote-grid {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="home">
+  <div class="page-wrapper">
+    <!-- HEADER -->
+    <header>
+      <a href="../../index.html">
+        <img src="../../Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="../../portfolio.html">PROJECTS</a></li>
+          <li><a href="../../about.html">ABOUT</a></li>
+          <li><a href="../../contact.html">CONTACT</a></li>
+          <li><a href="../../blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <section class="board-wrapper">
+        <h2>VALVE COVER INSTALL</h2>
+        <p class="intro-text">
+          A full breakdown of the install process for the M54 valve cover: cleaning, torquing, wiring, beer, and a whole lot of care.
+        </p>
+        <div class="milanote-grid">
+          <img src="../images/valvecoverpics2/vc3-1.jpg" alt="Timing chain revealed" />
+          <img src="../images/valvecoverpics2/vc3-2.jpg" alt="First test fit of new cover" />
+          <img src="../images/valvecoverpics2/vc3-4.jpg" alt="Dad routing harness" />
+          <img src="../images/valvecoverpics2/vc3-5.jpg" alt="Beer and bolts moment" />
+          <img src="../images/valvecoverpics2/vc3-7.jpg" alt="Tightening the final bolt" />
+          <img src="../images/valvecoverpics2/vc3-8.jpg" alt="Front end half reassembled" />
+          <img src="../images/valvecoverpics2/vc3-9.jpg" alt="Full bay shot in front of garage" />
+          <img src="../images/valvecoverpics2/vc3-11.jpg" alt="Almost complete underhood shot" />
+          <img src="../images/valvecoverpics2/vcv3-10.jpg" alt="Final cleaned-up valve cover close-up" />
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p style="margin-top: 0.5rem; font-style: italic; font-size: 0.9rem; opacity: 0.7;">
+        <span data-echo="fragment3">Make cool shit.</span>
+        <div id="echo-portal" style="display: none; text-align: center; margin-top: 1rem;">
+          <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+        </div>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../background.js"></script>
+  <script src="../../echo-script.js" type="module"></script>
+  <script src="../../boot.js" defer></script>
+  <script src="../../whispers.js" type="module"></script>
+</body>
+</html>
