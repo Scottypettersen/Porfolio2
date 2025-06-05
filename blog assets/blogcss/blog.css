@@ -1,18 +1,15 @@
-/* ===============================
-   GLOBAL VARIABLES
-   =============================== */
 :root {
   --color-primary:     #FF6B00;
   --color-secondary:   #0047AB;
   --color-accent:      #FF0000;
 
-  --color-bg:          #f2f2f2;
-  --color-dark:        #111;
+  --color-bg:          #000;
   --color-light:       #fff;
+  --color-dark:        #111;
 
   --overlay-dark:      rgba(0, 0, 0, 0.7);
-  --card-bg:           rgba(255, 255, 255, 0.95);
-  --shadow:            rgba(0, 0, 0, 0.2);
+  --card-bg:           rgba(255, 255, 255, 0.92);
+  --text-shadow:       rgba(0, 0, 0, 0.4);
 
   --font-body:         'Lato', sans-serif;
   --font-display:      'Bebas Neue', cursive;
@@ -22,106 +19,90 @@
   --space-md:          2rem;
   --space-lg:          3rem;
 
-  --radius:            10px;
+  --radius:            12px;
   --max-width:         1200px;
 }
 
-/* ===============================
-   RESET
-   =============================== */
-*,
-*::before,
-*::after {
+/* RESET */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ===============================
-   BODY & BACKGROUND
-   =============================== */
+/* BASE */
 body {
   font-family: var(--font-body);
   color: var(--color-light);
   min-height: 100vh;
-  overflow-x: hidden;
   background-color: var(--color-bg);
-  background-image: url("/backgrounds/portfolio5.jpeg"); /* Corrected path */
+  background-image: url("../backgrounds/portfolio5.jpeg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
-/* ===============================
-   LAYOUT
-   =============================== */
 .page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* ===============================
-   HEADER
-   =============================== */
+/* HEADER */
 header {
+  background: var(--overlay-dark);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
-  background: var(--overlay-dark);
-  backdrop-filter: blur(6px);
 }
 
 header img {
-  max-width: 280px;
+  max-width: 240px;
   height: auto;
-  display: block;
 }
 
-/* ===============================
-   NAVIGATION
-   =============================== */
+/* NAV */
 .home-nav ul {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   list-style: none;
 }
 
 .home-nav a {
   font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-  padding: var(--space-xs) var(--space-md);
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: var(--radius);
-  background-color: var(--color-accent);
+  background: var(--color-accent);
   color: var(--color-light);
   text-decoration: none;
   transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .home-nav a:hover {
-  background-color: var(--color-secondary);
+  background: var(--color-secondary);
   transform: translateY(-2px);
 }
 
-/* ===============================
-   BLOG PREVIEW CARDS
-   =============================== */
+/* BLOG GRID */
 .board-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-md);
-  padding: var(--space-lg);
+  max-width: var(--max-width);
+  margin: var(--space-lg) auto;
+  padding: var(--space-md);
 }
 
+/* BLOG CARDS */
 .card {
   background: var(--card-bg);
   border-radius: var(--radius);
-  box-shadow: 0 4px 12px var(--shadow);
-  max-width: 320px;
-  width: 100%; 
+  box-shadow: 0 6px 20px var(--text-shadow);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -130,12 +111,13 @@ header img {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .card img {
   width: 100%;
   display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .card p {
@@ -145,19 +127,24 @@ header img {
   line-height: 1.5;
 }
 
-/* ===============================
-   FOOTER
-   =============================== */
-footer {
-  background-color: var(--color-secondary);
-  color: var(--color-light);
-  text-align: center;
-  padding: var(--space-sm) 0;
-  margin-top: auto;
+.card strong a {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--color-secondary);
+  text-decoration: none;
 }
 
-footer p {
-  margin: var(--space-xs) 0;
+.card strong a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  background: var(--color-secondary);
+  color: var(--color-light);
+  text-align: center;
+  padding: var(--space-sm);
+  margin-top: auto;
   font-size: 0.9rem;
 }
 
@@ -167,32 +154,28 @@ footer p:nth-child(2) {
   opacity: 0.7;
 }
 
-/* ===============================
-   RESPONSIVE STYLES
-   =============================== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
     gap: var(--space-sm);
-    padding: var(--space-md);
     text-align: center;
   }
 
   .home-nav ul {
     flex-direction: column;
-    gap: var(--space-sm);
     width: 100%;
+    gap: var(--space-xs);
   }
 
   .home-nav a {
-    font-size: 1.5rem;
     width: 100%;
+    max-width: 240px;
     text-align: center;
-    padding: var(--space-sm);
   }
 
   .board-wrapper {
-    padding: var(--space-md);
+    padding: var(--space-sm);
     gap: var(--space-sm);
   }
 }

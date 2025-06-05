@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glass, Light & Shadow – Andrew Kazanis</title>
+
+  <!-- Fonts + Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="stylesheet" href="../blogcss/blog.css" />
+  <link rel="stylesheet" href="../echo-style.css" />
+
+  <style>
+    main {
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      text-align: center;
+      color: var(--primary, #ff6b00);
+    }
+
+    .intro {
+      max-width: 800px;
+      margin: 2rem auto;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      font-family: 'Lato', sans-serif;
+      color: var(--color-text, #fff);
+      text-align: center;
+    }
+
+    .milanote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .milanote-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease;
+    }
+
+    .milanote-grid img:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 2rem 1rem;
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 2rem;
+      }
+
+      .intro {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="home">
+  <div class="page-wrapper">
+
+    <!-- HEADER -->
+    <header>
+      <a href="../../index.html">
+        <img src="../../Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+      <nav class="home-nav">
+        <ul>
+          <li><a href="../../portfolio.html">PROJECTS</a></li>
+          <li><a href="../../about.html">ABOUT</a></li>
+          <li><a href="../../contact.html">CONTACT</a></li>
+          <li><a href="../../blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <h2>Glass, Light & Shadow</h2>
+      <div class="intro">
+        A sculptural lighting study using bottles as subjects.<br><br>
+        These images were created by playing with ISO, aperture, and diffusion in a home studio environment — shifting between moods: editorial, surreal, and cinematic. Each photo explores transparency, distortion, and reflection. Light wraps. Shape fades. Nothing sits still.<br><br>
+        Sometimes it’s not about the subject — it’s what the subject bends.
+      </div>
+
+      <div class="milanote-grid">
+        <img src="../images/bottles/CLASSBOTTLES2.jpg" alt="Three-bottle composition with warm side lighting" />
+        <img src="../images/bottles/CLASSBOTTLES3.jpg" alt="Human silhouette and bottle against amber-violet backdrop" />
+        <img src="../images/bottles/CLASSBOTTLES4.jpg" alt="Front-facing bottles with high-key lighting and sharp detail" />
+        <img src="../images/bottles/CLASSBOTTLES5.jpg" alt="Classic golden-hour bottle lineup with reflections" />
+        <img src="../images/bottles/CLASSBOTTLES6.jpg" alt="Cool-toned bottles with blue diffusion and glass glow" />
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+      <p><span data-echo="fragment3">Make cool shit.</span></p>
+      <div id="echo-portal" style="display: none; text-align: center; margin-top: 1rem;">
+        <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../../background.js"></script>
+  <script src="../../echo-script.js" type="module"></script>
+  <script src="../../boot.js" defer></script>
+  <script src="../../whispers.js" type="module"></script>
+</body>
+</html>
