@@ -1,15 +1,18 @@
-/* ===== FINAL PORTFOLIO.CSS ===== */
-
+/* ===== CLEAN + CONSISTENT PORTFOLIO.CSS ===== */
 :root {
-  --color-text:        #fff;
-  --color-bg:          #000;
-  --color-overlay:     rgba(0, 0, 0, 0.6);
   --color-primary:     #FF6B00;
   --color-secondary:   #0047AB;
   --color-accent:      #FF0000;
-  --max-content-width: 1200px;
-  --gutter:            1rem;
+  --color-bg:          #000;
+  --color-text:        #fff;
+  --color-overlay:     rgba(0, 0, 0, 0.6);
+
   --radius:            10px;
+  --gutter:            1rem;
+  --max-width:         1200px;
+
+  --font-body:         'Lato', sans-serif;
+  --font-display:      'Bebas Neue', sans-serif;
 }
 
 *, *::before, *::after {
@@ -25,8 +28,10 @@ body {
   background-position: center;
   background-attachment: fixed;
   color: var(--color-text);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .page-wrapper {
@@ -35,29 +40,17 @@ body {
   min-height: 100vh;
 }
 
+/* ===== HEADER ===== */
 header {
-  background: rgba(0, 0, 0, 0.2); /* subtle, readable */
-  backdrop-filter: blur(3px);
+  background: var(--color-overlay);
+  backdrop-filter: blur(6px);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  padding: 1.25rem var(--gutter);
-  gap: 1rem;
-  text-align: center;
+  padding: var(--gutter);
 }
 
-
-
-@media (min-width: 601px) {
-  header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-  }
-}
-
-.logo-img {
+header img {
   max-width: 180px;
   height: auto;
   display: block;
@@ -66,62 +59,51 @@ header {
 nav ul.nav-links {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
+  flex-direction: row;
+  gap: var(--gutter);
   padding: 0;
-}
-
-@media (min-width: 601px) {
-  nav ul.nav-links {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--gutter);
-  }
+  margin: 0;
+  align-items: center;
 }
 
 nav a {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  padding: 0.75rem 2rem;
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  padding: 0.75rem 1.5rem;
   background: var(--color-accent);
   color: var(--color-text);
   border-radius: var(--radius);
-  text-transform: uppercase;
   text-decoration: none;
+  text-transform: uppercase;
   transition: background 0.2s, transform 0.2s;
-  text-align: center;
   display: block;
+  text-align: center;
 }
 
 nav a:hover {
   background: var(--color-secondary);
   transform: translateY(-2px);
 }
-.portfolio-banner {
-  margin-bottom: 2rem;
-  width: 100%;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
-  transition: transform 0.3s ease;
-}
 
-.portfolio-banner:hover {
-  transform: scale(1.02);
-}
-
-.portfolio-banner img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius);
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: var(--gutter);
+    text-align: center;
+  }
+  nav ul.nav-links {
+    flex-direction: column;
+  }
+  nav a {
+    width: 100%;
+    max-width: 240px;
+  }
 }
 
 /* ===== CONTAINER ===== */
 .container {
-  width: min(95%, var(--max-content-width));
-  margin-inline: auto;
+  width: min(95%, var(--max-width));
+  margin: 2rem auto;
   padding: calc(var(--gutter) * 1.5);
   background: var(--color-overlay);
   backdrop-filter: blur(8px);
@@ -131,139 +113,84 @@ nav a:hover {
 }
 
 h2 {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   color: var(--color-primary);
   margin-bottom: var(--gutter);
 }
 
-/* ===== PORTFOLIO GRID ===== */
-.portfolio-grid {
+/* ===== GRID STYLES ===== */
+.portfolio-grid,
+.square-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
-}
-
-.project-box.rectangle {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.project-box.rectangle:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-}
-
-.project-box.rectangle img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.project-box.rectangle h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.4rem, 3vw, 1.8rem);
-  color: var(--color-text);
-  padding: 0.5rem 1rem 0;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-}
-
-.project-box.rectangle h4 {
-  font-family: 'Lato', sans-serif;
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  font-weight: 300;
-  color: var(--color-text);
-  opacity: 0.85;
-  padding: 0 1rem 1rem;
-}
-
-.case-study-btn {
-  margin: 0.5rem auto 1rem;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  border: none;
-  border-radius: var(--radius);
-  text-decoration: none;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.case-study-btn:hover {
-  background-color: var(--color-primary);
-  transform: scale(1.05);
-}
-
-/* ===== BUTTON STYLES ===== */
-.btn,
-.case-study-btn {
-  margin: 0.5rem auto 1rem;
-  padding: 0.6rem 1.5rem;
-  font-size: 1rem;
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  border: none;
-  border-radius: var(--radius);
-  text-decoration: none;
-  transition: background-color 0.2s, transform 0.2s;
-  display: inline-block;
-  text-align: center;
-  font-family: 'Bebas Neue', sans-serif;
-  text-transform: uppercase;
-}
-
-.btn:hover,
-.case-study-btn:hover {
-  background-color: var(--color-primary);
-  transform: scale(1.05);
-}
-
-
-/* ===== SQUARE GRID ===== */
-.square-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
   justify-content: center;
 }
 
-.project-box.square {
-  width: 200px;
-  aspect-ratio: 1;
-  background-color: rgba(0,0,0,0.5);
+.project-box {
+  background: rgba(0, 0, 0, 0.5);
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.project-box.square:hover {
+.project-box:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 }
 
-.project-box.square img {
+.project-box img {
   width: 100%;
   height: auto;
 }
 
-.project-box.square h3 {
-  margin: 0.75rem 0;
+.project-box h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
   color: var(--color-text);
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  margin: 0.75rem 0 0.25rem;
 }
-/* ===== PDF MODAL ===== */
+
+.project-box h4 {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-text);
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* ===== BUTTONS ===== */
+.btn,
+.case-study-btn {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0.6rem 1.5rem;
+  background: var(--color-accent);
+  color: var(--color-text);
+  border: none;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+  margin: 0.5rem auto 1rem;
+}
+
+.btn:hover,
+.case-study-btn:hover {
+  background: var(--color-primary);
+  transform: scale(1.05);
+}
+
+/* ===== MODAL ===== */
 .modal {
   display: none;
   position: fixed;
@@ -289,7 +216,6 @@ h2 {
   width: 100%;
   height: 100%;
   border: none;
-  background: #000;
 }
 
 .close-btn {
@@ -310,24 +236,4 @@ footer {
   margin-top: auto;
   font-size: 0.9rem;
   color: var(--color-text);
-}
-
-/* ===== MOBILE TUNING ===== */
-@media (max-width: 600px) {
-  .logo-img {
-    max-width: 140px;
-  }
-
-  nav a {
-    width: 100%;
-    max-width: 220px;
-  }
-
-  .project-box.square {
-    width: 100%;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
 }
