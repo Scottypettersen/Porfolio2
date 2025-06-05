@@ -13,11 +13,104 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
-</head>
 
+  <style>
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .home-nav ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .home-nav li a {
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      background: black;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+    }
+
+    .home-nav li a:hover {
+      background: #ff6b00;
+    }
+
+    @media (max-width: 600px) {
+      .home-nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      .home-nav li a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    .board-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 1rem;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 107, 0, 0.4);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      color: #000;
+    }
+
+    .card a {
+      color: #330066;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
   <div class="page-wrapper">
-    <!-- HEADER -->
     <header>
       <a href="../index.html">
         <img src="../Kazanis red.png" alt="Andrew Kazanis Logo" />
@@ -32,94 +125,70 @@
       </nav>
     </header>
 
-    <!-- BLOG POSTS -->
     <main>
       <section class="board-wrapper">
-        <!-- Post 1 -->
         <div class="card">
           <a href="../blog assets/html/tpms1.html">
             <img src="../blog assets/images/tpms1/IMG_5715.jpeg" alt="TPMS OLED BLE demo" />
           </a>
-          <p>
-            <strong><a href="../blog assets/html/tpms1.html">ESP32 TPMS Journey</a></strong><br />
-            Learning the basics, wiring, OLED output, and BLE MAC scanning.
-          </p>
+          <p><strong><a href="../blog assets/html/tpms1.html">ESP32 TPMS Journey</a></strong><br />Learning the basics, wiring, OLED output, and BLE MAC scanning.</p>
         </div>
 
-        <!-- Post 2 -->
         <div class="card">
           <a href="../blog assets/html/ms431.html">
             <img src="../blog assets/images/ms43post/IMG_5401-kxMJr.jpg" alt="MS43+ boot mode wiring sketch" />
           </a>
-          <p>
-            <strong><a href="../blog assets/html/ms431.html">MS43+ Bench Tool Build</a></strong><br />
-            Building a modular DME flashing bench: wiring, research, and recovery prep.
-          </p>
+          <p><strong><a href="../blog assets/html/ms431.html">MS43+ Bench Tool Build</a></strong><br />Building a modular DME flashing bench: wiring, research, and recovery prep.</p>
         </div>
 
-        <!-- Post 3 – Valve Cover Paintjob -->
         <div class="card">
           <a href="../blog assets/html/valvecover1.html">
             <img src="../blog assets/images/valvecoverpics/vc2.jpeg" alt="Painted Valve Cover" />
           </a>
-          <p>
-            <strong><a href="../blog assets/html/valvecover1.html">Valve Cover Paintjob</a></strong><br />
-            Prepping, spraying, and finishing an M54 valve cover with integrated CCV.
-          </p>
+          <p><strong><a href="../blog assets/html/valvecover1.html">Valve Cover Paintjob</a></strong><br />Prepping, spraying, and finishing an M54 valve cover with integrated CCV.</p>
         </div>
 
-        <!-- Post 4 – Valve Cover Install -->
         <div class="card">
           <a href="../blog assets/html/valvecover2.html">
             <img src="../blog assets/images/valvecoverpics2/vc3-1.jpg" alt="Valve Cover Install" />
           </a>
-          <p>
-            <strong><a href="../blog assets/html/valvecover2.html">Valve Cover Install</a></strong><br />
-            Full breakdown of the install process with timing chain inspection, torque sequence, and finishing shots.
-          </p>
+          <p><strong><a href="../blog assets/html/valvecover2.html">Valve Cover Install</a></strong><br />Full breakdown of the install process with timing chain inspection, torque sequence, and finishing shots.</p>
+        </div>
 
-          
+        <div class="card">
+          <a href="../blog assets/html/toyota.html">
+            <img src="../blog assets/images/toyota/TOYOTAB41.jpg" alt="Toyota Project Start" />
+          </a>
+          <p><strong><a href="../blog assets/html/toyota.html">Toyota Pickup – Before</a></strong><br />The original condition: dents, dirt, and a whole lot of potential.</p>
+        </div>
 
+        <div class="card">
+          <a href="../blog assets/html/toyota2.html">
+            <img src="../blog assets/images/toyota2/TOYOTAAFT1.jpg" alt="Toyota After - Restored View" />
+          </a>
+          <p><strong><a href="../blog assets/html/toyota2.html">Toyota Pickup – After</a></strong><br />Post-cleanup and small restoration work. The transformation speaks for itself.</p>
+        </div>
 
-
-          <!-- Post 6 – Toyota After -->
-<div class="card">
-  <a href="../blog assets/html/toyota2.html">
-    <img src="../blog assets/images/toyota2/TOYOTAAFT1.jpg" alt="Toyota After - Restored View" />
-  </a>
-  <p>
-    <strong><a href="../blog assets/html/toyota2.html">Toyota Pickup – After</a></strong><br />
-    Post-cleanup and small restoration work. The transformation speaks for itself.
-  </p>
-</div>
-
-        </div><!-- Post 5 – Toyota Before -->
-<div class="card">
-  <a href="../blog assets/html/toyota.html">
-    <img src="../blog assets/images/toyota/TOYOTAB41.jpg" alt="Toyota Project Start" />
-  </a>
-  <p>
-    <strong><a href="../blog assets/html/toyota.html">Toyota Pickup – Before</a></strong><br />
-    The original condition: dents, dirt, and a whole lot of potential.
-  </p>
-</div>
-
+        <div class="card">
+          <a href="../blog assets/html/face1.html">
+            <img src="../blog assets/images/face1/FLASH1.jpg" alt="Studio Portrait – Light Wrap" />
+          </a>
+          <p><strong><a href="../blog assets/html/face1.html">Portrait Study – Light, Form, and Feel</a></strong><br />A look at how small changes in lighting and framing can dramatically shift how a portrait feels — even in a controlled setting.</p>
+        </div>
       </section>
     </main>
 
-    <!-- FOOTER -->
     <footer>
       <p>&copy; 2024 Andrew Kazanis</p>
       <p class="echo-tag">
         <span data-echo="fragment3">Make cool shit.</span>
         <div id="echo-portal" style="display: none; margin-top: 1rem;">
-          <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
+          <a href="https://echo404.vercel.app" class="echo-wall-link">&rarr; Connect to Echo404</a>
         </div>
       </p>
     </footer>
   </div>
 
-  <!-- SCRIPTS -->
   <script src="../background.js"></script>
   <script src="../echo-script.js" type="module"></script>
   <script src="../boot.js" defer></script>
