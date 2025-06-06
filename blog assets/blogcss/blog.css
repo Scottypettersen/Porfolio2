@@ -37,13 +37,16 @@ body {
   font-family: var(--font-body);
   color: var(--color-light);
   line-height: 1.6;
+  font-size: 16px;
+  padding: var(--space-xs);
 }
 
-/* PAGE WRAPPER */
 .page-wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 
 /* HEADER */
@@ -54,6 +57,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: var(--space-md) var(--space-lg);
+  flex-wrap: wrap;
 }
 
 header img {
@@ -65,6 +69,10 @@ header img {
   list-style: none;
   display: flex;
   gap: var(--space-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
 }
 
 .home-nav a {
@@ -76,6 +84,7 @@ header img {
   text-decoration: none;
   border-radius: var(--radius);
   transition: background 0.2s ease, transform 0.2s ease;
+  display: inline-block;
 }
 
 .home-nav a:hover {
@@ -106,7 +115,7 @@ h2 {
 /* BLOG GRID */
 .milanote-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-md);
   width: 100%;
   max-width: var(--max-width);
@@ -114,8 +123,18 @@ h2 {
   margin: 0 auto;
 }
 
+.milanote-grid figure {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .milanote-grid img {
   width: 100%;
+  height: auto;
+  object-fit: cover;
   border-radius: var(--radius);
   box-shadow: 0 4px 12px var(--text-shadow);
   transition: transform 0.3s ease;
@@ -143,32 +162,83 @@ footer p:nth-child(2) {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  body {
+    padding: var(--space-sm);
+  }
+
   header {
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-xs);
+  }
+
+  header img {
+    max-width: 160px;
+    margin-bottom: var(--space-xs);
   }
 
   .home-nav ul {
     flex-direction: column;
     gap: var(--space-xs);
+    width: 100%;
+    align-items: center;
   }
 
   .home-nav a {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
     width: 100%;
-    max-width: 240px;
+    max-width: 220px;
     text-align: center;
+    border-radius: 20px;
   }
 
   h2 {
     font-size: 2rem;
+    margin: var(--space-sm) 0 var(--space-xs);
   }
 
   .intro-text {
     font-size: 1rem;
+    padding: 0 var(--space-xs);
+    margin-bottom: var(--space-sm);
   }
 
   .milanote-grid {
-    gap: var(--space-sm);
+    grid-template-columns: 1fr;
+    gap: var(--space-xs);
+    padding: 0 var(--space-xs) var(--space-md);
+  }
+
+  .milanote-grid img {
+    height: auto;
+    object-fit: contain;
+    max-height: unset;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: var(--space-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .home-nav a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  .intro-text {
+    font-size: 0.95rem;
   }
 }

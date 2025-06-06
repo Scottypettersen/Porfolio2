@@ -13,76 +13,6 @@
   <!-- Styles -->
   <link rel="stylesheet" href="../blogcss/blog.css" />
   <link rel="stylesheet" href="../../echo-style.css" />
-
-  <style>
-    :root {
-      --radius: 10px;
-      --shadow: rgba(0, 0, 0, 0.25);
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      padding: 3rem 1rem;
-    }
-
-    h2 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 2.75rem;
-      color: var(--color-light);
-      text-align: center;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.5px;
-    }
-
-    .intro-text {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      text-align: center;
-      font-size: 1.125rem;
-      font-weight: 300;
-      color: var(--color-light);
-      line-height: 1.6;
-      padding: 0 1rem;
-    }
-
-    .milanote-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      width: 100%;
-      max-width: 1200px;
-      padding: 0 1rem;
-    }
-
-    .milanote-grid img {
-      width: 100%;
-      height: auto;
-      border-radius: var(--radius);
-      box-shadow: 0 4px 12px var(--shadow);
-      transition: transform 0.25s ease;
-    }
-
-    .milanote-grid img:hover {
-      transform: scale(1.015);
-    }
-
-    @media (max-width: 768px) {
-      h2 {
-        font-size: 2rem;
-      }
-
-      .intro-text {
-        font-size: 1rem;
-      }
-
-      .milanote-grid {
-        gap: 1rem;
-      }
-    }
-  </style>
 </head>
 
 <body class="home">
@@ -104,19 +34,19 @@
 
     <!-- MAIN -->
     <main>
-      <section class="board-wrapper">
+      <section>
         <h2>VALVE COVER PAINT</h2>
         <p class="intro-text">
           Stripping, prepping, masking, and painting the aluminum M54 valve cover. This one took some love — but the result? OEM+ meets hot rod vibes.
         </p>
         <div class="milanote-grid">
-          <img src="../images/valvecoverpics/valveraw.jpeg" alt="Raw valve cover" />
-          <img src="../images/valvecoverpics/vc2.jpeg" alt="Masking gasket channels" />
-          <img src="../images/valvecoverpics/vc5.jpeg" alt="First coats down" />
-          <img src="../images/valvecoverpics/vc6.jpeg" alt="Mid-process drying shot" />
-          <img src="../images/valvecoverpics/vc7.jpeg" alt="Gloss and texture applied" />
-          <img src="../images/valvecoverpics/vc8.jpeg" alt="Closeup of lettering and surface" />
-          <img src="../images/valvecoverpics/vc9.jpeg" alt="Finished and drying" />
+          <figure><img src="../images/valvecoverpics/valveraw.jpeg" alt="Raw valve cover" /><figcaption>Raw valve cover</figcaption></figure>
+          <figure><img src="../images/valvecoverpics/vc2.jpeg" alt="Masking gasket channels" /><figcaption>Masking gasket channels</figcaption></figure>
+          <figure><img src="../images/valvecoverpics/vc5.jpeg" alt="First coats down" /><figcaption>First coats down</figcaption></figure>
+          <figure><img src="../images/valvecoverpics/vc6.jpeg" alt="Mid-process drying shot" /><figcaption>Mid-process drying shot</figcaption></figure>
+          <figure><img src="../images/valvecoverpics/vc7.jpeg" alt="Gloss and texture applied" /><figcaption>Gloss and texture applied</figcaption></figure>
+          <figure><img src="../images/valvecoverpics/vc8.jpeg" alt="Closeup of lettering and surface" /><figcaption>Closeup of lettering and surface</figcaption></figure>
+          <figure><img src="../images/valvecoverpics/vc9.jpeg" alt="Finished and drying" /><figcaption>Finished and drying</figcaption></figure>
         </div>
       </section>
     </main>

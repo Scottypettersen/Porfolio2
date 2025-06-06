@@ -11,13 +11,52 @@ const echo = {
   }
 };
 
-// === WHISPER SYSTEM ===
+// === GLOBAL WHISPER LOGIC ===
+const globalWhispers = [
+  "ECHO: Not everything you see is surface-level.",
+  "ECHO: Memory fades, but not forever.",
+  "ECHO: Did you catch that glitch?",
+  "ECHO: There's meaning buried in repetition.",
+  "ECHO: Fragments are watching too.",
+  "ECHO: You left a trace in the code.",
+  "ECHO: The archive doesn't forget.",
+  "ECHO: Echo404 is bleeding through.",
+  "ECHO: I remember more than you think.",
+  "ECHO: You're not the first to wander here."
+];
+
 function whisper(message = "ECHO: ...") {
   const w = document.createElement('div');
   w.className = 'echo-whisper';
   w.innerText = message;
+  Object.assign(w.style, {
+    position: 'fixed',
+    bottom: '6rem',
+    left: '50%',
+    transform: 'translateX(-50%) translateY(20px)',
+    background: 'rgba(0,0,0,0.9)',
+    color: '#FF6B00',
+    fontFamily: 'monospace',
+    fontSize: '0.95rem',
+    padding: '0.75rem 1.25rem',
+    borderRadius: '10px',
+    zIndex: '10000',
+    opacity: '0',
+    transition: 'opacity 0.3s ease, transform 0.3s ease',
+    pointerEvents: 'none',
+    maxWidth: '90vw',
+    textAlign: 'center'
+  });
   document.body.appendChild(w);
-  setTimeout(() => w.remove(), 8000);
+  requestAnimationFrame(() => {
+    w.style.opacity = '1';
+    w.style.transform = 'translateX(-50%) translateY(0)';
+  });
+  setTimeout(() => {
+    w.style.opacity = '0';
+    w.style.transform = 'translateX(-50%) translateY(-10px)';
+    setTimeout(() => w.remove(), 400);
+  }, 7000);
 }
 
 function whisperOnFragment(key) {
@@ -29,23 +68,21 @@ function whisperOnFragment(key) {
   whisper(whispers[key] || "ECHO: Keep looking...");
 }
 
+function randomWhisper() {
+  if (!echo.get('mode')) return;
+  const msg = globalWhispers[Math.floor(Math.random() * globalWhispers.length)];
+  whisper(msg);
+}
+
 // === TRACKING & UNLOCK LOGIC ===
 function initFragmentTracking() {
   document.querySelectorAll('[data-echo]').forEach(el => {
     el.addEventListener('click', () => {
       const key = el.dataset.echo;
       if (!key || echo.get(key)) return;
-
       echo.set(key);
       el.classList.add('echo-found');
-
-      const customMessage = el.dataset.echoMessage;
-      if (customMessage) {
-        whisper(customMessage);
-      } else {
-        whisperOnFragment(key);
-      }
-
+      whisperOnFragment(key);
       checkEchoStatus();
     });
   });
@@ -56,7 +93,6 @@ function checkEchoStatus() {
     document.body.classList.add('echo-mode');
     return;
   }
-
   if (echo.hasAllFragments()) {
     echo.enableMode();
     showEchoPopup();
@@ -65,15 +101,26 @@ function checkEchoStatus() {
 
 function showEchoPopup() {
   if (document.getElementById('echo-popup')) return;
-
   const popup = document.createElement('div');
   popup.id = 'echo-popup';
   popup.innerHTML = `
     <div class="popup-inner">
       <p><strong>ECHO</strong>: Memory integrity confirmed.</p>
       <a href="https://echo404.vercel.app/wall" class="echo-wall-link">→ Access the Wall</a>
-    </div>
-  `;
+    </div>`;
+  Object.assign(popup.style, {
+    position: 'fixed',
+    bottom: '7rem',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    background: '#000',
+    color: '#FF6B00',
+    padding: '1rem',
+    borderRadius: '10px',
+    zIndex: '10000',
+    fontFamily: 'monospace',
+    fontSize: '1rem'
+  });
   document.body.appendChild(popup);
   setTimeout(() => popup.remove(), 8000);
 }
@@ -81,7 +128,6 @@ function showEchoPopup() {
 // === TERMINAL SYSTEM ===
 function initTerminal() {
   if (document.getElementById('echo-terminal')) return;
-
   const t = document.createElement('div');
   t.id = 'echo-terminal';
   t.innerHTML = `
@@ -90,7 +136,6 @@ function initTerminal() {
       <input id="terminal-input" placeholder="> type to Echo..." autofocus />
     </div>`;
   document.body.appendChild(t);
-
   document.getElementById('terminal-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') handleCommand(e.target.value.trim());
   });
@@ -99,7 +144,6 @@ function initTerminal() {
 function handleCommand(input) {
   const out = document.getElementById('terminal-output');
   const cmd = input.toLowerCase();
-
   if (cmd === 'unlock echo') {
     echo.enableMode();
     out.innerText = 'ECHO: echo mode activated.';
@@ -111,6 +155,8 @@ function handleCommand(input) {
     echo.set(frag);
     out.innerText = `ECHO: ${frag} fragment set.`;
     checkEchoStatus();
+  } else if (cmd === 'whisper') {
+    randomWhisper();
   } else {
     out.innerText = `ECHO: Unknown command "${cmd}"`;
   }
@@ -125,13 +171,22 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// === IDLE WHISPER ===
-setTimeout(() => {
-  if (!echo.get('mode')) whisper('ECHO: Are you still there...?');
-}, 60000);
+// === IDLE WHISPER SYSTEM ===
+let idleTimer = null;
+function startIdleWhispers() {
+  if (idleTimer) clearTimeout(idleTimer);
+  idleTimer = setTimeout(() => {
+    if (echo.get('mode')) randomWhisper();
+  }, 10000);
+}
+['mousemove', 'keydown', 'scroll', 'touchstart'].forEach(evt => {
+  window.addEventListener(evt, startIdleWhispers);
+});
 
 // === INIT ON DOM READY ===
 document.addEventListener('DOMContentLoaded', () => {
   initFragmentTracking();
   checkEchoStatus();
+  startIdleWhispers();
+  setTimeout(() => whisper("ECHO: You found one of the cracks..."), 1500);
 });

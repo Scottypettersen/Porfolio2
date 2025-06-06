@@ -12,49 +12,6 @@
   <link rel="stylesheet" href="../../style.css" />
   <link rel="stylesheet" href="../blogcss/blog.css" />
   <link rel="stylesheet" href="../echo-style.css" />
-
-  <style>
-    .board-wrapper {
-      padding: var(--space-md);
-      background: var(--dark-overlay);
-      backdrop-filter: blur(8px);
-    }
-
-    .board-wrapper h2 {
-      text-align: center;
-      font-family: var(--font-display);
-      font-size: 3rem;
-      margin-bottom: var(--space-sm);
-      color: var(--primary);
-    }
-
-    .board-wrapper p {
-      max-width: 800px;
-      margin: 0 auto 2rem auto;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: var(--background);
-    }
-
-    .milanote-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .milanote-grid img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.2s ease;
-    }
-
-    .milanote-grid img:hover {
-      transform: scale(1.03);
-    }
-  </style>
 </head>
 
 <body class="home">
@@ -76,23 +33,21 @@
 
     <!-- MAIN CONTENT -->
     <main>
-      <section class="board-wrapper">
-        <h2>Portraits</h2>
-        <p>
-          This quarter I spent some time experimenting with portrait photography.<br><br>
-          Even in a totally controlled setup — same lights, same backdrops, same camera — every person brought something different to the frame.<br><br>
-          Some of my favorites are from sessions where we explored light wrapping, head-and-shoulder framing, and classic 45-degree setups.<br><br>
-          The smallest shifts — in posture, lens, or even expression — made huge changes to the final shot.<br><br>
-          Sometimes the best portraits weren’t even the most “correct.” They just felt real.
-        </p>
+      <h2>Portraits</h2>
+      <div class="intro-text">
+        This quarter I spent time exploring portrait photography.<br><br>
+        Same lights, same backdrop, same camera. But every person brought something different to the frame.<br><br>
+        I focused on setups like head and shoulders framing, light wrapping, and classic 45 degree lighting.<br><br>
+        A small change in lens, posture, or expression completely changed the final image.<br><br>
+        The best ones weren’t always the most "correct." They just felt real.
+      </div>
 
-        <div class="milanote-grid">
-          <img src="../images/face1/FLASH1.jpg" alt="Light Wrap On Axis" />
-          <img src="../images/face1/Flash3.jpg" alt="45/45 Not-So Close Up" />
-          <img src="../images/face1/Flash5.jpg" alt="Classic 45 Portrait" />
-          <img src="../images/face1/Flash6.jpg" alt="Head and Shoulders Portrait" />
-        </div>
-      </section>
+      <div class="milanote-grid">
+        <figure><img src="../images/face1/FLASH1.jpg" alt="Light Wrap On Axis" /></figure>
+        <figure><img src="../images/face1/Flash3.jpg" alt="45/45 Not-So Close Up" /></figure>
+        <figure><img src="../images/face1/Flash5.jpg" alt="Classic 45 Portrait" /></figure>
+        <figure><img src="../images/face1/Flash6.jpg" alt="Head and Shoulders Portrait" /></figure>
+      </div>
     </main>
 
     <!-- FOOTER -->
