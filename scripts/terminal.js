@@ -7,6 +7,7 @@ import { EchoWhispers } from './whispers.js';
 export const Terminal = (() => {
   const commands = new Map();
   let terminalVisible = false;
+  let typedBuffer = '';
 
   /**
    * Register a command
@@ -21,7 +22,7 @@ export const Terminal = (() => {
    * Show or toggle terminal UI
    */
   function toggle() {
-    const term = document.getElementById('echo-terminal');
+    let term = document.getElementById('echo-terminal');
     if (term) {
       terminalVisible = !terminalVisible;
       term.classList.toggle('visible');
@@ -29,15 +30,15 @@ export const Terminal = (() => {
     }
 
     // Build terminal DOM
-    const t = document.createElement('div');
-    t.id = 'echo-terminal';
-    t.innerHTML = `
+    term = document.createElement('div');
+    term.id = 'echo-terminal';
+    term.innerHTML = `
       <div id="terminal-window">
         <div id="terminal-output">ECHO: Listening...</div>
         <input id="terminal-input" placeholder="> type to Echo..." autofocus />
       </div>
     `;
-    document.body.appendChild(t);
+    document.body.appendChild(term);
 
     const input = document.getElementById('terminal-input');
     const output = document.getElementById('terminal-output');
@@ -67,29 +68,50 @@ export const Terminal = (() => {
    */
   function init() {
     document.addEventListener('keydown', e => {
-      if (e.ctrlKey && e.key === '`') {
-        toggle();
+      // Echo activation via "kazanis"
+      if (e.key.length === 1 && e.key.match(/[a-z]/i)) {
+        typedBuffer += e.key.toLowerCase();
+        if (typedBuffer.length > 7) typedBuffer = typedBuffer.slice(-7);
+        if (typedBuffer === 'kazanis') toggle();
       }
+
+      // Fallback toggle hotkey
+      if (e.ctrlKey && e.key === '`') toggle();
     });
 
     // Register built-in commands
-    registerCommand('unlock echo', () => {
+    registerCommand('unlock echo', (out) => {
       EchoCore.enableMode();
+      out.textContent = 'ECHO: Echo mode force-enabled.';
     });
 
-    registerCommand('whisper', () => {
+    registerCommand('whisper', (out) => {
       EchoWhispers.whisper();
+      out.textContent = 'ECHO: Whisper sent.';
     });
 
-    registerCommand('access.wall', () => {
+    registerCommand('access.wall', (out) => {
       EchoCore.set('wall');
-      window.location.href = 'https://echo404.vercel.app/wall';
+      out.textContent = 'ECHO: Redirecting to the Wall...';
+      setTimeout(() => {
+        window.location.href = 'https://echo404.vercel.app/wall';
+      }, 1500);
     });
 
     registerCommand('status', (out) => {
       out.textContent = EchoCore.isEnabled()
         ? 'ECHO: Echo mode is active.'
         : 'ECHO: Echo mode is not yet unlocked.';
+    });
+
+    registerCommand('classic', (out) => {
+      document.body.classList.remove('echo-mode');
+      out.textContent = 'ECHO: Classic styling restored.';
+    });
+
+    registerCommand('refresh', (out) => {
+      out.textContent = 'ECHO: Reloading...';
+      setTimeout(() => location.reload(), 1000);
     });
   }
 
