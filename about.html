@@ -51,9 +51,10 @@
               <p>A love of manual transmissions, guitar, bullshitting about the next cool thing we should make, these are all parts of who I am.</p>
               <p>Take a look at my work and see if you’re inspired or intrigued.</p>
 
-              <p class="make-cool-shit">
-                MAKE <span data-echo="fragment3" style="cursor: pointer; color: var(--color-secondary); text-decoration: underline;">COOL</span> SHIT
-              </p>
+            <p class="make-cool-shit">
+  MAKE <span data-echo="fragment2" style="cursor: pointer; color: var(--color-secondary); text-decoration: underline;">COOL</span> SHIT
+</p>
+
             </div>
 
             <div class="about-photo">
@@ -79,24 +80,87 @@
         </div>
       </section>
     </main>
-
+ <!-- ===== FOOTER ===== -->
     <footer>
-      <p>&copy; 2024 Drew Kazanis</p>
+      <p>&copy; 2024 Andrew Kazanis</p>
     </footer>
   </div>
 
-  <!-- ✅ Echo system -->
-  <script src="whispers.js" defer></script>
+  <!-- PDF MODAL -->
+  <div id="pdfModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <iframe id="pdfViewer" src=""></iframe>
+    </div>
+  </div>
 
-  <script>
-    window.onload = function () {
-      setTimeout(() => {
-        window.scrollBy({
-          top: 200,
-          behavior: 'smooth'
-        });
-      }, 100);
-    };
+  <!-- ECHO PORTAL LINK -->
+  <a id="echo-portal" href="https://echo404.netlify.app" style="display:none;position:fixed;bottom:1rem;right:1rem;background:#111;color:#fff;padding:0.5rem 1rem;border-radius:6px;text-decoration:none;z-index:9999;">Enter Echo404</a>
+
+  <script type="module">
+    import { EchoCore } from './scripts/echo-core.js';
+    import { EchoWhispers } from './scripts/whispers.js';
+    import { Terminal } from './scripts/terminal.js';
+    import { runBootSequence } from './scripts/boot-sequence.js';
+
+    function initEchoSystem() {
+      runBootSequence();
+      Terminal.init();
+      EchoCore.initFragmentTracking();
+      EchoWhispers.listenToCore();
+
+      if (localStorage.getItem('echo.mode') === 'true') {
+        document.body.classList.add('echo-mode');
+        document.getElementById('echo-portal').style.display = 'block';
+      }
+
+      EchoCore.on('echo:mode-enabled', () => {
+        document.body.classList.add('echo-mode');
+        document.getElementById('echo-portal').style.display = 'block';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initEchoSystem);
+
+    // PDF Modal Logic
+    document.querySelectorAll('.case-study-btn').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href && href.endsWith('.pdf')) {
+          e.preventDefault();
+          const viewer = document.getElementById('pdfViewer');
+          viewer.src = href;
+          document.getElementById('pdfModal').style.display = 'flex';
+
+          setTimeout(() => {
+            if (!viewer.contentDocument && !viewer.contentWindow.length) {
+              window.open(href, '_blank');
+              document.getElementById('pdfModal').style.display = 'none';
+              viewer.src = '';
+            }
+          }, 2000);
+        }
+      });
+    });
+
+    document.querySelector('.close-btn')?.addEventListener('click', () => {
+      document.getElementById('pdfModal').style.display = 'none';
+      document.getElementById('pdfViewer').src = '';
+    });
+
+    document.getElementById('pdfModal')?.addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) {
+        e.currentTarget.style.display = 'none';
+        document.getElementById('pdfViewer').src = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.getElementById('pdfModal').style.display = 'none';
+        document.getElementById('pdfViewer').src = '';
+      }
+    });
   </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-// boot.js
-document.addEventListener('DOMContentLoaded', () => {
+// boot-sequence.js
+export function runBootSequence() {
   if (localStorage.getItem('echo.booted')) return;
 
   const bootOverlay = document.createElement('div');
@@ -55,4 +55,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handleKey);
     document.addEventListener('click', proceed, { once: true });
   }
-});
+}

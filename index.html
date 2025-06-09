@@ -7,14 +7,12 @@
 
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="echo-style.css" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato&display=swap" rel="stylesheet" />
 </head>
 
 <body class="home">
@@ -44,27 +42,29 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
-<footer>
+   <footer>
   <p>&copy; 2024 Andrew Kazanis</p>
-  <p style="margin-top:0.5rem; font-style:italic; font-size:0.9rem; opacity:0.7;">
-    <span data-echo="fragment3">Make cool shit.</span><div id="echo-portal" style="display:none; text-align:center; margin-top:1rem;">
-  <a href="https://echo404.vercel.app" class="echo-wall-link">→ Connect to Echo404</a>
-</div>
-
-    
+  <p class="echo-tag">
+    <a href="#" data-echo="fragment1">Make cool shit.</a>
   </p>
+  <div id="echo-portal" style="display: none; margin-top: 1rem;">
+    <a href="https://echo404.vercel.app" class="echo-wall-link">&rarr; Connect to Echo404</a>
+  </div>
 </footer>
 
   </div>
   <!-- / .page-wrapper -->
 
-  <!-- Combined background & quote rotator -->
-  <script src="background.js"></script>
-  <link rel="stylesheet" href="echo-style.css" />
-<script src="echo-script.js" type="module"></script><script src="boot.js" defer></script>
+  <!-- Scripts -->
+  <script src="background.js"></script><script type="module">
+  import { EchoCore } from './scripts/echo-core.js';
 
-<link rel="stylesheet" href="echo-style.css" />
-<script src="whispers.js" type="module"></script>
+  EchoCore.on('echo:mode-enabled', () => {
+    const portal = document.getElementById('echo-portal');
+    if (portal) portal.style.display = 'block';
+  });
+</script>
+
+  <script type="module" src="scripts/echo-script.js"></script>
 </body>
 </html>

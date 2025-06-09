@@ -69,14 +69,15 @@
               <a href="CSML CS.pdf" class="btn case-study-btn">View Case Study</a>
             </div>
 
-            <div class="project-box rectangle" data-echo="fragment2">
-              <a href="https://apptrackingv1.netlify.app" target="_blank">
-                <img src="APP TRACKING.png" alt="App Tracking" />
-                <h3>App Tracking</h3>
-                <h4>UX case study for a package tracking app</h4>
-              </a>
-              <a href="Package CS.pdf" class="btn case-study-btn">View Case Study</a>
-            </div>
+          <div class="project-box rectangle">
+  <a href="https://apptrackingv1.netlify.app" target="_blank">
+    <img src="APP TRACKING.png" alt="App Tracking" />
+    <h3>App Tracking</h3>
+    <h4>UX case study for a package tracking app</h4>
+  </a>
+  <a href="Package CS.pdf" class="btn case-study-btn" data-echo="fragment3">View Case Study</a>
+</div>
+
 
             <div class="project-box rectangle">
               <a href="https://drunkenmicrowave.netlify.app/" target="_blank">
@@ -155,62 +156,52 @@
       <iframe id="pdfViewer" src=""></iframe>
     </div>
   </div>
+<script type="module">
+  import { EchoCore } from './scripts/echo-core.js';
 
-  <!-- Scripts -->
-  <script src="echo-script.js" defer></script>
-  <script>
-    document.querySelectorAll('.case-study-btn').forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href && href.endsWith('.pdf')) {
-          e.preventDefault();
-          const viewer = document.getElementById('pdfViewer');
-          viewer.src = href;
-          document.getElementById('pdfModal').style.display = 'flex';
-          setTimeout(() => {
-            if (!viewer.contentDocument && !viewer.contentWindow.length) {
-              window.open(href, '_blank');
-              document.getElementById('pdfModal').style.display = 'none';
-              viewer.src = '';
-            }
-          }, 2000);
-        }
-      });
+  // === PDF Modal Logic ===
+  document.querySelectorAll('.case-study-btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href && href.endsWith('.pdf')) {
+        e.preventDefault();
+        const viewer = document.getElementById('pdfViewer');
+        viewer.src = href;
+        document.getElementById('pdfModal').style.display = 'flex';
+
+        // Fallback if viewer fails to load
+        setTimeout(() => {
+          if (!viewer.contentDocument && !viewer.contentWindow.length) {
+            window.open(href, '_blank');
+            document.getElementById('pdfModal').style.display = 'none';
+            viewer.src = '';
+          }
+        }, 2000);
+      }
     });
+  });
 
-    document.querySelector('.close-btn').addEventListener('click', () => {
+  document.querySelector('.close-btn')?.addEventListener('click', () => {
+    document.getElementById('pdfModal').style.display = 'none';
+    document.getElementById('pdfViewer').src = '';
+  });
+
+  document.getElementById('pdfModal')?.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
+      e.currentTarget.style.display = 'none';
+      document.getElementById('pdfViewer').src = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
       document.getElementById('pdfModal').style.display = 'none';
       document.getElementById('pdfViewer').src = '';
-    });
+    }
+  });
 
-    document.getElementById('pdfModal').addEventListener('click', (e) => {
-      if (e.target === e.currentTarget) {
-        e.currentTarget.style.display = 'none';
-        document.getElementById('pdfViewer').src = '';
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        document.getElementById('pdfModal').style.display = 'none';
-        document.getElementById('pdfViewer').src = '';
-      }
-    });
-
-    document.querySelectorAll('[data-echo]').forEach(box => {
-      box.addEventListener('click', () => {
-        const key = box.dataset.echo;
-        if (!localStorage.getItem(`echo.${key}`)) {
-          localStorage.setItem(`echo.${key}`, true);
-          const w = document.createElement('div');
-          w.className = 'echo-whisper';
-          w.innerText = "ECHO: A forgotten name… perhaps on the homepage.";
-          document.body.appendChild(w);
-          setTimeout(() => w.remove(), 7000);
-          box.classList.add('echo-found');
-        }
-      });
-    });
-  </script>
+  // === Echo Fragment Init (modern, clean) ===
+  EchoCore.initFragmentTracking();
+</script>
 </body>
 </html>
