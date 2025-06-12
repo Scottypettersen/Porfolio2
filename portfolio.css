@@ -101,22 +101,40 @@ h2 {
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
-
-/* ===== BANNER FIX ===== */
-.portfolio-banner {
-  margin: 1.5rem auto 2rem;
-  max-width: 100%;
-  width: 100%;
+.portfolio-banner a {
+  display: block;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   border-radius: var(--radius);
   overflow: hidden;
 }
 
-.portfolio-banner img {
+.portfolio-banner a::after {
+  content: 'Download PDF';
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  display: block;
-  border-radius: var(--radius);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: var(--color-overlay);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 0.5rem;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.portfolio-banner a:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 18px rgba(255, 107, 0, 0.3);
+}
+
+.portfolio-banner a:hover::after {
+  opacity: 1;
+  transform: translateY(0%);
 }
 
 /* ===== GRID SYSTEM ===== */
