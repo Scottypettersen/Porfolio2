@@ -100,42 +100,56 @@ h2 {
   font-size: clamp(2rem, 5vw, 3rem);
   color: var(--color-primary);
   margin-bottom: 1rem;
+}.portfolio-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+
 .portfolio-banner a {
   display: block;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border-radius: var(--radius);
-  overflow: hidden;
 }
 
-.portfolio-banner a::after {
+.portfolio-banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-banner::after {
   content: 'Download PDF';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background: var(--color-overlay);
+  padding: 0.6rem 0;
+  background: rgba(0, 0, 0, 0.7);
   color: var(--color-primary);
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
-  padding: 0.5rem;
   opacity: 0;
   transform: translateY(100%);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   pointer-events: none;
 }
 
-.portfolio-banner a:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 18px rgba(255, 107, 0, 0.3);
+.portfolio-banner:hover {
+  transform: scale(1.015);
+  box-shadow: 0 0 20px rgba(255, 107, 0, 0.35);
 }
 
-.portfolio-banner a:hover::after {
+.portfolio-banner:hover::after {
   opacity: 1;
-  transform: translateY(0%);
+  transform: translateY(0);
 }
+
 
 /* ===== GRID SYSTEM ===== */
 .portfolio-grid,
