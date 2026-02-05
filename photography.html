@@ -1,0 +1,141 @@
+<!-- photography.html (FINAL POLISH / site-integrated rewrite)
+     Notes:
+     - Keeps your existing header/nav markup compatible with style.css
+     - Adds a clean, “home-page consistent” Photography top bar (title + subtitle + toolbar)
+     - Makes toolbar buttons real controls (data-action hooks for JS)
+     - Improves semantics + accessibility (main landmark, aria labels, noscript)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Photography by Andrew Kazanis. Albums, in order. One open at a time." />
+  <title>Andrew Kazanis – Photography</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:wght@300;400;700;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Site base styles (global tokens + background fader live here) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Your existing site styles -->
+  <link rel="stylesheet" href="portfolio.css" />
+  <link rel="stylesheet" href="echo-style.css" />
+
+  <!-- Photography page styles -->
+  <link rel="stylesheet" href="photography.css" />
+</head>
+
+<body class="page-photography">
+  <!-- Accessibility: skip link (CSS should visually hide until focused) -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page-wrapper">
+    <!-- Keep header structure consistent with the rest of your site -->
+    <header>
+      <a href="index.html" aria-label="Go to home">
+        <img src="Kazanis red.png" alt="Andrew Kazanis Logo" />
+      </a>
+
+      <nav class="home-nav" aria-label="Primary navigation">
+        <ul>
+          <li><a href="portfolio.html">PROJECTS</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section id="photography" aria-label="Photography albums">
+        <div class="container">
+          <!-- “Top bar” that feels like a designed module, not a floating title -->
+          <header class="photo-header">
+            <div class="photo-header-top">
+              <h1 class="photo-title">Photography</h1>
+              <p class="photo-subtitle">Albums, in order. One open at a time.</p>
+            </div>
+
+            <!-- Toolbar: hooks for JS (we’ll wire next) -->
+            <div class="photo-toolbar" role="group" aria-label="Album controls">
+              <button class="tool-btn" type="button" data-action="collapse-all">
+                Collapse all
+              </button>
+
+              <button class="tool-btn" type="button" data-action="expand-first">
+                Open first
+              </button>
+
+              <span class="tool-hint" id="dkToolbarHint" aria-live="polite">
+                Tip: use ← → in the viewer
+              </span>
+            </div>
+          </header>
+
+          <!-- Album stack mount -->
+          <div id="dkAlbumStack" class="album-stack" aria-live="polite"></div>
+
+          <!-- No-JS fallback -->
+          <noscript>
+            <div class="noscript-note">
+              This page uses JavaScript to load albums. Please enable JavaScript to view the grid.
+            </div>
+          </noscript>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Andrew Kazanis</p>
+    </footer>
+  </div>
+
+  <!-- ===== PHOTO LIGHTBOX (namespaced) ===== -->
+  <div class="dk-modal" id="dkLightbox" aria-hidden="true">
+    <div
+      class="dk-modal-content"
+      id="dkModalContent"
+      tabindex="-1"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Photo viewer"
+    >
+      <button class="dk-close-btn" id="dkCloseLightbox" type="button" aria-label="Close">
+        &times;
+      </button>
+
+      <div class="dk-lightbox-hud" id="dkLightboxHud">
+        <span class="hud-left" id="dkHudAlbum"></span>
+        <span class="hud-right" id="dkHudCount"></span>
+      </div>
+
+      <figure class="lightbox-figure">
+        <img id="dkLightboxImg" alt="" />
+        <figcaption id="dkLightboxCaption"></figcaption>
+      </figure>
+
+      <div class="lightbox-controls" aria-label="Photo navigation">
+        <button class="nav-btn" id="dkPrevBtn" type="button" aria-label="Previous photo">←</button>
+        <button class="nav-btn" id="dkNextBtn" type="button" aria-label="Next photo">→</button>
+      </div>
+
+      <div class="lightbox-hint" id="dkLightboxHint" aria-label="Keyboard shortcuts">
+        <span aria-hidden="true">← →</span>
+        <span>Esc</span>
+        <span>H</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS (album stack + lightbox) -->
+  <script src="photography.js" defer></script>
+</body>
+</html>
