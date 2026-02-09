@@ -259,3 +259,31 @@ body.echo-mode::after {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
+
+/* ==========================================
+   ECHO MODE — keep app UI usable
+========================================== */
+
+/* Make modal sit above scanlines/vignette */
+body.echo-mode .modal {
+  z-index: 10050;
+}
+
+/* Ensure modal typography isn’t forced mono-green unless you want it */
+body.echo-mode .modal-content {
+  font-family: 'Lato', sans-serif !important;
+  color: #fff !important;
+  animation: none !important;
+}
+
+/* Optional: if you WANT the modal to be echo-themed, do it intentionally: */
+/*
+body.echo-mode .modal-content {
+  background: #000;
+  border: 2px solid #33ff33;
+  box-shadow: 0 0 20px rgba(51,255,51,0.25);
+}
+body.echo-mode .modal-title { color: #33ff33; }
+body.echo-mode .close-btn { border-color: #33ff33; color: #33ff33; }
+*/
+

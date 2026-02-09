@@ -220,6 +220,145 @@ nav a:hover {
 
 .about-image:hover {
   transform: scale(1.03);
+
+  /* =========================
+   ABOUT.CSS — DEBUG PATCH
+   Paste at bottom of file
+   ========================= */
+
+/* 1) Scope nav to the actual component */
+.home-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 601px) {
+  .home-nav ul {
+    flex-direction: row;
+    gap: var(--gutter);
+  }
+}
+
+.home-nav a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  padding: 0.75rem 2rem;
+  background: var(--color-accent);
+  color: var(--color-text);
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  display: inline-block;
+  text-align: center;
+}
+
+.home-nav a:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+/* 2) Buttons: make them consistent + allow variants */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gutter);
+  justify-content: center;
+  margin-block: calc(var(--gutter) * 1.25);
+}
+
+.button-group .resume-button {
+  font-family: 'Bebas Neue', sans-serif;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  color: var(--color-text);
+  background: var(--color-primary); /* default = orange */
+}
+
+/* Hover should match your site language */
+.button-group .resume-button:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
+}
+
+/* Optional: if you add data-modal="pdf" in HTML, auto-style PDF buttons red */
+.button-group .resume-button[data-modal="pdf"] {
+  background: var(--color-accent);
+}
+
+/* 3) Optional: nicer underline for the "COOL" echo link without inline styles */
+.echo-link {
+  cursor: pointer;
+  color: var(--color-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+/* 4) Minimal modal styling (only if echo-style.css doesn't cover it) */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 9999;
+}
+
+.modal-content {
+  width: min(1000px, 100%);
+  height: min(80vh, 900px);
+  background: rgba(0,0,0,0.85);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 12px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  color: var(--color-primary);
+  font-size: 1.4rem;
+}
+
+.close-btn {
+  border: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+#pdfViewer {
+  width: 100%;
+  height: calc(100% - 56px);
+  border: 0;
+  background: #111;
+}
+
 }
 
 footer {
@@ -228,4 +367,74 @@ footer {
   padding: var(--gutter) 0;
   margin-top: auto;
   font-size: 0.9rem;
+}
+/* ==========================================
+   PDF MODAL — About page
+========================================== */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10050; /* above echo overlays */
+  padding: clamp(12px, 2vw, 24px);
+  background: rgba(0,0,0,0.78);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  width: min(1100px, 96vw);
+  height: min(86vh, 920px);
+  display: flex;
+  flex-direction: column;
+  background: rgba(0,0,0,0.86);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 14px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 70px rgba(0,0,0,0.55);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.modal-title {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+}
+
+.close-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.close-btn:hover {
+  background: rgba(0,0,0,0.55);
+  transform: translateY(-1px);
+}
+
+#pdfViewer {
+  flex: 1;         /* key */
+  width: 100%;
+  border: 0;
+  background: #111;
 }

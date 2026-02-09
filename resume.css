@@ -1,0 +1,542 @@
+/* =========================================================
+   DREW — RESUME PAGE (final / bug-free / matches your HTML)
+   Scope: .page-wrapper.page-resume  (safe to ship)
+   Requires: your resume.html uses the classes in your prototype
+   ========================================================= */
+
+/* ---------------------------
+   1) TOKENS
+   --------------------------- */
+:root{
+  --color-text:#fff;
+  --color-bg:#000;
+  --color-overlay:rgba(0,0,0,0.60);
+
+  --color-primary:#FF6B00;
+  --color-secondary:#0047AB;
+  --color-accent:#FF0000;
+
+  --font-body:'Lato',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  --font-display:'Bebas Neue',Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;
+
+  --max-content-width:900px;
+  --gutter:1rem;
+  --radius:8px;
+
+  --panel-radius:14px;
+  --panel-shadow:0 14px 46px rgba(0,0,0,0.42);
+  --panel-blur:10px;
+  --line:rgba(255,255,255,0.14);
+
+  --soft:rgba(255,255,255,0.88);
+  --soft2:rgba(255,255,255,0.72);
+  --soft3:rgba(255,255,255,0.55);
+
+  /* Change per page if you want */
+  --page-bg-image:url("about me.jpg");
+}
+
+/* ---------------------------
+   2) RESET
+   --------------------------- */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+img{max-width:100%;display:block;}
+button{font:inherit;}
+a{color:inherit;}
+
+/* ---------------------------
+   3) PAGE BASE
+   --------------------------- */
+body{
+  min-height:100vh;
+  background-color:var(--color-bg);
+  background-image:var(--page-bg-image);
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
+  color:var(--color-text);
+  font-family:var(--font-body);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+
+/* Subtle vignette for readability over photos */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(900px 520px at 20% 10%, rgba(255,107,0,0.14), transparent 60%),
+    radial-gradient(900px 520px at 100% 0%, rgba(0,71,171,0.14), transparent 65%),
+    linear-gradient(to bottom, rgba(0,0,0,0.36), rgba(0,0,0,0.58));
+}
+
+.page-wrapper.page-resume{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ---------------------------
+   4) HEADER (About-style)
+   --------------------------- */
+.page-resume header{
+  background:transparent;
+  backdrop-filter:none;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding:1.25rem var(--gutter);
+  gap:1rem;
+}
+
+@media (min-width:601px){
+  .page-resume header{
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+  }
+}
+
+/* Logo */
+.page-resume .logo{
+  text-decoration:none;
+  display:inline-flex;
+  align-items:baseline;
+  gap:10px;
+}
+.page-resume .logo-mark{
+  font-family:var(--font-display);
+  font-size:clamp(2.4rem,5vw,4rem);
+  letter-spacing:1.6px;
+  color:var(--color-primary);
+  text-shadow:2px 2px 8px rgba(0,0,0,0.55);
+}
+
+/* Nav */
+.page-resume .home-nav ul{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+
+@media (min-width:601px){
+  .page-resume .home-nav ul{flex-direction:row;gap:var(--gutter);}
+}
+
+.page-resume .home-nav a{
+  font-family:var(--font-display);
+  font-size:clamp(1.2rem,3vw,1.6rem);
+  padding:0.75rem 2rem;
+  background:var(--color-accent);
+  color:var(--color-text);
+  border-radius:var(--radius);
+  text-transform:uppercase;
+  text-decoration:none;
+  display:inline-block;
+  text-align:center;
+  box-shadow:0 10px 22px rgba(0,0,0,0.22);
+  transition:background 0.2s ease,transform 0.2s ease,filter 0.2s ease;
+}
+
+.page-resume .home-nav a:hover{
+  background:var(--color-secondary);
+  transform:translateY(-2px);
+  filter:saturate(1.05);
+}
+
+/* ---------------------------
+   5) MAIN
+   --------------------------- */
+.page-resume .resume{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  padding:clamp(1.25rem,3.5vw,2.5rem) var(--gutter);
+}
+
+/* Card */
+.page-resume .resume-card{
+  width:min(95%, var(--max-content-width));
+  margin-inline:auto;
+  padding:calc(var(--gutter) * 1.5);
+
+  background:var(--color-overlay);
+  backdrop-filter:blur(var(--panel-blur));
+  border-radius:var(--panel-radius);
+  box-shadow:var(--panel-shadow);
+
+  border-left:4px solid var(--color-primary);
+  overflow:hidden;
+  position:relative;
+
+  animation:resumeFadeIn 0.65s ease;
+}
+
+.page-resume .resume-card::before{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  pointer-events:none;
+  background:
+    radial-gradient(650px 420px at 18% 12%, rgba(255,107,0,0.16), transparent 65%),
+    radial-gradient(650px 420px at 92% 0%, rgba(0,71,171,0.14), transparent 70%),
+    radial-gradient(700px 520px at 50% 120%, rgba(255,0,0,0.07), transparent 60%);
+}
+.page-resume .resume-card > *{position:relative;}
+
+/* ---------------------------
+   6) TOP ROW
+   --------------------------- */
+.page-resume .resume-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin-bottom:0.75rem;
+}
+
+.page-resume .resume-title h1{
+  font-family:var(--font-display);
+  font-size:clamp(2.2rem,4.4vw,3.5rem);
+  letter-spacing:1.1px;
+  color:var(--color-primary);
+  text-shadow:2px 2px 8px rgba(0,0,0,0.55);
+  line-height:0.95;
+}
+
+.page-resume .subtitle{
+  margin-top:0.55rem;
+  max-width:70ch;
+  color:var(--soft);
+  font-size:clamp(1rem,1.1vw,1.15rem);
+  line-height:1.7;
+}
+
+/* ---------------------------
+   7) BUTTONS
+   --------------------------- */
+.page-resume .btn{
+  border:0;
+  cursor:pointer;
+  font-family:var(--font-display);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  border-radius:var(--radius);
+  padding:0.75rem 1.25rem;
+  transition:background 0.2s ease,transform 0.2s ease,border-color 0.2s ease;
+  user-select:none;
+}
+
+.page-resume .btn-ghost{
+  background:rgba(0,0,0,0.30);
+  color:var(--color-text);
+  border:1px solid var(--line);
+}
+
+.page-resume .btn-ghost:hover{
+  background:rgba(0,0,0,0.52);
+  transform:translateY(-2px);
+  border-color:rgba(0,71,171,0.85);
+}
+
+/* ---------------------------
+   8) META PILLS
+   --------------------------- */
+.page-resume .meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.65rem;
+  margin-top:0.9rem;
+  margin-bottom:1.35rem;
+}
+
+.page-resume .meta-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:0.6rem;
+  padding:0.65rem 0.95rem;
+  background:rgba(0,0,0,0.28);
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:var(--color-text);
+  text-decoration:none;
+  transition:transform 0.2s ease,border-color 0.2s ease;
+  max-width:100%;
+}
+
+.page-resume .meta-pill strong{
+  font-family:var(--font-display);
+  letter-spacing:0.8px;
+  color:var(--color-primary);
+  font-weight:400;
+}
+
+.page-resume a.meta-pill:hover{
+  transform:translateY(-1px);
+  border-color:rgba(0,71,171,0.85);
+}
+.page-resume span.meta-pill{cursor:default;}
+
+/* ---------------------------
+   9) GRID
+   --------------------------- */
+.page-resume .resume-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.25rem;
+  align-items:start;
+}
+
+@media (min-width:860px){
+  .page-resume .resume-card{width:min(95%, 980px);}
+  .page-resume .resume-grid{
+    grid-template-columns:1.15fr 0.85fr;
+    gap:1.5rem;
+  }
+}
+
+/* ---------------------------
+   10) SECTION HEADERS
+   --------------------------- */
+.page-resume .section-h{
+  font-family:var(--font-display);
+  font-size:clamp(1.6rem,2.2vw,2.1rem);
+  color:var(--color-primary);
+  letter-spacing:1px;
+  margin-top:1rem;
+  padding-top:0.75rem;
+  border-top:1px solid var(--line);
+}
+.page-resume .col:first-child .section-h{
+  margin-top:0;
+  padding-top:0;
+  border-top:0;
+}
+
+/* ---------------------------
+   11) EXPERIENCE
+   --------------------------- */
+.page-resume .xp{
+  padding:0.95rem 0;
+  border-top:1px solid rgba(255,255,255,0.12);
+}
+.page-resume .xp:first-of-type{
+  border-top:0;
+  padding-top:0;
+}
+
+.page-resume .xp-head{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:0.6rem 1rem;
+}
+
+.page-resume .xp h3{
+  color:var(--color-text);
+  font-size:1.05rem;
+  line-height:1.25;
+}
+.page-resume .sep{color:rgba(255,255,255,0.48);margin-inline:0.25rem;}
+.page-resume .when{
+  font-size:0.95rem;
+  color:var(--soft3);
+  font-style:italic;
+}
+
+.page-resume .xp ul{
+  margin:0.65rem 0 0 1.15rem;
+  color:var(--soft);
+  line-height:1.6;
+  font-size:0.98rem;
+}
+.page-resume .xp li{margin:0.35rem 0;}
+
+.page-resume .ref{
+  margin-top:0.6rem;
+  color:var(--soft2);
+  font-size:0.95rem;
+  font-style:italic;
+}
+
+/* ---------------------------
+   12) SKILLS CHIPS
+   --------------------------- */
+.page-resume .chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:0.55rem;
+  margin-top:0.5rem;
+}
+
+.page-resume .chip{
+  padding:0.55rem 0.8rem;
+  border-radius:999px;
+  background:rgba(0,0,0,0.28);
+  border:1px solid var(--line);
+  color:var(--soft);
+  font-size:0.95rem;
+}
+
+/* ---------------------------
+   13) EDUCATION + AWARDS
+   --------------------------- */
+.page-resume .edu .row{
+  padding:0.75rem 0;
+  border-top:1px solid rgba(255,255,255,0.12);
+  display:grid;
+  gap:0.25rem;
+}
+.page-resume .edu .row:first-child{border-top:0;padding-top:0;}
+.page-resume .edu strong{color:var(--color-text);}
+.page-resume .edu span{color:var(--soft);}
+
+.page-resume .list-tight{
+  margin:0.65rem 0 0 1.15rem;
+  color:var(--soft);
+  line-height:1.6;
+}
+
+/* ---------------------------
+   14) MICRO MODULE
+   --------------------------- */
+.page-resume .micro{
+  margin-top:1.15rem;
+  padding:0.9rem;
+  border-radius:var(--radius);
+  background:rgba(0,0,0,0.28);
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.page-resume .micro-label{
+  font-family:var(--font-display);
+  letter-spacing:1px;
+  color:var(--color-secondary);
+  font-size:1.4rem;
+}
+
+.page-resume .micro-copy{
+  margin-top:0.35rem;
+  color:var(--soft);
+  line-height:1.55;
+}
+
+/* ---------------------------
+   15) FOOTER
+   --------------------------- */
+.page-resume footer{
+  background:var(--color-overlay);
+  text-align:center;
+  padding:var(--gutter) 0;
+  margin-top:auto;
+  font-size:0.9rem;
+}
+
+/* ---------------------------
+   16) ECHO WHISPER TOAST
+   --------------------------- */
+.echo-whisper{
+  position:fixed;
+  bottom:2rem;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:rgba(0,0,0,0.85);
+  color:var(--color-primary);
+  font-family:var(--font-body);
+  font-size:0.95rem;
+  padding:0.8rem 1.25rem;
+  border-radius:10px;
+  box-shadow:0 0 14px rgba(255,107,0,0.35);
+  z-index:9999;
+  opacity:0;
+  transition:opacity 0.3s ease,transform 0.3s ease;
+  pointer-events:none;
+}
+
+/* ---------------------------
+   17) MOTION
+   --------------------------- */
+@keyframes resumeFadeIn{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion:reduce){
+  .page-resume .resume-card{animation:none;}
+  .page-resume .home-nav a,
+  .page-resume .btn,
+  .page-resume .meta-pill{transition:none;}
+  .echo-whisper{transition:none;}
+}
+
+/* ---------------------------
+   18) RESPONSIVE
+   --------------------------- */
+@media (max-width:768px){
+  .page-resume header{padding:1.25rem 1rem;}
+  .page-resume .home-nav a{width:100%;padding:0.85rem;}
+  .page-resume .resume-card{padding:1.25rem;}
+  .page-resume .btn-ghost{width:100%;}
+}
+
+/* ---------------------------
+   19) PRINT MODE
+   --------------------------- */
+@media print{
+  body{
+    background:#fff !important;
+    background-image:none !important;
+    color:#111 !important;
+  }
+  body::before{display:none !important;}
+
+  .page-resume header,
+  .page-resume footer,
+  .echo-whisper,
+  #printBtn{display:none !important;}
+
+  .page-resume .resume{padding:0 !important;}
+
+  .page-resume .resume-card{
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    background:transparent !important;
+    backdrop-filter:none !important;
+    box-shadow:none !important;
+    border:0 !important;
+    border-radius:0 !important;
+    animation:none !important;
+  }
+
+  .page-resume .resume-card::before{display:none !important;}
+
+  .page-resume .resume-title h1,
+  .page-resume .section-h{
+    color:#111 !important;
+    text-shadow:none !important;
+  }
+
+  .page-resume .subtitle,
+  .page-resume .xp ul,
+  .page-resume .ref,
+  .page-resume .edu span,
+  .page-resume .list-tight,
+  .page-resume .when,
+  .page-resume .chip,
+  .page-resume .meta-pill{color:#333 !important;}
+
+  .page-resume .meta-pill,
+  .page-resume .chip,
+  .page-resume .micro{
+    background:transparent !important;
+    border:0 !important;
+  }
+}
