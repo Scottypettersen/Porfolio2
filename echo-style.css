@@ -1,26 +1,53 @@
-/* ==========================================
-   ECHO BASE — Vars & Mode Toggle
-========================================== */
+/* =========================================================
+   ECHO MODE (v2) — safer theme + responsive UI
+   Drop-in replacement for your current Echo CSS.
+   Works with:
+   - body.echo-mode (enabled)
+   - body.echo-hard (optional full takeover)
+   - body.terminal-open (set by terminal.js)
+========================================================= */
 
+/* ------------------------------------------
+   0) Theme tokens (safe / non-destructive)
+------------------------------------------ */
 body.echo-mode {
   --echo-color: #33ff33;
-  --echo-bg: #000000;
-  --echo-font: 'Courier New', Courier, monospace;
-  --echo-dim: rgba(51, 255, 51, 0.6);
-  --echo-glow: rgba(51, 255, 51, 0.4);
-  --echo-border: 1px solid var(--echo-color);
-  --echo-scanline: rgba(0, 0, 0, 0.1);
+  --echo-bg: #000;
+  --echo-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  --echo-dim: rgba(51, 255, 51, 0.65);
+  --echo-glow: rgba(51, 255, 51, 0.35);
+  --echo-border: 1px solid rgba(51, 255, 51, 0.85);
+  --echo-scanline: rgba(0, 0, 0, 0.10);
+  --echo-layer-scan: 1000;
+  --echo-layer-ui: 10010;
+  --echo-layer-boot: 10050;
+}
 
+/* Optional: FULL CRT takeover (only if you add body.echo-hard via JS/terminal cmd) */
+body.echo-mode.echo-hard {
   background: var(--echo-bg) !important;
   color: var(--echo-color) !important;
   font-family: var(--echo-font) !important;
   animation: echo-flicker 1.8s ease-in-out infinite;
 }
 
-body.echo-mode::before {
+@keyframes echo-flicker {
+  0%, 100% { opacity: 0.965; }
+  50% { opacity: 1; }
+}
+
+/* ------------------------------------------
+   1) Overlays (scanlines + vignette)
+------------------------------------------ */
+body.echo-mode::before,
+body.echo-mode::after {
   content: "";
   position: fixed;
   inset: 0;
+  pointer-events: none;
+}
+
+body.echo-mode::before {
   background: repeating-linear-gradient(
     to bottom,
     transparent 0px,
@@ -28,48 +55,44 @@ body.echo-mode::before {
     var(--echo-scanline) 2px,
     var(--echo-scanline) 4px
   );
-  pointer-events: none;
-  z-index: 1000;
+  z-index: var(--echo-layer-scan);
+  opacity: 0.9;
 }
 
 body.echo-mode::after {
-  content: "";
-  position: fixed;
   inset: -10%;
-  background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.6));
-  pointer-events: none;
-  z-index: 999;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0,0,0,0.6));
+  z-index: calc(var(--echo-layer-scan) - 1);
+  opacity: 0.95;
 }
 
-@keyframes echo-flicker {
-  0%, 100% { opacity: 0.96; }
-  50% { opacity: 1; }
-}
-
-/* ==========================================
-   TERMINAL WINDOW
-========================================== */
-
+/* ------------------------------------------
+   2) Terminal (responsive, animated, modern)
+------------------------------------------ */
+/* Use opacity/pointer-events instead of display:none so animation works */
 #echo-terminal {
-  display: none;
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  width: 360px;
-  background: #000;
-  border: 2px solid #33ff33;
-  border-radius: 12px;
+  inset: auto 1rem 1rem auto; /* right/bottom */
+  width: min(420px, calc(100vw - 2rem));
+  background: rgba(0,0,0,0.98);
+  border: 2px solid rgba(51, 255, 51, 0.9);
+  border-radius: 14px;
   padding: 1rem;
-  z-index: 9999;
-  color: #33ff33;
-  font-family: 'Courier New', Courier, monospace;
-  box-shadow: 0 0 20px rgba(51, 255, 51, 0.4);
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  opacity: 0.98;
+  z-index: var(--echo-layer-ui);
+  color: var(--echo-color);
+  font-family: var(--echo-font);
+  box-shadow: 0 0 24px rgba(51, 255, 51, 0.22);
+
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  pointer-events: none;
+  transition: transform 180ms ease, opacity 180ms ease;
 }
 
 #echo-terminal.visible {
-  display: block;
+  opacity: 0.985;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
 }
 
 #terminal-window {
@@ -79,40 +102,64 @@ body.echo-mode::after {
 }
 
 #terminal-output {
-  min-height: 4rem;
-  max-height: 400px;
+  min-height: 5rem;
+  max-height: min(52vh, 420px);
   overflow-y: auto;
-  background: rgba(51, 255, 51, 0.1);
-  padding: 0.5rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  line-height: 1.4;
+  background: rgba(51, 255, 51, 0.08);
+  padding: 0.7rem;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  line-height: 1.45;
   white-space: pre-wrap;
+  border: 1px solid rgba(51, 255, 51, 0.25);
 }
 
 #terminal-input {
   background: #000;
-  color: #33ff33;
-  border: 1px solid #33ff33;
-  border-radius: 6px;
-  padding: 0.6rem;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 0.95rem;
+  color: var(--echo-color);
+  border: 1px solid rgba(51, 255, 51, 0.85);
+  border-radius: 12px;
+  padding: 0.75rem 0.85rem;
+  font-family: var(--echo-font);
+  font-size: 0.98rem;
   width: 100%;
   outline: none;
-  box-shadow: inset 0 0 5px rgba(51, 255, 51, 0.3);
+  box-shadow: inset 0 0 10px rgba(51, 255, 51, 0.18);
 }
 
 #terminal-input::placeholder {
-  color: #33ff33aa;
+  color: rgba(51, 255, 51, 0.55);
   font-style: italic;
 }
 
+/* Hint line (terminal.js adds this) */
+#terminal-hint {
+  font-family: var(--echo-font);
+  font-size: 0.85rem;
+  color: rgba(51, 255, 51, 0.55);
+  user-select: none;
+}
+#terminal-hint span {
+  color: rgba(51, 255, 51, 0.95);
+  border-bottom: 1px dashed rgba(51, 255, 51, 0.55);
+}
 
-/* ==========================================
-   BOOT SEQUENCE OVERLAY
-========================================== */
+/* Mobile: bottom sheet */
+@media (max-width: 640px) {
+  #echo-terminal {
+    inset: auto 0 0 0;
+    width: 100vw;
+    border-radius: 18px 18px 0 0;
+    padding: 1rem;
+  }
+  #terminal-output {
+    max-height: 42vh;
+  }
+}
 
+/* ------------------------------------------
+   3) Boot overlay
+------------------------------------------ */
 #echo-boot {
   position: fixed;
   inset: 0;
@@ -123,9 +170,9 @@ body.echo-mode::after {
   justify-content: center;
   font-family: var(--echo-font);
   text-shadow: 0 0 3px var(--echo-glow);
-  z-index: 10000;
+  z-index: var(--echo-layer-boot);
   padding: 2rem;
-  transition: opacity 1s ease;
+  transition: opacity 700ms ease;
 }
 
 #echo-boot.fade-out {
@@ -134,95 +181,97 @@ body.echo-mode::after {
 }
 
 #boot-lines {
-  max-width: 680px;
+  max-width: 720px;
   width: 100%;
   font-size: 0.95rem;
-  line-height: 1.4;
+  line-height: 1.45;
   white-space: pre;
 }
 
-/* ==========================================
-   WHISPERS (ECHO THOUGHTS)
-========================================== */
-
+/* ------------------------------------------
+   4) Whispers (responsive + nicer motion)
+------------------------------------------ */
 .echo-whisper {
   position: fixed;
-  bottom: 1.5rem;
-  left: 15rem;
-  background: #000; /* force dark background */
-  color: #33ff33;    /* force echo green */
-  font-family: 'Courier New', Courier, monospace;
+  left: 1rem;
+  bottom: 1rem;
+  max-width: min(360px, calc(100vw - 2rem));
+  background: rgba(0,0,0,0.94);
+  color: var(--echo-color);
+  font-family: var(--echo-font);
   font-size: 0.9rem;
   font-style: italic;
-  padding: 0.75rem 1rem;
-  max-width: 300px;
-  border-left: 3px solid #33ff33;
-  box-shadow: 0 0 10px rgba(51, 255, 51, 0.4);
-  opacity: 0.95;
-  z-index: 9999;
+  padding: 0.8rem 1rem;
+  border-left: 3px solid rgba(51, 255, 51, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(51, 255, 51, 0.22);
+  opacity: 0.97;
+  z-index: var(--echo-layer-ui);
   pointer-events: none;
-  border-radius: 6px;
-  transition: opacity 0.3s ease;
+
+  transform: translateY(8px);
+  transition: opacity 280ms ease, transform 280ms ease;
 }
 
 .echo-whisper.fade-out {
   opacity: 0;
+  transform: translateY(18px);
 }
 
-
-.echo-whisper.fade-out {
-  opacity: 0;
+/* When terminal open on small screens, lift whispers so they don’t collide */
+@media (max-width: 640px) {
+  body.terminal-open .echo-whisper {
+    bottom: 8.5rem;
+  }
 }
 
-/* ==========================================
-   FRAGMENTS
-========================================== */
-
+/* ------------------------------------------
+   5) Fragments
+------------------------------------------ */
 [data-echo] {
   cursor: pointer;
-  border-bottom: 1px dashed var(--echo-color);
-  transition: color 0.3s ease;
+  border-bottom: 1px dashed rgba(51, 255, 51, 0.65);
+  transition: color 180ms ease, opacity 180ms ease;
 }
 
 [data-echo].echo-found {
   color: var(--echo-dim);
   text-decoration: line-through;
-  opacity: 0.5;
+  opacity: 0.55;
 }
 
-/* ==========================================
-   WALL POPUP / UNLOCK PORTAL
-========================================== */
-
+/* ------------------------------------------
+   6) Wall popup / unlock portal
+------------------------------------------ */
 #echo-popup {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--echo-bg);
+  background: rgba(0,0,0,0.96);
   color: var(--echo-color);
   border-top: var(--echo-border);
-  box-shadow: 0 -2px 10px var(--echo-glow);
-  padding: 1.5rem;
+  box-shadow: 0 -2px 12px rgba(51, 255, 51, 0.18);
+  padding: 1.2rem 1rem;
   text-align: center;
   font-family: var(--echo-font);
-  z-index: 9998;
+  z-index: calc(var(--echo-layer-ui) - 1);
 }
 
 #echo-popup .popup-inner {
-  max-width: 600px;
+  max-width: 680px;
   margin: 0 auto;
   font-size: 1rem;
+  line-height: 1.4;
 }
 
-/* Wall link */
 .echo-wall-link {
   display: inline-block;
-  margin-top: 1rem;
-  color: var(--echo-dim);
-  border-bottom: 1px solid var(--echo-dim);
+  margin-top: 0.85rem;
+  color: rgba(51, 255, 51, 0.7);
+  border-bottom: 1px solid rgba(51, 255, 51, 0.5);
   text-decoration: none;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  transition: color 160ms ease, border-color 160ms ease;
 }
 
 .echo-wall-link:hover {
@@ -230,12 +279,12 @@ body.echo-mode::after {
   border-color: var(--echo-color);
 }
 
-/* ==========================================
-   GLITCHES + CURSOR
-========================================== */
-
+/* ------------------------------------------
+   7) Glitches + cursor
+------------------------------------------ */
 .glitch {
   animation: echo-glitch 1.5s infinite;
+  will-change: transform;
 }
 
 @keyframes echo-glitch {
@@ -260,30 +309,40 @@ body.echo-mode::after {
   51%, 100% { opacity: 0; }
 }
 
-/* ==========================================
-   ECHO MODE — keep app UI usable
-========================================== */
-
-/* Make modal sit above scanlines/vignette */
+/* ------------------------------------------
+   8) Keep app UI usable (modals, etc.)
+------------------------------------------ */
 body.echo-mode .modal {
-  z-index: 10050;
+  z-index: calc(var(--echo-layer-boot) + 5);
 }
 
-/* Ensure modal typography isn’t forced mono-green unless you want it */
+/* Don’t force modal typography into mono-green unless you intentionally style it */
 body.echo-mode .modal-content {
-  font-family: 'Lato', sans-serif !important;
-  color: #fff !important;
+  font-family: inherit !important;
+  color: inherit !important;
   animation: none !important;
 }
 
-/* Optional: if you WANT the modal to be echo-themed, do it intentionally: */
-/*
-body.echo-mode .modal-content {
-  background: #000;
-  border: 2px solid #33ff33;
-  box-shadow: 0 0 20px rgba(51,255,51,0.25);
+/* ------------------------------------------
+   9) Reduced Motion — respectful defaults
+------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  body.echo-mode.echo-hard {
+    animation: none;
+  }
+  body.echo-mode::before {
+    opacity: 0.25;
+  }
+  body.echo-mode::after {
+    opacity: 0.5;
+  }
+  #echo-terminal,
+  .echo-whisper,
+  #echo-boot {
+    transition: none;
+  }
+  .glitch,
+  .cursor {
+    animation: none;
+  }
 }
-body.echo-mode .modal-title { color: #33ff33; }
-body.echo-mode .close-btn { border-color: #33ff33; color: #33ff33; }
-*/
-
